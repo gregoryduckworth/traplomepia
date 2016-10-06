@@ -1,0 +1,28 @@
+<?php
+
+return array (
+  'login' => 'Login',
+  'email' => 'Email',
+  'password' => 'Password',
+  'remember' => 'Remember',
+  'registermember' => 'Register Member',
+  'forgotpassword' => 'Forgot Password',
+  'someproblems' => 'Some Problems',
+  'togglenav' => 'Toggle Nav',
+  'tabmessages' => 'Tab Messages',
+  'supteam' => 'Sup Team',
+  'awesometheme' => 'Awesome Theme',
+  'viewall' => 'View All',
+  'notifications' => 'Notifications',
+  'newmembers' => 'New Members',
+  'tasks' => 'Tasks',
+  'complete' => 'Complete',
+  'alltasks' => 'All Tasks',
+  'register' => 'Register',
+  'registered' => 'Registered',
+  'followers' => 'Followers',
+  'sales' => 'Sales',
+  'friends' => 'Friends',
+  'profile' => 'Profile',
+  'signout' => 'Sign Out',
+);

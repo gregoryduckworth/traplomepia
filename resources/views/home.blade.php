@@ -1,13 +1,18 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 
-@section('content')
-<div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-        <div class="panel-heading">Dashboard</div>
+@section('htmlheader_title', trans('message.welcome_title'))
 
-        <div class="panel-body">
-            You are logged in!
+@section('contentheader_title', trans('message.welcome_title'))
+
+@section('main-content')
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">{!! trans('message.welcome_title') !!}</h3>
         </div>
+
+        <div class="box-body">
+            
+        </div>
+
     </div>
-</div>
 @endsection

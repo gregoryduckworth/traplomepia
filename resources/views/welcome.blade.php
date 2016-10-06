@@ -1,13 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
-@section('content')
-<div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-        <div class="panel-heading">Homepage</div>
+@section('main-content')
 
-        <div class="panel-body">
-            Welcome!
-        </div>
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <h1>{!! Config::get('site.full_name') !!}</h1>
+        <p>Main homepage for the site</p>
     </div>
-</div>
+
 @endsection

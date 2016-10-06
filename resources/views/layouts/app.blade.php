@@ -1,31 +1,61 @@
 <!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{!! csrf_token() !!}">
+@section('htmlheader')
+    @include('layouts.partials.htmlheader')
+@show
 
-    <title>{!! config('app.name', 'Laravel') !!}</title>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="skin-blue sidebar-mini">
 
-    <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <div class="wrapper">
 
-</head>
-<body>
-    @include('layouts.partials.navbar')
+        @include('layouts.partials.mainheader')
 
-    <div class="container-fluid">
-        App
-        <div class="row">
-            @yield('content')
-        </div>
-    </div>
+        @include('layouts.partials.sidebar')
 
-    <!-- Scripts -->
-    @include('layouts.partials.scripts')
-    @stack('javascript')
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            
+            @include('layouts.partials.contentheader')
+
+            <!-- Main content -->
+            <section class="content">
+                <!-- Your Page Content Here -->
+                @yield('main-content')
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+
+        @include('layouts.partials.controlsidebar')
+
+        @include('layouts.partials.footer')
+
+    </div><!-- ./wrapper -->
+
+@include('layouts.partials.scripts')
+
 </body>
 </html>

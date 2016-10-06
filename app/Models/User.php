@@ -27,8 +27,25 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * Return the first name and last name in an easy way
+     * 
+     * @return String
+     */
     public function getNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
     }
+
+    /**
+     * Ensure that we always encrypt the password
+     * 
+     * @param String
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+
 }

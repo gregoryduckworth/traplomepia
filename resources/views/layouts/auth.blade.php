@@ -1,37 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{!! csrf_token() !!}">
+@include('layouts.partials.htmlheader')
 
-    <title>{!! config('app.name', 'Laravel') !!}</title>
+<body style="padding-top:70px;">
+    @include('layouts.partials.navigation')
 
-    <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-
-    <!-- Scripts -->
-    <script>
-        window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
-    </script>
-</head>
-<body>
-    @include('layouts.partials.navbar')
-
-    <div class="container-fluid">
-        Auth
-        <div class="row">
-            @yield('content')
-        </div>
+    <div class="container">
+        @yield('main-content')
     </div>
-
-    <!-- Scripts -->
-    @include('layouts.partials.scripts')
-    @stack('javascript')
+    
 </body>
+
+@include('layouts.partials.scripts')
+ 
 </html>
