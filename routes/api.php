@@ -13,4 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('users', 'Api\UserController');
+Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);
+Route::resource('users', 'UserController');

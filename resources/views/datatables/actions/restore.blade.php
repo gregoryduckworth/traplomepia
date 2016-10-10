@@ -1,0 +1,1 @@
+<a href="#" class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="{!! trans('message.restore') !!}" id="restore_btn" data-id="{!! $data->id !!}"><i class="fa fa-play"></i></a>

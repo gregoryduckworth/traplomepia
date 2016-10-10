@@ -5,7 +5,7 @@
     <section class="sidebar">
 
         <!-- Sidebar user panel (optional) -->
-        @if ($currentUser)
+        {{-- @if ($currentUser)
             <div class="user-panel">
                 <div class="pull-left image">
                     <img src="{!! asset('/img/user2-160x160.jpg') !!}" class="img-circle" alt="User Image" />
@@ -27,29 +27,21 @@
               </span>
             </div>
         </form>
-        <!-- /.search form -->
+        <!-- /.search form --> --}}
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">{!! trans('adminlte_lang::message.header') !!}</li>
-            <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="{!! url('home') !!}"><i class='fa fa-link'></i> <span>{!! trans('adminlte_lang::message.home') !!}</span></a></li>
+            <li class="header">{!! trans('common.sidebar.admin') !!}</li>
             <li class="treeview {!! Request::segment(2) == 'users' ? 'active' : null !!}">
                 <a href="#"><i class="fa fa-user"></i><span>{!! trans('usermanagement.title') !!}</span><i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href="{!! route('admin.users.index') !!}"><i class='fa fa-user'></i> <span>{!! trans('usermanagement.all_users') !!}</span></a></li>
-                        <li><a href="{!! route('admin.users.create') !!}"><i class='fa fa-user-plus'></i> <span>{!! trans('usermanagement.create_user') !!}</span></a>
-                        </li><li><a href="{!! route('admin.users.index') !!}"><i class='fa fa-trash'></i> <span>{!! trans('usermanagement.deleted_users') !!}</span></a></li>
-                    </ul>
-            </li>
-            <li><a href="#"><i class='fa fa-link'></i> <span>{!! trans('adminlte_lang::message.anotherlink') !!}</span></a></li>
-            <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>{!! trans('adminlte_lang::message.multilevel') !!}</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">{!! trans('adminlte_lang::message.linklevel2') !!}</a></li>
-                    <li><a href="#">{!! trans('adminlte_lang::message.linklevel2') !!}</a></li>
+                    <li><a href="{!! route('admin.users.index') !!}"><i class='fa fa-user'></i> <span>{!! trans('usermanagement.all_users') !!}</span></a></li>
+                    <li><a href="{!! route('admin.users.create') !!}"><i class='fa fa-user-plus'></i> <span>{!! trans('usermanagement.create_user') !!}</span></a>
+                    </li><li><a href="{!! route('admin.users.deleted') !!}"><i class='fa fa-trash'></i> <span>{!! trans('usermanagement.deleted_users') !!}</span></a></li>
                 </ul>
             </li>
+            <li class="header">{!! trans('common.sidebar.navigation') !!}</li>
+            <li {!! Request::is('home') ? ' class="active"' : null !!}><a href="{!! url('home') !!}"><i class='fa fa-home'></i> <span>{!! trans('adminlte_lang::message.home') !!}</span></a></li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

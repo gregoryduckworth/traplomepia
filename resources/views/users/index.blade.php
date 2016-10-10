@@ -42,7 +42,7 @@
 var table = $("#datatable").DataTable({
 	"processing": true,
 	"serverSide": true,
-	"ajax": "{!! route('api.users.index') !!}",
+	"ajax": "{!! Request::segment(3) == 'deleted' ? route('api.users.deleted') : route('api.users.index') !!}",
 	"aoColumns": [
 		{ "data": "first_name" },
 		{ "data": "last_name" },

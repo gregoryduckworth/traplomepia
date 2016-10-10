@@ -21,6 +21,6 @@ class UsersTableSeeder extends Seeder
     	]);
 
     	// Create new users for the system
-        factory(App\Models\User::class, 15))->create();
+        factory(App\Models\User::class, 15)->create();
     }
 }

@@ -32,10 +32,26 @@ class UserManagement extends Controller
         return view('users.index');
     }
 
+    /**
+     * Show a specific user 
+     * 
+     * @param  $id of USer
+     * @return User
+     */
     public function show($id)
     {
         return view('users.show')
             ->withUser($this->user->find($id));
+    }
+
+    /**
+     * Show the delete users page
+     * 
+     * @return Response
+     */
+    public function deleted()
+    {
+        return view('users.index');
     }
 
 

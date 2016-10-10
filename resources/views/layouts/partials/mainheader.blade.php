@@ -106,7 +106,7 @@
                         </li>
                     </ul>
                 </li>
-                @if (Auth::guest())
+                @if (!Auth::check())
                     <li><a href="{!! url('/register') !!}">{!! trans('message.register') !!}</a></li>
                     <li><a href="{!! url('/login') !!}">{!! trans('message.login') !!}</a></li>
                 @else

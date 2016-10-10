@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'], 'as' => 'admin.'], function(){
 
+	Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserManagement@deleted']);
 	Route::resource('users', 'UserManagement');
 
 });

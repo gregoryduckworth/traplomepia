@@ -45,6 +45,15 @@ class UserController extends Controller
         return response()->json(['data' => $this->user->find($id)]);
     }
 
+    /**
+     * Delete a specific user from the user list
+     * 
+     * NOTE: we only soft delete so the user 
+     * can come back into the system
+     * 
+     * @param  $id ID of USer
+     * @return JSON
+     */
     public function destroy($id)
     {
         if($this->user->delete($id)){
@@ -52,5 +61,20 @@ class UserController extends Controller
         }else{
             return response()->json(['msg' => 'Failed to delete the user', 'status' => 'warning']);
         }
+    }
+
+    /**
+     * Show all the users in the system who
+     * have been deleted
+     * 
+     * @return Users
+     */
+    public function deleted()
+    {
+        return Datatables::of($this->user->deleted())
+            ->addColumn('actions', function ($user) {
+                return view('datatables.actions.restore', ['view' => 'users', 'type' => 'user', 'data' => $user])->render();
+            })
+            ->make(true);
     }
 }

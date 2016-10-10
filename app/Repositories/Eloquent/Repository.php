@@ -127,6 +127,23 @@ abstract class Repository implements RepositoryInterface
     }
 
     /**
+     * @return array
+     */
+    public function deleted()
+    {
+        return $this->model->onlyTrashed();
+    }
+
+    /**
+     * @param  $id 
+     * @return Boolean
+     */
+    public function restore($id)
+    {
+        return $this->model->onlyTrashed()->find($id)->restore();
+    }
+
+    /**
      * @param $id
      * @param array $columns
      * @return mixed

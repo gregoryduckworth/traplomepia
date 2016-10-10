@@ -45,6 +45,17 @@ interface RepositoryInterface {
     public function delete($id);
 
     /**
+     * @return mixed
+     */
+    public function deleted();
+
+    /**
+     * @param  $id 
+     * @return Boolean
+     */
+    public function restore($id);
+
+    /**
      * @param $id
      * @param array $columns
      * @return mixed

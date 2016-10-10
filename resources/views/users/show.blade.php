@@ -17,7 +17,7 @@
 			</div>
 
 			<div class="box-body">
-				<img class="img-circle img-responsive img-thumbnail center-block" src="//www.clker.com/cliparts/B/R/Y/m/P/e/blank-profile-hi.png"><br />
+				<img class="img-responsive center-block" src="//www.clker.com/cliparts/B/R/Y/m/P/e/blank-profile-hi.png"><br />
 				<p class="text-center">
 				{!! $user->title !!} {!! $user->name !!}<br />
 				</p>
