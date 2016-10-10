@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Repositories\Eloquent\UserRepository as User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserFormRequest;
 use Yajra\Datatables\Facades\Datatables;
 
 
@@ -82,7 +83,7 @@ class UserController extends Controller
      * Restore a specific user from the user list
      * 
      * @param  $id ID of User
-     * @return JSON
+     * @return Response
      */
     public function restore($id)
     {
@@ -95,7 +96,24 @@ class UserController extends Controller
         if($this->user->restore($id)){
             return response()->json(['msg' => 'User successfully restored', 'status' => 'success']);
         }else{
-            return response()->json(['msg' => 'Failed to restore the user', 'status' => 'warning']);
+            return response()->json(['msg' => 'Failed to restore the user', 'status' => 'error']);
         }
+    }
+
+    /**
+     * Create a new user in the system and send them 
+     * an email with their new password 
+     * 
+     * @param  UserFormRequest $request 
+     * @return Response
+     */
+    public function store(UserFormRequest $request)
+    {
+        // We need to create a password for the new user 
+        $request['password'] = str_random(10);
+        if($this->user->create($request->all())){
+            return response()->json(['msg' => 'Data has been stored', 'status' => 'success']);
+        }
+        return response()->json(['msg' => 'Something went wrong', 'status' => 'error']);
     }
 }
