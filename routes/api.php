@@ -14,4 +14,5 @@ use Illuminate\Http\Request;
 */
 
 Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);
+Route::get('users/restore/{id?}', ['as' => 'users.restore', 'uses' => 'UserController@restore']);
 Route::resource('users', 'UserController');

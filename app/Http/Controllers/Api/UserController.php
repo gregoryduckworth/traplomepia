@@ -51,7 +51,7 @@ class UserController extends Controller
      * NOTE: we only soft delete so the user 
      * can come back into the system
      * 
-     * @param  $id ID of USer
+     * @param  $id ID of User
      * @return JSON
      */
     public function destroy($id)
@@ -76,5 +76,26 @@ class UserController extends Controller
                 return view('datatables.actions.restore', ['view' => 'users', 'type' => 'user', 'data' => $user])->render();
             })
             ->make(true);
+    }
+
+    /**
+     * Restore a specific user from the user list
+     * 
+     * @param  $id ID of User
+     * @return JSON
+     */
+    public function restore($id)
+    {
+        // Check the ID is not set to NULL
+        if($id == NULL){
+            return response()->json(['msg' => 'Please provide a valid ID', 'status' => 'warning']);
+        }
+
+        // Restore the user based on the ID provided
+        if($this->user->restore($id)){
+            return response()->json(['msg' => 'User successfully restored', 'status' => 'success']);
+        }else{
+            return response()->json(['msg' => 'Failed to restore the user', 'status' => 'warning']);
+        }
     }
 }
