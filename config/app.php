@@ -171,6 +171,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\TranslationManager\ManagerServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        GeneaLabs\LaravelRegistrar\Providers\LaravelRegistrarService::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
 

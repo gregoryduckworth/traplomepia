@@ -34,12 +34,12 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('password/email', ['as' => 'password.email', 'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
     Route::get('password/reset/{token}', ['as' => 'password.reset.token', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
     Route::post('password/reset', ['as' => 'password.reset.post', 'uses' => 'Auth\ResetPasswordController@reset']);
+
+    // Main Page
+    Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 });
 
-
-
-Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
-
+// Admin Routes
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'], 'as' => 'admin.'], function(){
 
 	Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserManagement@deleted']);
