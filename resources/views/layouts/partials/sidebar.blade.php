@@ -33,11 +33,11 @@
         <ul class="sidebar-menu">
             <li class="header">{!! trans('common.sidebar.admin') !!}</li>
             <li class="treeview {!! Request::segment(2) == 'users' ? 'active' : null !!}">
-                <a href="#"><i class="fa fa-user"></i><span>{!! trans('usermanagement.title') !!}</span><i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="fa fa-user"></i><span>{!! trans('users.title') !!}</span><i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{!! route('admin.users.index') !!}"><i class='fa fa-user'></i> <span>{!! trans('usermanagement.all_users') !!}</span></a></li>
-                    <li><a href="{!! route('admin.users.create') !!}"><i class='fa fa-user-plus'></i> <span>{!! trans('usermanagement.create_user') !!}</span></a>
-                    </li><li><a href="{!! route('admin.users.deleted') !!}"><i class='fa fa-trash'></i> <span>{!! trans('usermanagement.deleted_users') !!}</span></a></li>
+                    <li><a href="{!! route('admin.users.index') !!}"><i class='fa fa-user'></i> <span>{!! trans('users.all_users') !!}</span></a></li>
+                    <li><a href="{!! route('admin.users.create') !!}"><i class='fa fa-user-plus'></i> <span>{!! trans('users.create_user') !!}</span></a>
+                    </li><li><a href="{!! route('admin.users.deleted') !!}"><i class='fa fa-trash'></i> <span>{!! trans('users.deleted_users') !!}</span></a></li>
                 </ul>
             </li>
             <li class="header">{!! trans('common.sidebar.navigation') !!}</li>

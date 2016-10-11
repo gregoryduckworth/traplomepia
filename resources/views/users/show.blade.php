@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('htmlheader_title', trans('usermanagement.title'))
+@section('htmlheader_title', trans('users.title'))
 
-@section('contentheader_title', trans('usermanagement.title'))
+@section('contentheader_title', trans('users.title'))
 
 @section('breadcrumbs')
 	<a href="{!! route('admin.users.index') !!}">< Back to Users</a>
@@ -13,7 +13,7 @@
 	<div class="col-md-4">
 		<div class="box">
 			<div class="box-header with-border">
-				{!! trans('usermanagement.show_user') !!}
+				{!! trans('users.show_user') !!}
 			</div>
 
 			<div class="box-body">
@@ -34,9 +34,9 @@
 		<div class="nav-tabs-custom" id="tabs">
 			<ul class="nav nav-tabs" id="user-details">
 				<li class="active">
-					<a href="#address" data-toggle="tab" data-url="/api/users/1">{!! trans('usermanagement.addresses') !!}</a>
+					<a href="#address" data-toggle="tab" data-url="/api/users/1">{!! trans('users.addresses') !!}</a>
 				</li>
-				<li><a href="#other" data-toggle="tab" data-url="/api/users/2">{!! trans('usermanagement.other') !!}</a></li>
+				<li><a href="#other" data-toggle="tab" data-url="/api/users/2">{!! trans('users.other') !!}</a></li>
 			</ul>
 			<div id="tab-content" class="tab-content">
 				@include('tabs.address')

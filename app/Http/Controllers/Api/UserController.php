@@ -7,6 +7,8 @@ use App\Repositories\Eloquent\UserRepository as User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserFormRequest;
 use Yajra\Datatables\Facades\Datatables;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewUserCreated;
 
 
 class UserController extends Controller
@@ -111,7 +113,8 @@ class UserController extends Controller
     {
         // We need to create a password for the new user 
         $request['password'] = str_random(10);
-        if($this->user->create($request->all())){
+        if($user = $this->user->create($request->all())){
+            Mail::to($user->email)->send(new NewUserCreated($user));
             return response()->json(['msg' => 'Data has been stored', 'status' => 'success']);
         }
         return response()->json(['msg' => 'Something went wrong', 'status' => 'error']);

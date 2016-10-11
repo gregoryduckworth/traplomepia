@@ -1,33 +1,33 @@
 @extends('layouts.app')
 
-@section('htmlheader_title', trans('usermanagement.title'))
+@section('htmlheader_title', trans('users.title'))
 
-@section('contentheader_title', trans('usermanagement.title'))
+@section('contentheader_title', trans('users.title'))
 
 @section('main-content')
 	<div class="box">
 		<div class="box-header">
-			<h3 class="box-title">{!! trans('usermanagement.all_users') !!}</h3>
+			<h3 class="box-title">{!! trans('users.all_users') !!}</h3>
 		</div>
 
 		<div class="box-body table-responsive">
 			<table class="table table-striped display" id="datatable">
 				<thead>
 					<tr>
-						<th>{!! trans('usermanagement.first_name') !!}</th>
-						<th>{!! trans('usermanagement.last_name') !!}</th>
-						<th>{!! trans('usermanagement.email') !!}</th>
-						<th>{!! trans('usermanagement.updated_at') !!}</th>
-						<th>{!! trans('usermanagement.actions') !!}</th>
+						<th>{!! trans('users.first_name') !!}</th>
+						<th>{!! trans('users.last_name') !!}</th>
+						<th>{!! trans('users.email') !!}</th>
+						<th>{!! trans('users.updated_at') !!}</th>
+						<th>{!! trans('users.actions') !!}</th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
-						<th>{!! trans('usermanagement.first_name') !!}</th>
-						<th>{!! trans('usermanagement.last_name') !!}</th>
-						<th>{!! trans('usermanagement.email') !!}</th>
-						<th>{!! trans('usermanagement.updated_at') !!}</th>
-						<th>{!! trans('usermanagement.actions') !!}</th>
+						<th>{!! trans('users.first_name') !!}</th>
+						<th>{!! trans('users.last_name') !!}</th>
+						<th>{!! trans('users.email') !!}</th>
+						<th>{!! trans('users.updated_at') !!}</th>
+						<th>{!! trans('users.actions') !!}</th>
 					</tr>
 				</tfoot>
 			</table>

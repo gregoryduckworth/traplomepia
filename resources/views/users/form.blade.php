@@ -1,37 +1,37 @@
 {!! Form::hidden('id', null) !!}
 
 <div class="form-group">
-	{!! Form::label('title', trans('usermanagement.title')) !!}
+	{!! Form::label('title', trans('users.title')) !!}
 	{!! Form::select('title', ['Mr.' => 'Mr.', 'Miss.' => 'Miss.', 'Mrs.' => 'Mrs.', 'Ms.' => 'Ms.', 'Dr.' => 'Dr.', 'Prof.' => 'Prof.'], null, ['placeholder' => 'Please select a title', 'class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('first_name', trans('usermanagement.first_name')) !!}
+	{!! Form::label('first_name', trans('users.first_name')) !!}
 	{!! Form::text('first_name', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('last_name', trans('usermanagement.last_name')) !!}
+	{!! Form::label('last_name', trans('users.last_name')) !!}
 	{!! Form::text('last_name', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('email', trans('usermanagement.email')) !!}
+	{!! Form::label('email', trans('users.email')) !!}
 	{!! Form::text('email', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('dob', trans('usermanagement.dob')) !!}
+	{!! Form::label('dob', trans('users.dob')) !!}
 	{!! Form::date('dob', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('gender', trans('usermanagement.gender')) !!}
-	{!! Form::select('gender', [ trans('usermanagement.male') => trans('usermanagement.male'), trans('usermanagement.female') => trans('usermanagement.female') ], null, ['class' => 'form-control']) !!}
+	{!! Form::label('gender', trans('users.gender')) !!}
+	{!! Form::select('gender', [ trans('users.male') => trans('users.male'), trans('users.female') => trans('users.female') ], null, ['class' => 'form-control']) !!}
 </div> 
 
-<a href="{!! URL::previous() !!}" class="pull-left btn btn-danger">{!! trans('usermanagement.cancel') !!}</a>
-{!! Form::submit(trans('usermanagement.submit'), ['class' => 'pull-right btn btn-success']) !!}
+<a href="{!! URL::previous() !!}" class="pull-left btn btn-danger">{!! trans('users.cancel') !!}</a>
+{!! Form::submit(trans('users.submit'), ['class' => 'pull-right btn btn-success']) !!}
 
 @push('javascript')
 <script>

@@ -1,72 +1,61 @@
 @extends('layouts.auth')
 
-@section('htmlheader_title')
-    Password reset
-@endsection
+@section('htmlheader_title', 'Password reset')
 
-@section('content')
+@section('main-content')
 
-    <body class="login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="{!! route('home') !!}"><b>Admin</b>LTE</a>
-        </div><!-- /.login-logo -->
+@include('layouts.partials.errors')
 
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
+@if (session('status'))
+    <div class="alert alert-success">
+        {!! session('status') !!}
+    </div>
+@endif
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="text-center">{!! trans('message.passwordreset') !!}</h4>
             </div>
-        @endif
 
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> {{ trans('adminlte_lang::message.someproblems') }}<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+            <div class="panel-body">
+                {!! Form::open(['route' => 'password.reset', 'class' => 'form-horizontal']) !!}
+                    {!! Form::hidden('token', $token) !!}
+                    <div class="form-group has-feedback">
+                        {!! Form::label('email', trans('message.email'), ['class' => 'col-md-3 control-label']) !!}
+                        <div class="col-md-9">
+                            {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                            <i class="fa fa-envelope form-control-feedback"></i>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        {!! Form::label('password', trans('message.password'), ['class' => 'col-md-3 control-label']) !!}
+                        <div class="col-md-9">
+                            {!! Form::password('password', ['class' => 'form-control']) !!}
+                            <i class="fa fa-unlock-alt form-control-feedback"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        {!! Form::label('password_confirmation', trans('message.retrypepassword'), ['class' => 'col-md-3 control-label']) !!}
+                        <div class="col-md-9">
+                            {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
+                            <i class="fa fa-lock form-control-feedback"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            {!! Form::submit(trans('message.passwordreset'), ['class' => 'btn btn-success']) !!}
+                        </div>
+                    </div>
+                {!! Form::close() !!}
             </div>
-        @endif
-
-        <div class="login-box-body">
-            <p class="login-box-msg">{{ trans('adminlte_lang::message.passwordreset') }}</p>
-            <form action="{!! route('password.reset') !!}" method="post">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="token" value="{{ $token }}">
-                <div class="form-group has-feedback">
-                    <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}"/>
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                </div>
-
-                <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="Password" name="password"/>
-                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                </div>
-
-                <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="Password" name="password_confirmation"/>
-                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-2">
-                    </div><!-- /.col -->
-                    <div class="col-xs-8">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('adminlte_lang::message.passwordreset') }}</button>
-                    </div><!-- /.col -->
-                    <div class="col-xs-2">
-                    </div><!-- /.col -->
-                </div>
-            </form>
-
-            <a href="{{ route('login') }}">Log in</a><br>
-            <a href="{{ route('register') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
-
-        </div><!-- /.login-box-body -->
-
-    </div><!-- /.login-box -->
-
-    </body>
-
+            <div class="panel-footer">
+                <a href="{!! route('login') !!}">{!! trans('message.membership') !!}</a>
+                <a href="{!! route('register') !!}" class="pull-right">{!! trans('message.registermember') !!}</a>
+            </div>
+        </div>
+    </div>
+</div>  
 @endsection
