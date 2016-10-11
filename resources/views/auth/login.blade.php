@@ -47,8 +47,8 @@
                 {!! Form::close() !!}
             </div>
             <div class="panel-footer">
-                <a href="{!! url('/register') !!}">{!! trans('message.registermember') !!}</a>
-                <a href="{!! url('/password/reset') !!}" class="pull-right">{!! trans('message.forgotpassword') !!}</a>
+                <a href="{!! route('register') !!}">{!! trans('message.registermember') !!}</a>
+                <a href="{!! route('password.reset') !!}" class="pull-right">{!! trans('message.forgotpassword') !!}</a>
             </div>
         </div>
     </div>

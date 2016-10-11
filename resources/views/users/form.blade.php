@@ -2,7 +2,7 @@
 
 <div class="form-group">
 	{!! Form::label('title', trans('usermanagement.title')) !!}
-	{!! Form::select('title', ['Mr' => 'Mr', 'Miss' => 'Miss', 'Mrs' => 'Mrs', 'Ms' => 'Ms', 'Dr' => 'Dr'], null, ['placeholder' => 'Please select a title', 'class' => 'form-control']) !!}
+	{!! Form::select('title', ['Mr.' => 'Mr.', 'Miss.' => 'Miss.', 'Mrs.' => 'Mrs.', 'Ms.' => 'Ms.', 'Dr.' => 'Dr.', 'Prof.' => 'Prof.'], null, ['placeholder' => 'Please select a title', 'class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -35,28 +35,37 @@
 
 @push('javascript')
 <script>
+@if(Request::segment(3) == 'create')
+var url = "{!! route('api.users.store') !!}";
+var type = "POST";
+@else
+var url = "{!! route('api.users.update', Request::segment(3)) !!}";
+var type = "PATCH";
+@endif 
+
 $("#form").on("submit", function(e) {
     e.preventDefault(); 
 	$.ajax({
-        type: "POST",
-        url: "{!! route('api.users.store') !!}",
+        type: type,
+        url: url,
         data: $("#form").serialize(),
         dataType: 'JSON',
     }).done(function(data) {
 		switch(data.status){
 			case "success":
-				swal({title: "Success", text: data.msg, type: data.status}, function(){
+				swal({title: "Success!", text: data.msg, type: data.status}, function(){
                     window.location.href = "{!! route('admin.users.index') !!}"
                 });
 				break;
 		}      
 	}).fail(function(data) {
+		console.log(data);
 		errors = data.responseJSON;
 		errorsHTML = '';
         $.each(errors, function(key,value){
             errorsHTML += "<span class='text-danger'>" + value[0] + "</span><br>"; 
         });
-        swal({title: "Oops", text: errorsHTML, type: "error", html: true});
+        swal({title: "Oops!", text: errorsHTML, type: "error", html: true});
 	});
 });
 </script>

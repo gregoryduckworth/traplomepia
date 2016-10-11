@@ -9,7 +9,7 @@
     <body class="login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
+            <a href="{!! route('home') !!}"><b>Admin</b>LTE</a>
         </div><!-- /.login-logo -->
 
         @if (session('status'))
@@ -31,7 +31,7 @@
 
         <div class="login-box-body">
             <p class="login-box-msg">{{ trans('adminlte_lang::message.passwordreset') }}</p>
-            <form action="{{ url('/password/reset') }}" method="post">
+            <form action="{!! route('password.reset') !!}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="token" value="{{ $token }}">
                 <div class="form-group has-feedback">
@@ -60,24 +60,13 @@
                 </div>
             </form>
 
-            <a href="{{ url('/login') }}">Log in</a><br>
-            <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
+            <a href="{{ route('login') }}">Log in</a><br>
+            <a href="{{ route('register') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
 
         </div><!-- /.login-box-body -->
 
     </div><!-- /.login-box -->
 
-    @include('layouts.partials.scripts_auth')
-
-    <script>
-        $(function () {
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' // optional
-            });
-        });
-    </script>
     </body>
 
 @endsection

@@ -116,4 +116,22 @@ class UserController extends Controller
         }
         return response()->json(['msg' => 'Something went wrong', 'status' => 'error']);
     }
+
+    /**
+     * Create a new user in the system and send them 
+     * an email with their new password 
+     * 
+     * @param  UserFormRequest $request 
+     * @return Response
+     */
+    public function update(UserFormRequest $request)
+    {
+        // We need to create a password for the new user 
+        $user = $this->user->find($request->id);
+
+        if($user->update($request->all())){
+            return response()->json(['msg' => 'Data has been updated', 'status' => 'success']);
+        }
+        return response()->json(['msg' => 'Something went wrong', 'status' => 'error']);
+    }
 }

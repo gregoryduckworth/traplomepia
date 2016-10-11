@@ -1,72 +1,45 @@
 @extends('layouts.auth')
 
-@section('htmlheader_title')
-    Password recovery
-@endsection
+@section('htmlheader_title', 'Password recovery')
 
-@section('content')
+@section('main-content')
 
-<body class="login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
-        </div><!-- /.login-logo -->
+@include('layouts.partials.errors')
 
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
+@if (session('status'))
+    <div class="alert alert-success">
+        {!! session('status') !!}
+    </div>
+@endif
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="text-center">{!! trans('message.passwordreset') !!}</h4>
             </div>
-        @endif
 
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> {{ trans('adminlte_lang::message.someproblems') }}<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+            <div class="panel-body">
+                {!! Form::open(['url' => 'password/email', 'class' => 'form-horizontal']) !!}
+                    <div class="form-group has-feedback">
+                        {!! Form::label('email', trans('message.email'), ['class' => 'col-md-3 control-label']) !!}
+                        <div class="col-md-9">
+                            {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                            <i class="fa fa-envelope form-control-feedback"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            {!! Form::submit(trans('message.sendpassword'), ['class' => 'btn btn-success btn-sm']) !!}
+                        </div>
+                    </div>
+                {!! Form::close() !!}
             </div>
-        @endif
-
-        <div class="login-box-body">
-            <p class="login-box-msg">Reset Password</p>
-            <form action="{{ url('/password/email') }}" method="post">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="form-group has-feedback">
-                    <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}"/>
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-2">
-                    </div><!-- /.col -->
-                    <div class="col-xs-8">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('adminlte_lang::message.sendpassword') }}</button>
-                    </div><!-- /.col -->
-                    <div class="col-xs-2">
-                    </div><!-- /.col -->
-                </div>
-            </form>
-
-            <a href="{{ url('/login') }}">Log in</a><br>
-            <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.registermember') }}</a>
-
-        </div><!-- /.login-box-body -->
-
-    </div><!-- /.login-box -->
-
-    @include('layouts.partials.scripts_auth')
-
-    <script>
-        $(function () {
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' // optional
-            });
-        });
-    </script>
-</body>
-
+            <div class="panel-footer">
+                <a href="{!! route('login') !!}">{!! trans('message.membership') !!}</a>
+                <a href="{!! route('register') !!}" class="pull-right">{!! trans('message.registermember') !!}</a>
+            </div>
+        </div>
+    </div>
+</div>  
 @endsection

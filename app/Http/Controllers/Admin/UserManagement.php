@@ -59,6 +59,12 @@ class UserManagement extends Controller
         return view('users.create');
     }
 
+    public function edit($id)
+    {
+        return view('users.edit')
+            ->withUser($this->user->find($id));
+    }
+
 
 
 }
