@@ -7,10 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Eloquent\UserRepository as User;
 
 /**
- * Class UserManagementController
+ * Class UserController
  * @package App\Http\Controllers
  */
-class UserManagement extends Controller
+class UserController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -54,11 +54,23 @@ class UserManagement extends Controller
         return view('users.index');
     }
 
+    /**
+     * Show the user creation form
+     * 
+     * @return Response
+     */
     public function create()
     {
         return view('users.create');
     }
 
+    /**
+     * Get the specific user by ID and
+     * show the form to enable the edit
+     * 
+     * @param  $id of User
+     * @return User
+     */
     public function edit($id)
     {
         return view('users.edit')

@@ -42,7 +42,7 @@ Route::group(['middleware' => ['web']], function() {
 // Admin Routes
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'], 'as' => 'admin.'], function(){
 
-	Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserManagement@deleted']);
-	Route::resource('users', 'UserManagement');
+	Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);
+	Route::resource('users', 'UserController');
 
 });

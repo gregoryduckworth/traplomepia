@@ -7,6 +7,8 @@ use App\Repositories\Eloquent\UserRepository as User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserFormRequest;
 use Yajra\Datatables\Facades\Datatables;
+use Illuminate\Support\Facades\Password;
+use App\Notifications\NewUserPasswordEmail;
 
 class UserController extends Controller
 {
@@ -111,6 +113,11 @@ class UserController extends Controller
         // We need to create a password for the new user 
         $request['password'] = str_random(10);
         if($user = $this->user->create($request->all())){
+            // Create token to send an email to the new user to set 
+            // their password for the application
+            $token = Password::getRepository()->create($user);
+            $user->notify(new NewUserPasswordEmail($token));
+            
             return response()->json(['msg' => 'Data has been stored', 'status' => 'success']);
         }
         return response()->json(['msg' => 'Something went wrong', 'status' => 'error']);
