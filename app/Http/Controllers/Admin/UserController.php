@@ -7,10 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Eloquent\UserRepository as User;
 
 /**
- * Class UserManagementController
+ * Class UserController
  * @package App\Http\Controllers
  */
-class UserManagement extends Controller
+class UserController extends Controller
 {
     /**
      * Create a new controller instance.

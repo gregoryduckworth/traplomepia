@@ -44,8 +44,8 @@ class NewUserPasswordEmail extends Notification
 
         $url = route("password.reset.token", $token);
         $intro = "Your email has been used to register an account. Before ";
-        $intro .= "enabling the account, we would like to make sure it's ";
-        $intro .= "really you.";
+        $intro .= "enabling the account, we would like to make sure you have ";
+        $intro .= "access to the email address.";
 
         $outro = "If you did not initiate this request, please reply to this ";
         $outro .= "email. We take your privacy very seriously.";
@@ -56,7 +56,8 @@ class NewUserPasswordEmail extends Notification
             ->line($intro)
             ->action('Activate Your Account', $url)
             ->line($outro)
-            ->line('Regards,<br>Your ' . config('app.name') . ' Team');
+            ->line('Regards,')
+            ->line('Your ' . config('app.name') . ' Team');
     }
 
     /**
