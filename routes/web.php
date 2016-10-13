@@ -24,7 +24,6 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
     Route::post('logout', ['as' => 'logout.post', 'uses' => 'Auth\LoginController@logout']);
 
-
 	// Registration Routes...
     Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
     Route::post('register', ['as' => 'register.post', 'uses' => 'Auth\RegisterController@register']);
@@ -42,6 +41,7 @@ Route::group(['middleware' => ['web']], function() {
 // Admin Routes
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'], 'as' => 'admin.'], function(){
 
+    // User Management
 	Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);
 	Route::resource('users', 'UserController');
 
