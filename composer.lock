@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "70e72af1cbf5299a8d5d039ee68dd1ca",
-    "content-hash": "41171e1cd69e8196d01d76d7393dd1b3",
+    "hash": "e901223f9a81c71af8effab700f6eafa",
+    "content-hash": "950efb3e07fa7c42808a45d8843b1704",
     "packages": [
         {
             "name": "acacha/admin-lte-template-laravel",
@@ -275,50 +275,6 @@
             "time": "2016-05-11 00:36:29"
         },
         {
-            "name": "genealabs/laravel-registrar",
-            "version": "0.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GeneaLabs/laravel-registrar.git",
-                "reference": "d1c1ccf885241098d4ab29158b40283f31f260d1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GeneaLabs/laravel-registrar/zipball/d1c1ccf885241098d4ab29158b40283f31f260d1",
-                "reference": "d1c1ccf885241098d4ab29158b40283f31f260d1",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/routing": "5.3.*",
-                "illuminate/view": "5.3.*",
-                "laracasts/flash": "^2.0",
-                "php": ">=7.0.0"
-            },
-            "require-dev": {
-                "phpspec/phpspec": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [],
-                "psr-4": {
-                    "GeneaLabs\\LaravelRegistrar\\": "src/",
-                    "GeneaLabs\\LaravelRegistrar\\Tests\\": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "GeneaLabs, LLC",
-                    "email": "hello@genealabs.com"
-                }
-            ],
-            "description": "User account activation via email confirmation for Laravel.",
-            "time": "2016-09-27 02:08:11"
-        },
-        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -508,49 +464,6 @@
                 "laravel"
             ],
             "time": "2016-09-29 23:24:04"
-        },
-        {
-            "name": "laracasts/flash",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laracasts/flash.git",
-                "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laracasts/flash/zipball/03eec812fd6ae948664ff51b4320785f6d15ee5d",
-                "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Laracasts\\Flash": "src/"
-                },
-                "files": [
-                    "src/Laracasts/Flash/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jeffrey Way",
-                    "email": "jeffrey@laracasts.com"
-                }
-            ],
-            "description": "Easy flash notifications",
-            "time": "2016-07-11 20:46:02"
         },
         {
             "name": "laravel/framework",
@@ -2575,16 +2488,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v6.19.0",
+            "version": "v6.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "818c2fc6186ad081c5ad3a8956acce8c39fb08c2"
+                "reference": "233141e11129ba4729b3e719d5769126bed83834"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/818c2fc6186ad081c5ad3a8956acce8c39fb08c2",
-                "reference": "818c2fc6186ad081c5ad3a8956acce8c39fb08c2",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/233141e11129ba4729b3e719d5769126bed83834",
+                "reference": "233141e11129ba4729b3e719d5769126bed83834",
                 "shasum": ""
             },
             "require": {
@@ -2631,7 +2544,75 @@
                 "laravel4",
                 "laravel5"
             ],
-            "time": "2016-09-24 02:58:13"
+            "time": "2016-10-13 00:10:14"
+        },
+        {
+            "name": "zizaco/entrust",
+            "version": "5.2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Zizaco/entrust.git",
+                "reference": "b749bff868026336dec1ba1a16c150728697353d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/b749bff868026336dec1ba1a16c150728697353d",
+                "reference": "b749bff868026336dec1ba1a16c150728697353d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "~5.0",
+                "illuminate/console": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "illuminate/database": "~5.0",
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "~4.1",
+                "sami/sami": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/commands"
+                ],
+                "psr-4": {
+                    "Zizaco\\Entrust\\": "src/Entrust/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Elkins",
+                    "homepage": "http://andrewelkins.com"
+                },
+                {
+                    "name": "Zizaco Zizuini",
+                    "email": "zizaco@gmail.com"
+                },
+                {
+                    "name": "Ben Batschelet",
+                    "homepage": "http://github.com/bbatsche"
+                },
+                {
+                    "name": "Michele Angioni",
+                    "email": "michele.angioni@gmail.com"
+                }
+            ],
+            "description": "This package provides a flexible way to add Role-based Permissions to Laravel",
+            "keywords": [
+                "acl",
+                "auth",
+                "illuminate",
+                "laravel",
+                "permission",
+                "roles"
+            ],
+            "time": "2016-03-24 15:24:42"
         }
     ],
     "packages-dev": [
@@ -4317,7 +4298,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "zizaco/entrust": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

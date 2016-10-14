@@ -5,10 +5,29 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use EntrustUserTrait, SoftDeletes, Notifiable {
+        SoftDeletes::restore as sfRestore;
+        EntrustUserTrait::restore as euRestore;
+    }
+
+    /**
+     * Remove conflicts between the Traits
+     */
+    public static function boot()
+    {
+        parent::boot();
+    }
+
+    /**
+     * Required to ensure we restore in the correct way
+     */
+    public function restore() {
+        $this->sfRestore();
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -35,6 +54,11 @@ class User extends Authenticatable
      */
     protected $dates = ['deleted_at'];
 
+    /*
+     * Role profile to get value from ntrust config file.
+     */
+    protected $roleProfile = 'user';
+    
     /**
      * Return the first name and last name in an easy way
      * 
