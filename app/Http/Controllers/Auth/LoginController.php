@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use GeneaLabs\LaravelRegistrar\Traits\ActivatesUsers;
 
 class LoginController extends Controller
 {
@@ -19,9 +18,7 @@ class LoginController extends Controller
     |
     */
 
-    use ActivatesUsers {
-        ActivatesUsers::credentials insteadof AuthenticatesUsers;
-    }
+    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.

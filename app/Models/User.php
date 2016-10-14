@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use GeneaLabs\LaravelRegistrar\Traits\Activatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes, Activatable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
