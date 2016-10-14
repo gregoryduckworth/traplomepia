@@ -5,6 +5,8 @@
 @section('contentheader_title', trans('users.title'))
 
 @section('main-content')
+@include('users.breadcrumbs')
+
 	<div class="box">
 		<div class="box-header">
 			<h3 class="box-title">{!! trans('users.edit_user') !!}</h3>

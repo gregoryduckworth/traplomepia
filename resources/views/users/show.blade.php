@@ -4,11 +4,8 @@
 
 @section('contentheader_title', trans('users.title'))
 
-@section('breadcrumbs')
-	<a href="{!! route('admin.users.index') !!}">< Back to Users</a>
-@endsection
-
 @section('main-content')
+@include('users.breadcrumbs')
 
 	<div class="col-md-4">
 		<div class="box">

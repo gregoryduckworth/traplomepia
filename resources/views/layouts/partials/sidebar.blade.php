@@ -31,15 +31,29 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">{!! trans('common.sidebar.admin') !!}</li>
-            <li class="treeview {!! Request::segment(2) == 'users' ? 'active' : null !!}">
-                <a href="#"><i class="fa fa-user"></i><span>{!! trans('users.title') !!}</span><i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{!! route('admin.users.index') !!}"><i class='fa fa-user'></i> <span>{!! trans('users.all_users') !!}</span></a></li>
-                    <li><a href="{!! route('admin.users.create') !!}"><i class='fa fa-user-plus'></i> <span>{!! trans('users.create_user') !!}</span></a>
-                    </li><li><a href="{!! route('admin.users.deleted') !!}"><i class='fa fa-trash'></i> <span>{!! trans('users.deleted_users') !!}</span></a></li>
-                </ul>
-            </li>
+            @permission('manage-users')
+                <li class="header">{!! trans('common.sidebar.admin') !!}</li>
+                @permission('manage-users')
+                <li class="treeview {!! Request::segment(2) == 'users' ? 'active' : null !!}">
+                    <a href="#"><i class="fa fa-users"></i><span>{!! trans('users.title') !!}</span><i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="{!! route('admin.users.index') !!}"><i class='fa fa-user'></i> <span>{!! trans('users.all_users') !!}</span></a></li>
+                        <li><a href="{!! route('admin.users.create') !!}"><i class='fa fa-user-plus'></i> <span>{!! trans('users.create_user') !!}</span></a>
+                        </li><li><a href="{!! route('admin.users.deleted') !!}"><i class='fa fa-trash'></i> <span>{!! trans('users.deleted_users') !!}</span></a></li>
+                    </ul>
+                </li>
+                @endpermission
+                @permission('manage-roles')
+                <li class="treeview {!! Request::segment(2) == 'roles' ? 'active' : null !!}">
+                    <a href="#"><i class="fa fa-bullhorn"></i><span>{!! trans('roles.title') !!}</span><i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="{!! route('admin.roles.index') !!}"><i class='fa fa-user'></i> <span>{!! trans('roles.all_roles') !!}</span></a></li>
+                        <li><a href="{!! route('admin.roles.create') !!}"><i class='fa fa-user-plus'></i> <span>{!! trans('roles.create_role') !!}</span></a>
+                        </li><li><a href="{!! route('admin.roles.deleted') !!}"><i class='fa fa-trash'></i> <span>{!! trans('roles.deleted_roles') !!}</span></a></li>
+                    </ul>
+                </li>
+                @endpermission
+            @endpermission
             <li class="header">{!! trans('common.sidebar.navigation') !!}</li>
             <li {!! Request::is('home') ? ' class="active"' : null !!}><a href="{!! url('home') !!}"><i class='fa fa-home'></i> <span>{!! trans('adminlte_lang::message.home') !!}</span></a></li>
         </ul><!-- /.sidebar-menu -->

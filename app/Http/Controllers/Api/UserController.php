@@ -124,8 +124,7 @@ class UserController extends Controller
     }
 
     /**
-     * Create a new user in the system and send them 
-     * an email with their new password 
+     * Create a new user in the system
      * 
      * @param  UserFormRequest $request 
      * @return Response

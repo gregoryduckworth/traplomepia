@@ -42,7 +42,15 @@ Route::group(['middleware' => ['web']], function() {
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'], 'as' => 'admin.'], function(){
 
     // User Management
-	Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);
-	Route::resource('users', 'UserController');
+    Route::group(['middleware' => ['permission:manage-users']], function(){
+        Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);
+        Route::resource('users', 'UserController');
+    });
+
+    // Role Management
+    Route::group(['middleware' => ['permission:manage-roles']], function(){
+    	Route::get('roles/deleted', ['as' => 'roles.deleted', 'uses' => 'RoleController@deleted']);
+    	Route::resource('roles', 'RoleController');
+    });
 
 });
