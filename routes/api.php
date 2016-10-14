@@ -14,11 +14,9 @@ use Illuminate\Http\Request;
 */
 
 // User Api
-Route::group(['middleware' => ['permission:manage-users']], function(){
-	Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);
-	Route::get('users/restore/{id?}', ['as' => 'users.restore', 'uses' => 'UserController@restore']);
-	Route::resource('users', 'UserController');
-});
+Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);
+Route::get('users/restore/{id?}', ['as' => 'users.restore', 'uses' => 'UserController@restore']);
+Route::resource('users', 'UserController');
 
 // Role Api
 Route::get('roles/deleted', ['as' => 'roles.deleted', 'uses' => 'RoleController@deleted']);
