@@ -31,7 +31,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            @permission('manage-users')
+            @permission('*')
                 <li class="header text-uppercase">{!! trans('common.admin') !!}</li>
                 @permission('manage-users')
                 <li class="treeview {!! Request::segment(2) == 'users' ? 'active' : null !!}">
