@@ -35,7 +35,7 @@
                 <li class="header">{!! trans('common.sidebar.admin') !!}</li>
                 @permission('manage-users')
                 <li class="treeview {!! Request::segment(2) == 'users' ? 'active' : null !!}">
-                    <a href="#"><i class="fa fa-users"></i><span>{!! trans('users.title') !!}</span><i class="fa fa-angle-left pull-right"></i></a>
+                    <a href="#"><i class="fa fa-users"></i><span>{!! trans('users.heading') !!}</span><i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a href="{!! route('admin.users.index') !!}"><i class='fa fa-user'></i> <span>{!! trans('users.all_users') !!}</span></a></li>
                         <li><a href="{!! route('admin.users.create') !!}"><i class='fa fa-user-plus'></i> <span>{!! trans('users.create_user') !!}</span></a>
@@ -45,7 +45,7 @@
                 @endpermission
                 @permission('manage-roles')
                 <li class="treeview {!! Request::segment(2) == 'roles' ? 'active' : null !!}">
-                    <a href="#"><i class="fa fa-bullhorn"></i><span>{!! trans('roles.title') !!}</span><i class="fa fa-angle-left pull-right"></i></a>
+                    <a href="#"><i class="fa fa-bullhorn"></i><span>{!! trans('roles.heading') !!}</span><i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a href="{!! route('admin.roles.index') !!}"><i class='fa fa-user'></i> <span>{!! trans('roles.all_roles') !!}</span></a></li>
                         <li><a href="{!! route('admin.roles.create') !!}"><i class='fa fa-user-plus'></i> <span>{!! trans('roles.create_role') !!}</span></a>

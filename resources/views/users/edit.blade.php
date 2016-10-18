@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('htmlheader_title', trans('users.title'))
+@section('htmlheader_title', trans('users.heading'))
 
-@section('contentheader_title', trans('users.title'))
+@section('contentheader_title', trans('users.heading'))
 
 @section('main-content')
 @include('users.breadcrumbs')

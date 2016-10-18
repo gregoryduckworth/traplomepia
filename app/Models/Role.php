@@ -22,15 +22,13 @@ class Role extends EntrustRole
  File: EntrustRoleTrait.php
 ****************************
 
-Replace
+Update Line 46:
 
-Line 46:  ... Config::get('auth.model') ...
+... Config::get('auth.model') ...
 
 with
 
-Line 46: ... Config::get('auth.providers.users.model') ...
-
-*/
+... Config::get('auth.providers.users.model') ...
 
 /***************************
  Speed up Cache 
@@ -40,13 +38,11 @@ Line 46: ... Config::get('auth.providers.users.model') ...
 
 Update Line 21/22: 
 
-Config::get('cache.ttl')
+... Config::get('cache.ttl') ...
 
 to 
 
-Config::get('cache.ttl', 60)
-
-*/
+... Config::get('cache.ttl', 60) ...
 
 /*******************************
 Fix for blade directives

@@ -65,15 +65,15 @@ class UserController extends Controller
 
         // If the user has a role within the system, we do not want to delete them
         if($user->can('*')){
-            return response()->json(['msg' => 'User has a role, so cannot be deleted', 'status' => 'warning']);
+            return response()->json(['msg' => trans('users.user_has_roles'), 'status' => 'warning']);
         }
         // Delete the user from the system
         elseif($user->delete()){            
-            return response()->json(['msg' => 'User successfully deleted', 'status' => 'success']);
+            return response()->json(['msg' => trans('users.deletion_success'), 'status' => 'success']);
         }
         // If there was an error somewhere, return a failure
         else{
-            return response()->json(['msg' => 'Failed to delete the user', 'status' => 'warning']);
+            return response()->json(['msg' => trans('users.deletion_failed'), 'status' => 'warning']);
         }
     }
 
@@ -102,14 +102,14 @@ class UserController extends Controller
     {
         // Check the ID is not set to NULL
         if($id == NULL){
-            return response()->json(['msg' => 'Please provide a valid ID', 'status' => 'warning']);
+            return response()->json(['msg' => trans('users.provide_valid_id'), 'status' => 'warning']);
         }
 
         // Restore the user based on the ID provided
         if($this->user->restore($id)){
-            return response()->json(['msg' => 'User successfully restored', 'status' => 'success']);
+            return response()->json(['msg' => trans('users.restore_success'), 'status' => 'success']);
         }else{
-            return response()->json(['msg' => 'Failed to restore the user', 'status' => 'error']);
+            return response()->json(['msg' => trans('users.restore_failed'), 'status' => 'error']);
         }
     }
 
@@ -136,9 +136,9 @@ class UserController extends Controller
                 $user->attachRoles($request['roles']);
             }
             
-            return response()->json(['msg' => 'Data has been stored', 'status' => 'success']);
+            return response()->json(['msg' => trans('users.data_stored'), 'status' => 'success']);
         }
-        return response()->json(['msg' => 'Something went wrong', 'status' => 'error']);
+        return response()->json(['msg' => trans('users.something_went_wrong'), 'status' => 'error']);
     }
 
     /**
@@ -160,8 +160,8 @@ class UserController extends Controller
         }
 
         if($user->update($request->all())){
-            return response()->json(['msg' => 'Data has been updated', 'status' => 'success']);
+            return response()->json(['msg' => trans('users.data_updated'), 'status' => 'success']);
         }
-        return response()->json(['msg' => 'Something went wrong', 'status' => 'error']);
+        return response()->json(['msg' => trans('users.something_went_wrong'), 'status' => 'error']);
     }
 }

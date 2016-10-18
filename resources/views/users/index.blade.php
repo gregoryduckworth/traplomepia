@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('htmlheader_title', trans('users.title'))
+@section('htmlheader_title', trans('users.heading'))
 
-@section('contentheader_title', trans('users.title'))
+@section('contentheader_title', trans('users.heading'))
 
 @section('main-content')
 	<div class="box">
@@ -59,18 +59,18 @@ var table = $("#datatable").DataTable({
 
 @if(Request::segment(3) != 'deleted')
 var btn = "#delete_btn"
-var swal_text = "All the details for the user will be deleted."
-var swal_confirm = "Yes, delete it!"
+var swal_text = "{!! trans('users.swal_text_delete') !!}"
+var swal_confirm = "{!! trans('users.swal_confirm_delete') !!}"
 var ajax_type = "DELETE"
 var ajax_route = "{!! route('api.users.index') !!}"
-var swal_success = "Deleted!"
+var swal_success = "{!! trans('users.swal_success_delete') !!}"
 @else
 var btn = "#restore_btn"
-var swal_text = "All the details for the user will be restored."
-var swal_confirm = "Yes, restore it!"
+var swal_text = "{!! trans('users.swal_text_restore') !!}"
+var swal_confirm = "{!! trans('users.swal_confirm_restore') !!}"
 var ajax_type = "GET"
 var ajax_route = "{!! route('api.users.restore') !!}"
-var swal_success = "Restored!"
+var swal_success = "{!! trans('users.swal_success_restore') !!}"
 @endif
 
 // When the delete button is hit, show the modal 
@@ -104,7 +104,7 @@ $(document).on('click', btn, function(e){
       		}      
 	        table.ajax.reload(null, false);
       	}).fail(function(data) {
-        	swal("Oops", "We couldn't connect to the server!", "error");
+        	swal("{!! trans('roles.swal_text_oops') !!}", "{!! trans('users.swal_could_not_connect') !!}", "error");
       	});
     });
 });

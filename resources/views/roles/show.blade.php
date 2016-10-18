@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('htmlheader_title', trans('roles.title'))
+@section('htmlheader_title', trans('roles.heading'))
 
-@section('contentheader_title', trans('roles.title'))
+@section('contentheader_title', trans('roles.heading'))
 
 @section('main-content')
 @include('roles.breadcrumbs')
@@ -15,8 +15,8 @@
 		</div>
 
 		<div class="box-body">
-			<label>{!! trans('role.name') !!}</label>: {!! $role->display_name !!}<br />
-			<label>{!! trans('role.description') !!}</label>: {!! $role->description !!}<br />
+			<label>{!! trans('roles.display_name') !!}</label>: {!! $role->display_name !!}<br />
+			<label>{!! trans('roles.description') !!}</label>: {!! $role->description !!}<br />
 		</div>
 	</div>
 @endsection
