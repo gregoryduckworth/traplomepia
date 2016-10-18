@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
     		'last_name' => 'Istrator',
     		'email' => 'administrator@example.com',
     		'password' => 'password',
+            'api_token' => str_random(60),
     	]);
 
         $admin_user->attachRole($admin_role);

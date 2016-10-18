@@ -21,6 +21,7 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = 'password',
         'dob' => $faker->date,
+        'api_token' => str_random(60),
         'remember_token' => str_random(10),
     ];
 });
