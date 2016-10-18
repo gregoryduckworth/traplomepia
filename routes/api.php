@@ -14,11 +14,15 @@ use Illuminate\Http\Request;
 */
 
 // User Api
-Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);
-Route::get('users/restore/{id?}', ['as' => 'users.restore', 'uses' => 'UserController@restore']);
-Route::resource('users', 'UserController');
+Route::group(['middleware' => 'permission:manage-users'], function(){
+	Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);
+	Route::get('users/restore/{id?}', ['as' => 'users.restore', 'uses' => 'UserController@restore']);
+	Route::resource('users', 'UserController');
+});
 
 // Role Api
-Route::get('roles/deleted', ['as' => 'roles.deleted', 'uses' => 'RoleController@deleted']);
-Route::get('roles/restore/{id?}', ['as' => 'roles.restore', 'uses' => 'RoleController@restore']);
-Route::resource('roles', 'RoleController');
+Route::group(['middleware' => 'permission:manage-roles'], function(){
+	Route::get('roles/deleted', ['as' => 'roles.deleted', 'uses' => 'RoleController@deleted']);
+	Route::get('roles/restore/{id?}', ['as' => 'roles.restore', 'uses' => 'RoleController@restore']);
+	Route::resource('roles', 'RoleController');
+});
