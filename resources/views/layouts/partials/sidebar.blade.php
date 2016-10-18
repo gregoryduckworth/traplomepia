@@ -49,7 +49,6 @@
                     <ul class="treeview-menu">
                         <li><a href="{!! route('admin.roles.index') !!}"><i class='fa fa-user'></i> <span>{!! trans('roles.all_roles') !!}</span></a></li>
                         <li><a href="{!! route('admin.roles.create') !!}"><i class='fa fa-user-plus'></i> <span>{!! trans('roles.create_role') !!}</span></a>
-                        </li><li><a href="{!! route('admin.roles.deleted') !!}"><i class='fa fa-trash'></i> <span>{!! trans('roles.deleted_roles') !!}</span></a></li>
                     </ul>
                 </li>
                 @endpermission

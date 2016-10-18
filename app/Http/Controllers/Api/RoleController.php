@@ -64,42 +64,6 @@ class RoleController extends Controller
     }
 
     /**
-     * Show all the roles in the system who
-     * have been deleted
-     * 
-     * @return Users
-     */
-    public function deleted()
-    {
-        return Datatables::of($this->role->deleted())
-            ->addColumn('actions', function ($role) {
-                return view('datatables.actions.restore', ['view' => 'roles', 'type' => 'role', 'data' => $role])->render();
-            })
-            ->make(true);
-    }
-
-    /**
-     * Restore a specific role from the role list
-     * 
-     * @param  $id ID of Role
-     * @return Response
-     */
-    public function restore($id)
-    {
-        // Check the ID is not set to NULL
-        if($id == NULL){
-            return response()->json(['msg' => 'Please provide a valid ID', 'status' => 'warning']);
-        }
-
-        // Restore the role based on the ID provided
-        if($this->role->restore($id)){
-            return response()->json(['msg' => 'Role successfully restored', 'status' => 'success']);
-        }else{
-            return response()->json(['msg' => 'Failed to restore the role', 'status' => 'error']);
-        }
-    }
-
-    /**
      * Create a new role in the system
      * 
      * @param  RoleFormRequest $request 

@@ -37,7 +37,7 @@
 var table = $("#datatable").DataTable({
 	"processing": true,
 	"serverSide": true,
-	"ajax": "{!! Request::segment(3) == 'deleted' ? route('api.roles.deleted') : route('api.roles.index') !!}",
+	"ajax": "{!! route('api.roles.index') !!}",
 	"aoColumns": [
 		{ "data": "display_name" },
 		{ "data": "description" },
@@ -51,21 +51,12 @@ var table = $("#datatable").DataTable({
 	"autoWidth": false,
 });
 
-@if(Request::segment(3) != 'deleted')
 var btn = "#delete_btn"
 var swal_text = "All the details for the role will be deleted."
 var swal_confirm = "Yes, delete it!"
 var ajax_type = "DELETE"
 var ajax_route = "{!! route('api.roles.index') !!}"
 var swal_success = "Deleted!"
-@else
-var btn = "#restore_btn"
-var swal_text = "All the details for the role will be restored."
-var swal_confirm = "Yes, restore it!"
-var ajax_type = "GET"
-var ajax_route = "{!! route('api.roles.restore') !!}"
-var swal_success = "Restored!"
-@endif
 
 // When the delete button is hit, show the modal 
 // with the confirmation button
