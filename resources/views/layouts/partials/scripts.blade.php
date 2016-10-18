@@ -3,6 +3,7 @@
 <!-- App JS -->
 <script src="{!! elixir('js/all.js') !!}" type="text/javascript"></script>
 
+@if($currentUser)
 <script>
 	$.ajaxSetup({ 
 		beforeSend: function (xhr) {
@@ -10,6 +11,7 @@
 		},				 
 	});
 </script>
+@endif
 
 @include('sweet::alert')
 @stack('javascript')

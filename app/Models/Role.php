@@ -32,6 +32,22 @@ Line 46: ... Config::get('auth.providers.users.model') ...
 
 */
 
+/***************************
+ Speed up Cache 
+ File: EntrustRoleTrait.php
+ File: EntrustUserTrait.php
+****************************
+
+Update Line 21/22: 
+
+Config::get('cache.ttl')
+
+to 
+
+Config::get('cache.ttl', 60)
+
+*/
+
 /*******************************
 Fix for blade directives
 File: EntrustServiceProvider.php

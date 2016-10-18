@@ -20,8 +20,7 @@
         "phpunit/phpunit": "~5.0",
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
-        "barryvdh/laravel-debugbar": "^2.2",
-        "barryvdh/laravel-translation-manager": "0.2.x"
+        "barryvdh/laravel-debugbar": "^2.2"
     },
     "autoload": {
         "classmap": [
