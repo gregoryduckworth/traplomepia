@@ -71,6 +71,9 @@ class RoleController extends Controller
      */
     public function store(RoleFormRequest $request)
     {
+        // Add a name so we can check if a user->hasRole(name)
+        $request['name'] = str_replace(' ', '/', $request->display_name);
+
         if($role = $this->role->create($request->all())){            
             return response()->json(['msg' => 'Data has been stored', 'status' => 'success']);
         }

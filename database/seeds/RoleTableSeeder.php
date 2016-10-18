@@ -26,6 +26,7 @@ class RoleTableSeeder extends Seeder
         ]);
 
         $admin = Role::create([
+            'name' => 'administrator',
             'display_name' => 'Administrator',
             'description' => 'The Administrator has the ability to manage everything within the site',
         ]);  

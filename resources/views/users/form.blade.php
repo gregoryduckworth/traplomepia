@@ -30,6 +30,20 @@
 	{!! Form::select('gender', [ trans('users.male') => trans('users.male'), trans('users.female') => trans('users.female') ], null, ['class' => 'form-control']) !!}
 </div> 
 
+<div class="form-group">
+	{!! Form::label('roles', trans('users.roles')) !!}
+	@foreach($roles as $role)
+		<div class="input-group col-md-3">
+			<span class="input-group-addon">
+				{!! Form::checkbox('roles[]', $role->id, (isset($user)) ? $user->hasRole($role->name) : null) !!}
+			</span>
+			{!! Form::label('roles', $role->display_name, ['class' => 'form-control']) !!}
+		</div>
+	@endforeach
+</div>
+
+<br />
+
 <a href="{!! URL::previous() !!}" class="pull-left btn btn-danger">{!! trans('users.cancel') !!}</a>
 {!! Form::submit(trans('users.submit'), ['class' => 'pull-right btn btn-success']) !!}
 

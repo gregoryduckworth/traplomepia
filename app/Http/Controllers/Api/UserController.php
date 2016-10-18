@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Eloquent\UserRepository as User;
+use App\Repositories\Eloquent\RoleRepository as Role;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserFormRequest;
 use Yajra\Datatables\Facades\Datatables;
@@ -17,8 +18,9 @@ class UserController extends Controller
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(Role $role, User $user)
     {
+        $this->role = $role;
         $this->user = $user;
     }
 
@@ -58,9 +60,19 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if($this->user->delete($id)){
+        // Find the user who we want to delete
+        $user = $this->user->find($id);
+
+        // If the user has a role within the system, we do not want to delete them
+        if($user->can('*')){
+            return response()->json(['msg' => 'User has a role, so cannot be deleted', 'status' => 'warning']);
+        }
+        // Delete the user from the system
+        elseif($user->delete()){            
             return response()->json(['msg' => 'User successfully deleted', 'status' => 'success']);
-        }else{
+        }
+        // If there was an error somewhere, return a failure
+        else{
             return response()->json(['msg' => 'Failed to delete the user', 'status' => 'warning']);
         }
     }
@@ -112,11 +124,17 @@ class UserController extends Controller
     {
         // We need to create a password for the new user 
         $request['password'] = str_random(10);
+
         if($user = $this->user->create($request->all())){
             // Create token to send an email to the new user to set 
             // their password for the application
             $token = Password::getRepository()->create($user);
             $user->notify(new NewUserPasswordEmail($token));
+
+            // Attach the roles if any are set
+            if(!empty($request['roles'])){
+                $user->attachRoles($request['roles']);
+            }
             
             return response()->json(['msg' => 'Data has been stored', 'status' => 'success']);
         }
@@ -133,6 +151,13 @@ class UserController extends Controller
     {
         // We need to create a password for the new user 
         $user = $this->user->find($request->id);
+
+        // Detach all existing roles to ensure that we attach the 
+        // new ones correctly
+        $user->detachRoles($this->role->all());
+        if(!empty($request['roles'])){
+            $user->attachRoles($request['roles']);
+        }
 
         if($user->update($request->all())){
             return response()->json(['msg' => 'Data has been updated', 'status' => 'success']);

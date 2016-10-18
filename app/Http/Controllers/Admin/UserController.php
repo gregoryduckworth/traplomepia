@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\Eloquent\RoleRepository as Role;
 use App\Repositories\Eloquent\UserRepository as User;
 
 /**
@@ -17,9 +18,10 @@ class UserController extends Controller
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(Role $role, User $user)
     {
         $this->user = $user;
+        view()->share('roles', $role->all());
     }
 
     /**
