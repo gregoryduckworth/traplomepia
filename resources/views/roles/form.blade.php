@@ -10,8 +10,8 @@
 	{!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 </div>
 
-<a href="{!! URL::previous() !!}" class="pull-left btn btn-danger">{!! trans('roles.cancel') !!}</a>
-{!! Form::submit(trans('roles.submit'), ['class' => 'pull-right btn btn-success']) !!}
+<a href="{!! URL::previous() !!}" class="pull-left btn btn-danger">{!! trans('common.cancel') !!}</a>
+{!! Form::submit(trans('common.submit'), ['class' => 'pull-right btn btn-success']) !!}
 
 @push('javascript')
 <script>

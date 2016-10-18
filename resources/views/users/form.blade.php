@@ -44,8 +44,8 @@
 
 <br />
 
-<a href="{!! URL::previous() !!}" class="pull-left btn btn-danger">{!! trans('users.cancel') !!}</a>
-{!! Form::submit(trans('users.submit'), ['class' => 'pull-right btn btn-success']) !!}
+<a href="{!! URL::previous() !!}" class="pull-left btn btn-danger">{!! trans('common.cancel') !!}</a>
+{!! Form::submit(trans('common.submit'), ['class' => 'pull-right btn btn-success']) !!}
 
 @push('javascript')
 <script>

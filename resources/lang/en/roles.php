@@ -17,18 +17,6 @@
 		'show_role' => 'Showing Role',
 		'edit_role' => 'Edit Role',
 
-		// Forms
-		'cancel' => 'Cancel',
-		'submit' => 'Submit',
-
-		// Swal
-		'swal_text_delete' => 'All the details for the role will be deleted.',
-		'swal_success_delete' => 'Deleted!',
-		'swal_confirm_delete' => 'Yes, delete it!',
-
-		'swal_text_oops' => 'Oops',
-		'swal_could_not_connect' => 'We couldn\'t connect to the server!',
-
 		// JSON msg
 		'deletion_success' => 'Role successfully deleted',
 		'deletion_failed' => 'Failed to delete the role',

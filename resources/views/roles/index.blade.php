@@ -52,11 +52,11 @@ var table = $("#datatable").DataTable({
 });
 
 var btn = "#delete_btn"
-var swal_text = "{!! trans('roles.swal_text_delete') !!}"
-var swal_confirm = "{!! trans('roles.swal_confirm_delete') !!}"
+var swal_text = "{!! trans('swal.text_delete', ['type' => 'role']) !!}"
+var swal_confirm = "{!! trans('swal.confirm_delete') !!}"
 var ajax_type = "DELETE"
 var ajax_route = "{!! route('api.roles.index') !!}"
-var swal_success = "{!! trans('roles.swal_success_delete') !!}"
+var swal_success = "{!! trans('swal.success_delete') !!}"
 
 // When the delete button is hit, show the modal 
 // with the confirmation button
@@ -90,7 +90,7 @@ $(document).on('click', btn, function(e){
 	        table.ajax.reload(null, false);
       	}).fail(function(data) {
       		console.log(data.responseText);
-        	swal("{!! trans('roles.swal_text_oops') !!}", "{!! trans('roles.swal_could_not_connect') !!}", "error");
+        	swal("{!! trans('swal.text_oops') !!}", "{!! trans('swal.could_not_connect') !!}", "error");
       	});
     });
 });

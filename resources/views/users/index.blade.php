@@ -59,18 +59,18 @@ var table = $("#datatable").DataTable({
 
 @if(Request::segment(3) != 'deleted')
 var btn = "#delete_btn"
-var swal_text = "{!! trans('users.swal_text_delete') !!}"
-var swal_confirm = "{!! trans('users.swal_confirm_delete') !!}"
+var swal_text = "{!! trans('swal.text_delete', ['type' => 'user']) !!}"
+var swal_confirm = "{!! trans('swal.confirm_delete') !!}"
 var ajax_type = "DELETE"
 var ajax_route = "{!! route('api.users.index') !!}"
-var swal_success = "{!! trans('users.swal_success_delete') !!}"
+var swal_success = "{!! trans('swal.success_delete') !!}"
 @else
 var btn = "#restore_btn"
-var swal_text = "{!! trans('users.swal_text_restore') !!}"
-var swal_confirm = "{!! trans('users.swal_confirm_restore') !!}"
+var swal_text = "{!! trans('swal.text_restore', ['type' => 'user']) !!}"
+var swal_confirm = "{!! trans('swal.confirm_restore') !!}"
 var ajax_type = "GET"
 var ajax_route = "{!! route('api.users.restore') !!}"
-var swal_success = "{!! trans('users.swal_success_restore') !!}"
+var swal_success = "{!! trans('swal.success_restore') !!}"
 @endif
 
 // When the delete button is hit, show the modal 
@@ -104,7 +104,7 @@ $(document).on('click', btn, function(e){
       		}      
 	        table.ajax.reload(null, false);
       	}).fail(function(data) {
-        	swal("{!! trans('roles.swal_text_oops') !!}", "{!! trans('users.swal_could_not_connect') !!}", "error");
+        	swal("{!! trans('swal.text_oops') !!}", "{!! trans('swal.could_not_connect') !!}", "error");
       	});
     });
 });

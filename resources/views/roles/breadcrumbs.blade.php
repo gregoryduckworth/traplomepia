@@ -1,3 +1,3 @@
 @section('breadcrumbs')
-	<a href="{!! route('admin.roles.index') !!}">< {!! trans('roles.back_to') !!}</a>
+	<a href="{!! route('admin.roles.index') !!}">< {!! trans('common.back_to', ['type' => 'Roles']) !!}</a>
 @endsection

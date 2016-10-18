@@ -57,9 +57,9 @@ class RoleController extends Controller
     public function destroy($id)
     {
         if($this->role->delete($id)){
-            return response()->json(['msg' => trans('roles.deletion_success'), 'status' => 'success']);
+            return response()->json(['msg' => trans('json.deletion_success', ['type' => 'Role']), 'status' => 'success']);
         }else{
-            return response()->json(['msg' => trans('roles.deletion_failed'), 'status' => 'warning']);
+            return response()->json(['msg' => trans('json.deletion_failed', ['type' => 'Role']), 'status' => 'warning']);
         }
     }
 
@@ -75,9 +75,9 @@ class RoleController extends Controller
         $request['name'] = str_replace(' ', '/', $request->display_name);
 
         if($role = $this->role->create($request->all())){            
-            return response()->json(['msg' => trans('roles.data_stored'), 'status' => 'success']);
+            return response()->json(['msg' => trans('json.data_stored', ['type' => 'Role']), 'status' => 'success']);
         }
-        return response()->json(['msg' => trans('roles.something_went_wrong'), 'status' => 'error']);
+        return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
     }
 
     /**
@@ -92,8 +92,8 @@ class RoleController extends Controller
         $role = $this->role->find($request->id);
 
         if($role->update($request->all())){
-            return response()->json(['msg' => trans('roles.data_updated'), 'status' => 'success']);
+            return response()->json(['msg' => trans('json.data_updated', ['type' => 'Role']), 'status' => 'success']);
         }
-        return response()->json(['msg' => trans('roles.something_went_wrong'), 'status' => 'error']);
+        return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
     }
 }

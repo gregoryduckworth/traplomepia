@@ -32,7 +32,7 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             @permission('manage-users')
-                <li class="header">{!! trans('common.sidebar.admin') !!}</li>
+                <li class="header text-uppercase">{!! trans('common.admin') !!}</li>
                 @permission('manage-users')
                 <li class="treeview {!! Request::segment(2) == 'users' ? 'active' : null !!}">
                     <a href="#"><i class="fa fa-users"></i><span>{!! trans('users.heading') !!}</span><i class="fa fa-angle-left pull-right"></i></a>
@@ -53,7 +53,7 @@
                 </li>
                 @endpermission
             @endpermission
-            <li class="header">{!! trans('common.sidebar.navigation') !!}</li>
+            <li class="header text-uppercase">{!! trans('common.navigation') !!}</li>
             <li {!! Request::is('home') ? ' class="active"' : null !!}><a href="{!! url('home') !!}"><i class='fa fa-home'></i> <span>{!! trans('adminlte_lang::message.home') !!}</span></a></li>
         </ul><!-- /.sidebar-menu -->
     </section>
