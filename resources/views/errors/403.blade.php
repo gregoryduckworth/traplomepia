@@ -1,28 +1,17 @@
-@extends(Auth::check() ? 'layouts.app' : 'layouts.auth')
+@extends('errors.basic')
 
-@section('htmlheader_title', trans('message.accessdenied'))
+@section('htmlheader_title', trans('errors.access_denied'))
 
-@section('contentheader_title', trans('message.403error'))
+@section('contentheader_title', trans('errors.403_error'))
 
 @section('main-content')
-<body>
 <div class="error-page">
     <h2 class="headline text-red">403</h2>
     <div class="error-content">
-        <h3><i class="fa fa-warning text-red"></i> Oops! {!! trans('message.accessdenied') !!}.</h3>
+        <h3><i class="fa fa-warning text-red"></i> Oops! {!! trans('errors.access_denied') !!}.</h3>
         <p>
-            {!! trans('message.notfindpage') !!}
-            {!! trans('message.mainwhile') !!} <a href='{!! url('/home') !!}'>{!! trans('message.returndashboard') !!}</a> {!! trans('message.usingsearch') !!}
+            <a href="{!! route('home') !!}">{!! trans('errors.return_home') !!}</a>
         </p>
-        <form class='search-form'>
-            <div class='input-group'>
-                <input type="text" name="search" class='form-control' placeholder="{!! trans('message.search') !!}"/>
-                <div class="input-group-btn">
-                    <button type="submit" name="submit" class="btn btn-warning btn-flat"><i class="fa fa-search"></i></button>
-                </div>
-            </div><!-- /.input-group -->
-        </form>
     </div><!-- /.error-content -->
 </div><!-- /.error-page -->
-</body>
 @endsection
