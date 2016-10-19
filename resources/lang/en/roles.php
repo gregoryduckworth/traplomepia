@@ -11,6 +11,7 @@
 		// Data
 		'display_name' => 'Name',
 		'description' => 'Description',
+		'permissions' => 'Permissions',
 
 		// Actions
 		'actions' => 'Actions',
@@ -23,5 +24,6 @@
 		'data_stored' => 'Data has been stored',
 		'data_updated' => 'Data has been updated',
 		'something_went_wrong' => 'Something went wrong',
+
 
 	];

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Eloquent\RoleRepository as Role;
+use App\Repositories\Eloquent\PermissionRepository as Permission;
 use Illuminate\Http\Request;
 use App\Http\Requests\RoleFormRequest;
 use Yajra\Datatables\Facades\Datatables;
@@ -15,8 +16,9 @@ class RoleController extends Controller
      *
      * @return void
      */
-    public function __construct(Role $role)
+    public function __construct(Permission $permission, Role $role)
     {
+        $this->permission = $permission;
         $this->role = $role;
     }
 
@@ -74,7 +76,12 @@ class RoleController extends Controller
         // Add a name so we can check if a user->hasRole(name)
         $request['name'] = str_replace(' ', '/', $request->display_name);
 
-        if($role = $this->role->create($request->all())){            
+        if($role = $this->role->create($request->all())){       
+
+            // Attach the permissions if any are set
+            if(!empty($request['permissions'])){
+                $role->attachPermissions($request['permissions']);
+            }     
             return response()->json(['msg' => trans('json.data_stored', ['type' => 'Role']), 'status' => 'success']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
@@ -90,6 +97,13 @@ class RoleController extends Controller
     {
         // Find the role in order to apply the update
         $role = $this->role->find($request->id);
+
+        // Detach all existing permissions to ensure that we attach the 
+        // new ones correctly
+        $role->detachPermissions($this->permission->all());
+        if(!empty($request['permissions'])){
+            $role->attachPermissions($request['permissions']);
+        }
 
         if($role->update($request->all())){
             return response()->json(['msg' => trans('json.data_updated', ['type' => 'Role']), 'status' => 'success']);

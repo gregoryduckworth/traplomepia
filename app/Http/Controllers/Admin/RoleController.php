@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Eloquent\RoleRepository as Role;
+use App\Repositories\Eloquent\PermissionRepository as Permission;
 
 /**
  * Class RoleController
@@ -17,8 +18,9 @@ class RoleController extends Controller
      *
      * @return void
      */
-    public function __construct(Role $role)
+    public function __construct(Permission $permission, Role $role)
     {
+        view()->share('permissions', $permission->all());
         $this->role = $role;
     }
 

@@ -17,6 +17,12 @@
 		<div class="box-body">
 			<label>{!! trans('roles.display_name') !!}</label>: {!! $role->display_name !!}<br />
 			<label>{!! trans('roles.description') !!}</label>: {!! $role->description !!}<br />
+			<label>{!! trans('roles.permissions') !!}</label>: 
+				<ul>
+				@foreach($role->perms as $permission)
+					<li>{!! $permission->display_name !!}</li>
+				@endforeach
+				</ul>
 		</div>
 	</div>
 @endsection
