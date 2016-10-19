@@ -27,7 +27,7 @@ class UserFormRequest extends Request
             'title' => 'required|max:20',
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
-            'email' => 'required|email|unique:users,email,'.$this->get('id'),
+            'email' => 'required|email|unique:users,email,' . $this->get('id'),
             'gender' => 'required',
             'dob' => 'required|date',
         ];

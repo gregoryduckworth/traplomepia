@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Eloquent\RoleRepository as Role;
 use App\Repositories\Eloquent\UserRepository as User;
@@ -35,8 +34,8 @@ class UserController extends Controller
     }
 
     /**
-     * Show a specific user 
-     * 
+     * Show a specific user
+     *
      * @param  $id of USer
      * @return User
      */
@@ -48,7 +47,7 @@ class UserController extends Controller
 
     /**
      * Show the delete users page
-     * 
+     *
      * @return Response
      */
     public function deleted()
@@ -58,7 +57,7 @@ class UserController extends Controller
 
     /**
      * Show the user creation form
-     * 
+     *
      * @return Response
      */
     public function create()
@@ -69,7 +68,7 @@ class UserController extends Controller
     /**
      * Get the specific user by ID and
      * show the form to enable the edit
-     * 
+     *
      * @param  $id of User
      * @return User
      */
@@ -78,7 +77,5 @@ class UserController extends Controller
         return view('users.edit')
             ->withUser($this->user->find($id));
     }
-
-
 
 }

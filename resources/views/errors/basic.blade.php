@@ -27,9 +27,9 @@
     <div class="container">
         @yield('main-content')
     </div>
-    
+
 </body>
 
 @include('layouts.partials.scripts')
- 
+
 </html>

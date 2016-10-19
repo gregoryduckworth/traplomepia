@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Role;
 use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 
 class RoleTableSeeder extends Seeder
@@ -29,7 +29,7 @@ class RoleTableSeeder extends Seeder
             'name' => 'administrator',
             'display_name' => 'Administrator',
             'description' => 'The Administrator has the ability to manage everything within the site',
-        ]);  
+        ]);
 
         $admin->attachPermissions([$manage_users, $manage_roles]);
 

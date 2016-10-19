@@ -15,19 +15,19 @@ class UsersTableSeeder extends Seeder
     {
         $admin_role = Role::find(1);
 
-    	$admin_user = User::create([
-    		'title' => 'Mr.',
-    		'first_name' => 'Admin',
-    		'last_name' => 'Istrator',
-    		'email' => 'administrator@example.com',
-    		'password' => 'password',
+        $admin_user = User::create([
+            'title' => 'Mr.',
+            'first_name' => 'Admin',
+            'last_name' => 'Istrator',
+            'email' => 'administrator@example.com',
+            'password' => 'password',
             'dob' => '2000-01-01',
             'api_token' => str_random(60),
-    	]);
+        ]);
 
         $admin_user->attachRole($admin_role);
 
-    	// Create new users for the system
+        // Create new users for the system
         factory(App\Models\User::class, 15)->create();
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-	return [
+return [
 
-		// Navigation
-		'admin' => 'Admin',
-		'navigation' => 'Navigation',
-		'back_to' => 'Back to :type',
+    // Navigation
+    'admin' => 'Admin',
+    'navigation' => 'Navigation',
+    'back_to' => 'Back to :type',
 
-		// Forms
-		'cancel' => 'Cancel',
-		'submit' => 'Submit',
-	];
+    // Forms
+    'cancel' => 'Cancel',
+    'submit' => 'Submit',
+];

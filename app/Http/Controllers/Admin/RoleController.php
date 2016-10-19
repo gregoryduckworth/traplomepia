@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Eloquent\RoleRepository as Role;
 use App\Repositories\Eloquent\PermissionRepository as Permission;
+use App\Repositories\Eloquent\RoleRepository as Role;
 
 /**
  * Class RoleController
@@ -35,8 +34,8 @@ class RoleController extends Controller
     }
 
     /**
-     * Show a specific role 
-     * 
+     * Show a specific role
+     *
      * @param  $id of Role
      * @return User
      */
@@ -48,7 +47,7 @@ class RoleController extends Controller
 
     /**
      * Show the delete roles page
-     * 
+     *
      * @return Response
      */
     public function deleted()
@@ -58,7 +57,7 @@ class RoleController extends Controller
 
     /**
      * Show the role creation form
-     * 
+     *
      * @return Response
      */
     public function create()
@@ -69,7 +68,7 @@ class RoleController extends Controller
     /**
      * Get the specific role by ID and
      * show the form to enable the edit
-     * 
+     *
      * @param  $id of Role
      * @return Role
      */
@@ -78,7 +77,5 @@ class RoleController extends Controller
         return view('roles.edit')
             ->withRole($this->role->find($id));
     }
-
-
 
 }

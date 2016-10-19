@@ -1,6 +1,6 @@
 <?php
 
-  return [
+return [
     'login' => 'Login',
     'email' => 'Email',
     'password' => 'Password',
@@ -30,4 +30,4 @@
     'show' => 'Show',
     'edit' => 'Edit',
     'delete' => 'Delete',
-  ];
+];

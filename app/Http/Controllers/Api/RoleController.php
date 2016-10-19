@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Eloquent\RoleRepository as Role;
-use App\Repositories\Eloquent\PermissionRepository as Permission;
-use Illuminate\Http\Request;
 use App\Http\Requests\RoleFormRequest;
+use App\Repositories\Eloquent\PermissionRepository as Permission;
+use App\Repositories\Eloquent\RoleRepository as Role;
+use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\Datatables;
 
 class RoleController extends Controller
@@ -24,7 +24,7 @@ class RoleController extends Controller
 
     /**
      * Show all the roles in the system
-     * 
+     *
      * @return Roles
      */
     public function index()
@@ -38,7 +38,7 @@ class RoleController extends Controller
 
     /**
      * Show the specific roles details
-     * 
+     *
      * @param  $id ID of Role
      * @return Role
      */
@@ -49,26 +49,26 @@ class RoleController extends Controller
 
     /**
      * Delete a specific role from the role list
-     * 
-     * NOTE: we only soft delete so the role 
+     *
+     * NOTE: we only soft delete so the role
      * can come back into the system
-     * 
+     *
      * @param  $id ID of Role
      * @return JSON
      */
     public function destroy($id)
     {
-        if($this->role->delete($id)){
+        if ($this->role->delete($id)) {
             return response()->json(['msg' => trans('json.deletion_success', ['type' => 'Role']), 'status' => 'success']);
-        }else{
+        } else {
             return response()->json(['msg' => trans('json.deletion_failed', ['type' => 'Role']), 'status' => 'warning']);
         }
     }
 
     /**
      * Create a new role in the system
-     * 
-     * @param  RoleFormRequest $request 
+     *
+     * @param  RoleFormRequest $request
      * @return Response
      */
     public function store(RoleFormRequest $request)
@@ -76,12 +76,12 @@ class RoleController extends Controller
         // Add a name so we can check if a user->hasRole(name)
         $request['name'] = str_replace(' ', '/', $request->display_name);
 
-        if($role = $this->role->create($request->all())){       
+        if ($role = $this->role->create($request->all())) {
 
             // Attach the permissions if any are set
-            if(!empty($request['permissions'])){
+            if (!empty($request['permissions'])) {
                 $role->attachPermissions($request['permissions']);
-            }     
+            }
             return response()->json(['msg' => trans('json.data_stored', ['type' => 'Role']), 'status' => 'success']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
@@ -89,8 +89,8 @@ class RoleController extends Controller
 
     /**
      * Create a new role in the system
-     * 
-     * @param  RoleFormRequest $request 
+     *
+     * @param  RoleFormRequest $request
      * @return Response
      */
     public function update(RoleFormRequest $request)
@@ -98,14 +98,14 @@ class RoleController extends Controller
         // Find the role in order to apply the update
         $role = $this->role->find($request->id);
 
-        // Detach all existing permissions to ensure that we attach the 
+        // Detach all existing permissions to ensure that we attach the
         // new ones correctly
         $role->detachPermissions($this->permission->all());
-        if(!empty($request['permissions'])){
+        if (!empty($request['permissions'])) {
             $role->attachPermissions($request['permissions']);
         }
 
-        if($role->update($request->all())){
+        if ($role->update($request->all())) {
             return response()->json(['msg' => trans('json.data_updated', ['type' => 'Role']), 'status' => 'success']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);

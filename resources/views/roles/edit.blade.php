@@ -16,7 +16,6 @@
 				@include('roles.form')
 			{!! Form::close() !!}
 		</div>
-		
+
 	</div>
 @endsection
-
