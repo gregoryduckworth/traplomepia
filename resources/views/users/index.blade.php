@@ -79,7 +79,7 @@ $(document).on('click', btn, function(e){
     e.preventDefault();
     var self = $(this);
     swal({
-        title: "Are you sure?",
+        title: "!! trans('swal.are_you_sure') !!}",
         text: swal_text,
         type: "warning",
         showCancelButton: true,
@@ -97,14 +97,10 @@ $(document).on('click', btn, function(e){
             },
             dataType: "json",
         }).done(function(data) {
-      		switch(data.status){
-      			case 'success':
-      				swal(swal_success, data.msg, "success");
-      				break;
-      		}      
+			swal({title: swal_success, text: data.msg, type: "success"});   
 	        table.ajax.reload(null, false);
       	}).fail(function(data) {
-        	swal("{!! trans('swal.text_oops') !!}", "{!! trans('swal.could_not_connect') !!}", "error");
+        	swal({title: "{!! trans('swal.text_oops') !!}", text: "{!! trans('swal.could_not_connect') !!}", type: "error"});
       	});
     });
 });

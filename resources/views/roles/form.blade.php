@@ -43,13 +43,9 @@ $("#form").on("submit", function(e) {
         data: $("#form").serialize(),
         dataType: 'JSON',
     }).done(function(data) {
-		switch(data.status){
-			case "success":
-				swal({title: "Success!", text: data.msg, type: data.status}, function(){
-                    window.location.href = "{!! route('admin.roles.index') !!}"
-                });
-				break;
-		}      
+		swal({title: "!! trans('swal.text_success') !!}!", text: data.msg, type: data.status}, function(){
+            window.location.href = "{!! route('admin.roles.index') !!}"
+        });  
 	}).fail(function(data) {
 		console.log(data);
 		errors = data.responseJSON;
@@ -57,7 +53,7 @@ $("#form").on("submit", function(e) {
         $.each(errors, function(key,value){
             errorsHTML += "<span class='text-danger'>" + value[0] + "</span><br>"; 
         });
-        swal({title: "Oops!", text: errorsHTML, type: "error", html: true});
+        swal({title: "{!! trans('swal.text_oops') !!}", text: errorsHTML, type: "error", html: true});
 	});
 });
 </script>
