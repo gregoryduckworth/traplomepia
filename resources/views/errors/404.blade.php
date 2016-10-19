@@ -9,6 +9,7 @@
         <h3><i class="fa fa-warning text-yellow"></i> {!! trans('errors.oops') !!}</h3>
         <h3>{!! trans('errors.page_not_found') !!}.</h3>
         <p>
+        	{!! var_dump(Auth::check()) !!}
             <a href="{!! route('home') !!}" class="pull-right">{!! trans('errors.return_home') !!}</a>
         </p>
     </div><!-- /.error-content -->

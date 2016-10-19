@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['as' => 'welcome', function(){
     return view('welcome');
-});
+}]);
 
 // Auth Routes
-Route::group(['middleware' => ['web']], function() {
+Route::group(['middleware' => ['web']], function(){
 
 	// Login Routes...
     Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
