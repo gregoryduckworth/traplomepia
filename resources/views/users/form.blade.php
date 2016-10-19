@@ -56,6 +56,7 @@ var type = "POST";
 var url = "{!! route('api.users.update', Request::segment(3)) !!}";
 var type = "PATCH";
 @endif 
+var swal_redirect = "{!! route('admin.users.index') !!}";
 
 $("#form").on("submit", function(e) {
     e.preventDefault(); 
@@ -66,7 +67,7 @@ $("#form").on("submit", function(e) {
         dataType: 'JSON',
     }).done(function(data) {
 		swal({title: "{!! trans('swal.text_success') !!}!", text: data.msg, type: data.status}, function(){
-            window.location.href = "{!! route('admin.users.index') !!}"
+            window.location.href = swal_redirect;
         });
 	}).fail(function(data) {
 		console.log(data);
