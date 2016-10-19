@@ -53,11 +53,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $dates = ['deleted_at'];
-
-    /*
-     * Role profile to get value from ntrust config file.
-     */
-    protected $roleProfile = 'user';
     
     /**
      * Return the first name and last name in an easy way
