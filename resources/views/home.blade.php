@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('htmlheader_title', trans('message.welcome_title'))
+@section('htmlheader_title', trans('message.home'))
 
-@section('contentheader_title', trans('message.welcome_title'))
+@section('contentheader_title', trans('message.home'))
 
 @section('main-content')
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">{!! trans('message.welcome_title') !!}</h3>
+            <h3 class="box-title">{!! trans('message.home') !!}</h3>
         </div>
 
         <div class="box-body">

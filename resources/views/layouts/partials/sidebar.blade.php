@@ -54,7 +54,7 @@
                 @endpermission
             @endpermission
             <li class="header text-uppercase">{!! trans('common.navigation') !!}</li>
-            <li {!! Request::is('home') ? ' class="active"' : null !!}><a href="{!! url('home') !!}"><i class='fa fa-home'></i> <span>{!! trans('adminlte_lang::message.home') !!}</span></a></li>
+            <li {!! Request::is('home') ? ' class="active"' : null !!}><a href="{!! url('home') !!}"><i class='fa fa-home'></i> <span>{!! trans('message.home') !!}</span></a></li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
