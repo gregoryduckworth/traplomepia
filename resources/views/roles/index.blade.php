@@ -33,30 +33,30 @@
 
 @push('javascript')
 <script>
-// Fill the table with data
-var table = $("#datatable").DataTable({
-	"processing": true,
-	"serverSide": true,
-	"ajax": "{!! route('api.roles.index') !!}",
-	"aoColumns": [
-		{ "data": "display_name" },
-		{ "data": "description" },
-		{ "data": "actions" },
-	],
-	"columnDefs": [{
-		"targets": -1,
-		"orderable": false,
-		"searchable": false,
-	}],
-	"autoWidth": false,
-});
+	// Fill the table with data
+	var table = $("#datatable").DataTable({
+		"processing": true,
+		"serverSide": true,
+		"ajax": "{!! route('api.roles.index') !!}",
+		"aoColumns": [
+			{ "data": "display_name" },
+			{ "data": "description" },
+			{ "data": "actions" },
+		],
+		"columnDefs": [{
+			"targets": -1,
+			"orderable": false,
+			"searchable": false,
+		}],
+		"autoWidth": false,
+	});
 
-var btn = "#delete_btn"
-var swal_text = "{!! trans('swal.text_delete', ['type' => 'role']) !!}"
-var swal_confirm = "{!! trans('swal.confirm_delete') !!}"
-var ajax_type = "DELETE"
-var ajax_route = "{!! route('api.roles.index') !!}"
-var swal_success = "{!! trans('swal.success_delete') !!}"
+	var btn = "#delete_btn"
+	var swal_text = "{!! trans('swal.text_delete', ['type' => 'role']) !!}";
+	var swal_confirm = "{!! trans('swal.confirm_delete') !!}";
+	var ajax_type = "DELETE";
+	var ajax_route = "{!! route('api.roles.index') !!}";
+	var swal_success = "{!! trans('swal.success_delete') !!}";
 </script>
 @include('swal.table')
 @endpush
