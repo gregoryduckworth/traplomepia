@@ -17,8 +17,8 @@
 	            <a class="navbar-brand" href="#">{!! Config::get('site.full_name') !!}</a>
 	        </div>
 	        <div id="navbar" class="navbar-collapse collapse">
-	            <ul class="nav navbar-nav">
-	                <li class="active"><a href="{!! route('home') !!}">Home</a></li>
+	            <ul class="nav navbar-nav pull-right">
+	                <li><a href="{!! route('home') !!}">Home</a></li>
 	            </ul>
 	        </div><!--/.nav-collapse -->
 	    </div>
