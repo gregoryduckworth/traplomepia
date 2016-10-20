@@ -169,7 +169,6 @@ return [
         
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        Barryvdh\TranslationManager\ManagerServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,

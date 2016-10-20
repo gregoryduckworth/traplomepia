@@ -35,7 +35,7 @@ Route::group(['middleware' => ['web']], function(){
     Route::post('password/reset', ['as' => 'password.reset.post', 'uses' => 'Auth\ResetPasswordController@reset']);
 
     // Main Page
-    Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
+    Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
 });
 
 // Admin Routes
