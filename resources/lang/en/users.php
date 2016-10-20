@@ -7,6 +7,7 @@ return [
     'all_users' => 'All Users',
     'create_user' => 'Create User',
     'deleted_users' => 'Deleted Users',
+    'users' => 'Users',
 
     // Data
     'title' => 'Title',
@@ -25,6 +26,7 @@ return [
     'show_user' => 'Showing User',
     'edit_user' => 'Edit User',
 
+    // Profile
     'profile' => 'Profile',
 
 ];

@@ -7,6 +7,7 @@ return [
     'all_roles' => 'All Roles',
     'create_role' => 'Create Role',
     'back_to' => 'Back to Roles',
+    'roles' => 'Roles',
 
     // Data
     'display_name' => 'Name',

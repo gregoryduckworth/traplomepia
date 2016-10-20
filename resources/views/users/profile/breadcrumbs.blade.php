@@ -1,3 +1,3 @@
 @section('breadcrumbs')
-	<a href="{!! route('profile.index') !!}">< {!! trans('common.back_to', ['type' => 'Proile']) !!}</a>
+	<a href="{!! route('profile.index') !!}">< {!! trans('common.back_to', ['type' => trans('users.profile')]) !!}</a>
 @endsection

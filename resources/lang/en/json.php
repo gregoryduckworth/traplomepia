@@ -18,6 +18,7 @@ return [
     'provide_valid_id' => 'Please provide a valid :type ID',
     'data_stored' => ':type data has been stored',
     'data_updated' => ':type data has been updated',
+    'profile_updated' => 'Your profile has been updated',
     'something_went_wrong' => 'Something went wrong',
 
 ];

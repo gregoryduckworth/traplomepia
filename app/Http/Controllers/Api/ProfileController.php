@@ -30,7 +30,7 @@ class ProfileController extends Controller
         $user = $this->user->find(\Auth::user()->id);
 
         if ($user->update($request->all())) {
-            return response()->json(['msg' => trans('json.data_updated', ['type' => 'User']), 'status' => 'success']);
+            return response()->json(['msg' => trans('json.profile_updated', ['type' => 'User']), 'status' => 'success']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
     }
