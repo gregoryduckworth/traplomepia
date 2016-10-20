@@ -25,4 +25,6 @@ return [
     'show_user' => 'Showing User',
     'edit_user' => 'Edit User',
 
+    'profile' => 'Profile',
+
 ];

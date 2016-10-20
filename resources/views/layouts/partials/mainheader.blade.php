@@ -2,7 +2,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{!! url('/home') !!}" class="logo">
+    <a href="{!! route('home') !!}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini">{!! Config::get('site.short_name') !!}</span>
         <!-- logo for regular state and mobile devices -->
@@ -107,8 +107,8 @@
                     </ul>
                 </li>
                 @if (!Auth::check())
-                    <li><a href="{!! url('/register') !!}">{!! trans('message.register') !!}</a></li>
-                    <li><a href="{!! url('/login') !!}">{!! trans('message.login') !!}</a></li>
+                    <li><a href="{!! route('register') !!}">{!! trans('message.register') !!}</a></li>
+                    <li><a href="{!! route('login') !!}">{!! trans('message.login') !!}</a></li>
                 @else
                     <!-- User Account Menu -->
                     <li class="dropdown user user-menu">
@@ -140,10 +140,10 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="{!! url('/profile') !!}" class="btn btn-default btn-flat">{!! trans('message.profile') !!}</a>
+                                    <a href="{!! route('profile') !!}" class="btn btn-default btn-flat">{!! trans('message.profile') !!}</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{!! url('/logout') !!}" class="btn btn-default btn-flat">{!! trans('message.signout') !!}</a>
+                                    <a href="{!! route('logout') !!}" class="btn btn-default btn-flat">{!! trans('message.signout') !!}</a>
                                 </div>
                             </li>
                         </ul>
