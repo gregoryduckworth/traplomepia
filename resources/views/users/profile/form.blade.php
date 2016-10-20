@@ -1,7 +1,5 @@
 {!! Form::hidden('id', null) !!}
 
-{!! $currentUser->gender !!}
-
 <div class="form-group">
 	{!! Form::label('title', trans('users.title')) !!}
 	{!! Form::select('title', ['Mr.' => 'Mr.', 'Miss.' => 'Miss.', 'Mrs.' => 'Mrs.', 'Ms.' => 'Ms.', 'Dr.' => 'Dr.', 'Prof.' => 'Prof.'], null, ['placeholder' => 'Please select a title', 'class' => 'form-control']) !!}
