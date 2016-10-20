@@ -50,7 +50,7 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function deleted()
+    public function destroy()
     {
         return view('users.index');
     }

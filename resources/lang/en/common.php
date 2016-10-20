@@ -10,4 +10,9 @@ return [
     // Forms
     'cancel' => 'Cancel',
     'submit' => 'Submit',
+    'show' => 'Show',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'restore' => 'Restore',
+
 ];

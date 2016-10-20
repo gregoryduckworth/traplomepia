@@ -14,6 +14,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('users.profile');
+        return view('users.profile.index');
+    }
+
+    public function edit($id)
+    {
+        return view('users.profile.edit');
     }
 }

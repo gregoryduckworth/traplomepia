@@ -38,7 +38,7 @@ Route::group(['middleware' => ['web']], function(){
     Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
     // Proile Page
-    Route::get('profile', ['as' => 'profile', 'uses' => 'Auth\ProfileController@index']);
+    Route::resource('profile', 'Auth\ProfileController', ['only' => ['index', 'edit']]);
 });
 
 // Admin Routes

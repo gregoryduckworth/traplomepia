@@ -1,5 +1,7 @@
 {!! Form::hidden('id', null) !!}
 
+{!! $currentUser->gender !!}
+
 <div class="form-group">
 	{!! Form::label('title', trans('users.title')) !!}
 	{!! Form::select('title', ['Mr.' => 'Mr.', 'Miss.' => 'Miss.', 'Mrs.' => 'Mrs.', 'Ms.' => 'Ms.', 'Dr.' => 'Dr.', 'Prof.' => 'Prof.'], null, ['placeholder' => 'Please select a title', 'class' => 'form-control']) !!}
@@ -25,23 +27,6 @@
 	{!! Form::date('dob', null, ['class' => 'form-control']) !!}
 </div>
 
-<div class="form-group">
-	{!! Form::label('gender', trans('users.gender')) !!}
-	{!! Form::select('gender', [ trans('users.male') => trans('users.male'), trans('users.female') => trans('users.female') ], null, ['class' => 'form-control']) !!}
-</div> 
-
-<div class="form-group">
-	{!! Form::label('roles', trans('users.roles')) !!}
-	@foreach($roles as $role)
-		<div class="input-group col-md-3">
-			<span class="input-group-addon">
-				{!! Form::checkbox('roles[]', $role->id, (isset($user)) ? $user->hasRole($role->name) : null) !!}
-			</span>
-			{!! Form::label('roles', $role->display_name, ['class' => 'form-control']) !!}
-		</div>
-	@endforeach
-</div>
-
 <br />
 
 <a href="{!! URL::previous() !!}" class="pull-left btn btn-danger">{!! trans('common.cancel') !!}</a>
@@ -49,14 +34,9 @@
 
 @push('javascript')
 <script>
-	@if(Request::segment(3) == 'create')
-		var url = "{!! route('api.users.store') !!}";
-		var type = "POST";
-	@else
-		var url = "{!! route('api.users.update', Request::segment(3)) !!}";
-		var type = "PATCH";
-	@endif 
-	var swal_redirect = "{!! route('admin.users.index') !!}";
+	var url = "{!! route('api.profile.update') !!}";
+	var type = "PATCH";
+	var swal_redirect = "{!! route('profile.index') !!}";
 </script>
 @include('swal.form')
 @endpush

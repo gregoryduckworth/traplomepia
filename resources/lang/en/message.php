@@ -26,8 +26,4 @@ return [
     'profile' => 'Profile',
     'signout' => 'Sign Out',
     'home' => 'Home',
-
-    'show' => 'Show',
-    'edit' => 'Edit',
-    'delete' => 'Delete',
 ];

@@ -26,3 +26,5 @@ Route::group(['middleware' => 'permission:manage-roles'], function(){
 	Route::get('roles/restore/{id?}', ['as' => 'roles.restore', 'uses' => 'RoleController@restore']);
 	Route::resource('roles', 'RoleController');
 });
+
+Route::patch('profile/update', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);

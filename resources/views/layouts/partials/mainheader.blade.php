@@ -140,7 +140,7 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="{!! route('profile') !!}" class="btn btn-default btn-flat">{!! trans('message.profile') !!}</a>
+                                    <a href="{!! route('profile.index') !!}" class="btn btn-default btn-flat">{!! trans('message.profile') !!}</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="{!! route('logout') !!}" class="btn btn-default btn-flat">{!! trans('message.signout') !!}</a>
