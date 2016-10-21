@@ -17,6 +17,6 @@
 				@include('users.profile.form')
 			{!! Form::close() !!}
 		</div>
-		
+
 	</div>
 @endsection
