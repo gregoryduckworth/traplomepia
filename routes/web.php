@@ -9,9 +9,9 @@
 | by your application. Just tell Laravel the URIs it should respond
 | to using a Closure or controller method. Build something great!
 |
-*/
+ */
 
-Route::get('/', ['as' => 'welcome', function(){
+Route::get('/', ['as' => 'welcome', function () {
     return view('welcome');
 }]);
 
@@ -32,27 +32,28 @@ Route::get('password/reset/{token}', ['as' => 'password.reset.token', 'uses' => 
 Route::post('password/reset', ['as' => 'password.reset.post', 'uses' => 'Auth\ResetPasswordController@reset']);
 
 // Logged in pages
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => ['auth']], function () {
     // Main Page
     Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
     // Proile Page
-    Route::resource('profile', 'Auth\ProfileController', ['only' => ['index', 'edit']]);
+    Route::get('profile', ['as' => 'profile.index', 'uses' => 'Auth\ProfileController@index']);
+    Route::get('profile/edit', ['as' => 'profile.edit', 'uses' => 'Auth\ProfileController@edit']);
 });
 
 // Admin Routes
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'], 'as' => 'admin.'], function(){
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
 
     // User Management
-    Route::group(['middleware' => ['permission:manage-users']], function(){
+    Route::group(['middleware' => ['permission:manage-users']], function () {
         Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);
         Route::resource('users', 'UserController');
     });
 
     // Role Management
-    Route::group(['middleware' => ['permission:manage-roles']], function(){
-    	Route::get('roles/deleted', ['as' => 'roles.deleted', 'uses' => 'RoleController@deleted']);
-    	Route::resource('roles', 'RoleController');
+    Route::group(['middleware' => ['permission:manage-roles']], function () {
+        Route::get('roles/deleted', ['as' => 'roles.deleted', 'uses' => 'RoleController@deleted']);
+        Route::resource('roles', 'RoleController');
     });
 
 });

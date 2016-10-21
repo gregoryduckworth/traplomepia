@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class ProfileController extends Controller
 {
@@ -17,7 +16,13 @@ class ProfileController extends Controller
         return view('users.profile.index');
     }
 
-    public function edit($id)
+    /**
+     * Redirect the user to the profile edit
+     * page
+     *
+     * @return View
+     */
+    public function edit()
     {
         return view('users.profile.edit');
     }

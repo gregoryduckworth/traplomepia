@@ -9,12 +9,12 @@
 <div class="box">
     <div class="box-header">
         <h3 class="box-title">{!! $currentUser->title !!} {!! $currentUser->name !!}</h3>
-        <a href="{!! route('profile.edit', $currentUser->id) !!}" class="pull-right btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="{!! trans('common.edit') !!}"><i class="fa fa-edit"></i></a>
+        <a href="{!! route('profile.edit') !!}" class="pull-right btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="{!! trans('common.edit') !!}"><i class="fa fa-edit"></i></a>
     </div>
 
     <div class="box-body">
     	<div class="col-md-3">
-    		<img class="img-thumbnail img-responsive center-block" src="//www.clker.com/cliparts/B/R/Y/m/P/e/blank-profile-hi.png">	
+    		<img class="img-thumbnail img-responsive center-block" src="//www.clker.com/cliparts/B/R/Y/m/P/e/blank-profile-hi.png">
     	</div>
     	<div class="col-md-9">
 	    	<table class="table table-striped">

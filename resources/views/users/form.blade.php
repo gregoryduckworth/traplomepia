@@ -28,7 +28,7 @@
 <div class="form-group">
 	{!! Form::label('gender', trans('users.gender')) !!}
 	{!! Form::select('gender', [ trans('users.male') => trans('users.male'), trans('users.female') => trans('users.female') ], null, ['class' => 'form-control']) !!}
-</div> 
+</div>
 
 <div class="form-group">
 	{!! Form::label('roles', trans('users.roles')) !!}
@@ -55,7 +55,7 @@
 	@else
 		var url = "{!! route('api.users.update', Request::segment(3)) !!}";
 		var type = "PATCH";
-	@endif 
+	@endif
 	var swal_redirect = "{!! route('admin.users.index') !!}";
 </script>
 @include('swal.form')
