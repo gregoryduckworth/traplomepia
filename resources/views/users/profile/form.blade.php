@@ -31,10 +31,5 @@
 {!! Form::submit(trans('common.submit'), ['class' => 'pull-right btn btn-success']) !!}
 
 @push('javascript')
-<script>
-	var url = "{!! route('api.profile.update') !!}";
-	var type = "PATCH";
-	var swal_redirect = "{!! route('profile.index') !!}";
-</script>
 @include('swal.form')
 @endpush

@@ -12,7 +12,7 @@
 		</div>
 
 		<div class="box-body">
-			{!! Form::model($role, ['id' => 'form', 'route' => ['admin.roles.update', $role->id], 'method' => 'PATCH', 'class' => 'col-md-12']) !!}
+			{!! Form::model($role, ['id' => 'form', 'route' => ['api.roles.update', $role->id], 'redirect' => route('admin.roles.index'), '_method' => 'PATCH', 'class' => 'col-md-12']) !!}
 				@include('roles.form')
 			{!! Form::close() !!}
 		</div>

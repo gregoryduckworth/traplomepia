@@ -20,6 +20,12 @@ class User extends Authenticatable
     public static function boot()
     {
         parent::boot();
+
+        // When the model is created, ensure we automatically
+        // generate the following
+        static::creating(function($model){
+            $model->api_token = str_random(60);
+        });
     }
 
     /**

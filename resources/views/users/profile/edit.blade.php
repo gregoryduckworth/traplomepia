@@ -13,7 +13,7 @@
 		</div>
 
 		<div class="box-body">
-			{!! Form::model($currentUser, ['id' => 'form', 'method' => 'PATCH', 'class' => 'col-md-12']) !!}
+			{!! Form::model($currentUser, ['id' => 'form', 'route' => 'api.profile.update', 'redirect' => route('profile.index'), '_method' => 'PATCH', 'class' => 'col-md-12']) !!}
 				@include('users.profile.form')
 			{!! Form::close() !!}
 		</div>

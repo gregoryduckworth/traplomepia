@@ -13,7 +13,7 @@
 		</div>
 
 		<div class="box-body">
-			{!! Form::model(null, ['id' => 'form', 'method' => 'POST', 'class' => 'col-md-12']) !!}
+			{!! Form::model(null, ['id' => 'form', 'route' => 'api.users.store', 'redirect' => route('admin.users.index'), '_method' => 'POST', 'class' => 'col-md-12']) !!}
 				@include('users.form')
 			{!! Form::close() !!}
 		</div>

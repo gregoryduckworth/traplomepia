@@ -33,7 +33,7 @@
         <h3 class="box-title">{!! trans('users.change_password') !!}</h3>
     </div>
     <div class="box-body">
-        {!! Form::open(['id' => 'form', 'method' => 'PATCH', 'class' => 'col-md-12']) !!}
+        {!! Form::open(['id' => 'form', 'route' => 'api.profile.password', 'redirect' => route('profile.index'), '_method' => 'PATCH', 'class' => 'col-md-12']) !!}
             <div class="form-group">
                 {!! Form::label('old_password', trans('users.old_password')) !!}
                 {!! Form::password('old_password', ['class' => 'form-control']) !!}
@@ -56,10 +56,5 @@
 @endsection
 
 @push('javascript')
-<script>
-    var url = "{!! route('api.profile.password') !!}";
-    var type = "PATCH";
-    var swal_redirect = "{!! route('profile.index') !!}";
-</script>
 @include('swal.form')
 @endpush

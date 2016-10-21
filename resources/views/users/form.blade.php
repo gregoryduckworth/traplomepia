@@ -48,15 +48,5 @@
 {!! Form::submit(trans('common.submit'), ['class' => 'pull-right btn btn-success']) !!}
 
 @push('javascript')
-<script>
-	@if(Request::segment(3) == 'create')
-		var url = "{!! route('api.users.store') !!}";
-		var type = "POST";
-	@else
-		var url = "{!! route('api.users.update', Request::segment(3)) !!}";
-		var type = "PATCH";
-	@endif
-	var swal_redirect = "{!! route('admin.users.index') !!}";
-</script>
 @include('swal.form')
 @endpush
