@@ -59,14 +59,14 @@
 
 	@if(Request::segment(3) != 'deleted')
 		var btn = "#delete_btn";
-		var swal_text = "{!! trans('swal.text_delete', ['type' => 'user']) !!}";
+		var swal_text = "{!! trans('swal.text_delete', ['type' => 'User']) !!}";
 		var swal_confirm = "{!! trans('swal.confirm_delete') !!}";
 		var ajax_type = "DELETE";
 		var ajax_route = "{!! route('api.users.index') !!}";
 		var swal_success = "{!! trans('swal.success_delete') !!}";
 	@else
 		var btn = "#restore_btn";
-		var swal_text = "{!! trans('swal.text_restore', ['type' => 'user']) !!}";
+		var swal_text = "{!! trans('swal.text_restore', ['type' => 'User']) !!}";
 		var swal_confirm = "{!! trans('swal.confirm_restore') !!}";
 		var ajax_type = "GET";
 		var ajax_route = "{!! route('api.users.restore') !!}";

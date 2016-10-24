@@ -106,9 +106,12 @@ class UserController extends Controller
         }
 
         // Restore the user based on the ID provided
-        if ($this->user->restore($id)) {
+        if ($user = $this->user->deleted()->find($id)){
+            $user->restore($id);
             return response()->json(['msg' => trans('json.restore_success', ['type' => 'User']), 'status' => 'success']);
-        } else {
+        } 
+        // If there was an error somewhere, return a failure
+        else {
             return response()->json(['msg' => trans('json.restore_failed', ['type' => 'User']), 'status' => 'error']);
         }
     }

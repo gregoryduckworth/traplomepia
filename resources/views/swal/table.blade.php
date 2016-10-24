@@ -23,10 +23,10 @@ $(document).on('click', btn, function(e){
             },
             dataType: "json",
         }).done(function(data) {
-			swal({title: swal_success, text: data.msg, type: "success"});   
+			swal({title: data.status.charAt(0).toUpperCase() + data.status.slice(1), text: data.msg, type: data.status});   
 	        table.ajax.reload(null, false);
       	}).fail(function(data) {
-        	swal({title: "{!! trans('swal.text_oops') !!}", text: "{!! trans('swal.could_not_connect') !!}", type: "error"});
+        	swal({title: "{!! trans('swal.text_oops') !!}", text: "{!! trans('swal.could_not_connect') !!}", type: data.status});
       	});
     });
 });
