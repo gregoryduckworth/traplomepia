@@ -5,7 +5,7 @@ return [
     'email' => 'Email',
     'password' => 'Password',
     'remember' => 'Remember',
-    'registermember' => 'Register Member',
+    'registermember' => 'Not Registered?',
     'forgotpassword' => 'Forgot Password',
     'someproblems' => 'Some Problems',
     'togglenav' => 'Toggle Nav',
@@ -26,4 +26,7 @@ return [
     'profile' => 'Profile',
     'signout' => 'Sign Out',
     'home' => 'Home',
+    'sendpassword' => 'Send Password Reset Link',
+    'membership' => 'Already registered?',
+    'passwordreset' => 'Reset Password',
 ];
