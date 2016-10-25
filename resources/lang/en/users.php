@@ -8,6 +8,7 @@ return [
     'create_user' => 'Create User',
     'deleted_users' => 'Deleted Users',
     'users' => 'Users',
+    'user' => 'User',
 
     // Data
     'title' => 'Title',

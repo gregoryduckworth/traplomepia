@@ -52,7 +52,7 @@
 	});
 
 	var btn = "#delete_btn"
-	var swal_text = "{!! trans('swal.text_delete', ['type' => 'role']) !!}";
+	var swal_text = "{!! trans('swal.text_delete', ['type' => trans('roles.role')]) !!}";
 	var swal_confirm = "{!! trans('swal.confirm_delete') !!}";
 	var ajax_type = "DELETE";
 	var ajax_route = "{!! route('api.roles.index') !!}";

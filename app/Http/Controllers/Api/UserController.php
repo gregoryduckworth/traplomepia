@@ -33,7 +33,7 @@ class UserController extends Controller
     {
         return Datatables::of($this->user->all())
             ->addColumn('actions', function ($user) {
-                return view('datatables.users', ['view' => 'users', 'type' => 'user', 'data' => $user])->render();
+                return view('datatables.users', ['view' => 'users', 'data' => $user])->render();
             })
             ->make(true);
     }
@@ -69,11 +69,11 @@ class UserController extends Controller
         }
         // Delete the user from the system
         elseif ($user->delete()) {
-            return response()->json(['msg' => trans('json.deletion_success', ['type' => 'User']), 'status' => 'success']);
+            return response()->json(['msg' => trans('json.deletion_success', ['type' => trans('users.user')]), 'status' => 'success']);
         }
         // If there was an error somewhere, return a failure
         else {
-            return response()->json(['msg' => trans('json.deletion_failed', ['type' => 'User']), 'status' => 'warning']);
+            return response()->json(['msg' => trans('json.deletion_failed', ['type' => trans('users.user')]), 'status' => 'warning']);
         }
     }
 
@@ -87,7 +87,7 @@ class UserController extends Controller
     {
         return Datatables::of($this->user->deleted())
             ->addColumn('actions', function ($user) {
-                return view('datatables.actions.restore', ['view' => 'users', 'type' => 'user', 'data' => $user])->render();
+                return view('datatables.actions.restore', ['view' => 'users', 'data' => $user])->render();
             })
             ->make(true);
     }
@@ -102,17 +102,17 @@ class UserController extends Controller
     {
         // Check the ID is not set to NULL
         if ($id == null) {
-            return response()->json(['msg' => trans('json.provide_valid_id', ['type' => 'User']), 'status' => 'warning']);
+            return response()->json(['msg' => trans('json.provide_valid_id', ['type' => trans('users.user')]), 'status' => 'warning']);
         }
 
         // Restore the user based on the ID provided
         if ($user = $this->user->deleted()->find($id)){
             $user->restore($id);
-            return response()->json(['msg' => trans('json.restore_success', ['type' => 'User']), 'status' => 'success']);
+            return response()->json(['msg' => trans('json.restore_success', ['type' => trans('users.user')]), 'status' => 'success']);
         } 
         // If there was an error somewhere, return a failure
         else {
-            return response()->json(['msg' => trans('json.restore_failed', ['type' => 'User']), 'status' => 'error']);
+            return response()->json(['msg' => trans('json.restore_failed', ['type' => trans('users.user')]), 'status' => 'error']);
         }
     }
 
@@ -139,7 +139,7 @@ class UserController extends Controller
                 $user->attachRoles($request['roles']);
             }
 
-            return response()->json(['msg' => trans('json.data_stored', ['type' => 'User']), 'status' => 'success']);
+            return response()->json(['msg' => trans('json.data_stored', ['type' => trans('users.user')]), 'status' => 'success']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
     }
@@ -163,7 +163,7 @@ class UserController extends Controller
         }
 
         if ($user->update($request->all())) {
-            return response()->json(['msg' => trans('json.data_updated', ['type' => 'User']), 'status' => 'success']);
+            return response()->json(['msg' => trans('json.data_updated', ['type' => trans('users.user')]), 'status' => 'success']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
     }

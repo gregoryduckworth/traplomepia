@@ -31,7 +31,7 @@ class RoleController extends Controller
     {
         return Datatables::of($this->role->all())
             ->addColumn('actions', function ($role) {
-                return view('datatables.roles', ['view' => 'roles', 'type' => 'role', 'data' => $role])->render();
+                return view('datatables.roles', ['view' => 'roles', 'data' => $role])->render();
             })
             ->make(true);
     }
@@ -59,9 +59,9 @@ class RoleController extends Controller
     public function destroy($id)
     {
         if ($this->role->delete($id)) {
-            return response()->json(['msg' => trans('json.deletion_success', ['type' => 'Role']), 'status' => 'success']);
+            return response()->json(['msg' => trans('json.deletion_success', ['type' => trans('roles.role')]), 'status' => 'success']);
         } else {
-            return response()->json(['msg' => trans('json.deletion_failed', ['type' => 'Role']), 'status' => 'warning']);
+            return response()->json(['msg' => trans('json.deletion_failed', ['type' => trans('roles.role')]), 'status' => 'warning']);
         }
     }
 
@@ -82,7 +82,7 @@ class RoleController extends Controller
             if (!empty($request['permissions'])) {
                 $role->attachPermissions($request['permissions']);
             }
-            return response()->json(['msg' => trans('json.data_stored', ['type' => 'Role']), 'status' => 'success']);
+            return response()->json(['msg' => trans('json.data_stored', ['type' => trans('roles.role')]), 'status' => 'success']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
     }
@@ -106,7 +106,7 @@ class RoleController extends Controller
         }
 
         if ($role->update($request->all())) {
-            return response()->json(['msg' => trans('json.data_updated', ['type' => 'Role']), 'status' => 'success']);
+            return response()->json(['msg' => trans('json.data_updated', ['type' => trans('roles.role')]), 'status' => 'success']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
     }
