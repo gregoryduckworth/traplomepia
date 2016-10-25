@@ -21,7 +21,7 @@ Feature: Login
 	Scenario: No Password
 		Given I am on "login"
 		When I fill in the following:
-			| email | test@test.com |
+			| email | user@example.com |
 		And I press "Sign in"
 		Then I should see "password field is required"
 
@@ -29,8 +29,18 @@ Feature: Login
 	Scenario: Invalid login
 		Given I am on "login"
 		When I fill in the following:
-			| email | test@test.com |
+			| email | user@example.com |
 			| password | password |
+		And I press "Sign in"
+		Then I should see "credentials do not match"
+
+	@auth @login
+	Scenario: Incorrect Password
+		Given I have an account "user@example.com" "password"
+		Given I am on "login"
+		When I fill in the following:
+			| email | user@example.com |
+			| password | password1 |
 		And I press "Sign in"
 		Then I should see "credentials do not match"
 

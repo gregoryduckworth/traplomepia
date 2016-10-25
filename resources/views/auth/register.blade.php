@@ -16,44 +16,44 @@
             <div class="panel-body">
                 {!! Form::open(['url' => 'register', 'class' => 'form-horizontal']) !!}
                     <div class="form-group">
-                        {!! Form::label('first_name', trans('message.first_name'), ['class' => 'col-md-3 control-label']) !!}
-                        <div class="col-md-9">
+                        {!! Form::label('first_name', trans('users.first_name'), ['class' => 'col-md-4 control-label']) !!}
+                        <div class="col-md-8">
                             {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('last_name', trans('message.last_name'), ['class' => 'col-md-3 control-label']) !!}
-                        <div class="col-md-9">
+                        {!! Form::label('last_name', trans('users.last_name'), ['class' => 'col-md-4 control-label']) !!}
+                        <div class="col-md-8">
                             {!! Form::text('last_name', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="form-group has-feedback">
-                        {!! Form::label('email', trans('message.email'), ['class' => 'col-md-3 control-label']) !!}
-                        <div class="col-md-9">
+                        {!! Form::label('email', trans('message.email'), ['class' => 'col-md-4 control-label']) !!}
+                        <div class="col-md-8">
                             {!! Form::text('email', null, ['class' => 'form-control']) !!}
                             <i class="fa fa-envelope form-control-feedback"></i>
                         </div>
                     </div>
 
                     <div class="form-group has-feedback">
-                        {!! Form::label('password', trans('message.password'), ['class' => 'col-md-3 control-label']) !!}
-                        <div class="col-md-9">
+                        {!! Form::label('password', trans('message.password'), ['class' => 'col-md-4 control-label']) !!}
+                        <div class="col-md-8">
                             {!! Form::password('password', ['class' => 'form-control']) !!}
                             <i class="fa fa-unlock-alt form-control-feedback"></i>
                         </div>
                     </div>
 
                     <div class="form-group has-feedback">
-                        {!! Form::label('password_confirmation', trans('message.retrypepassword'), ['class' => 'col-md-3 control-label']) !!}
-                        <div class="col-md-9">
+                        {!! Form::label('password_confirmation', trans('users.password_confirmation'), ['class' => 'col-md-4 control-label']) !!}
+                        <div class="col-md-8">
                             {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                             <i class="fa fa-lock form-control-feedback"></i>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-offset-3 col-md-9">
+                        <div class="col-md-offset-4 col-md-8">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" name="terms">{!! trans('message.agree_terms') !!}
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-offset-3 col-md-9">
+                        <div class="col-md-offset-4 col-md-8">
                             {!! Form::submit(trans('message.register'), ['class' => 'btn btn-success']) !!}
                         </div>
                     </div>

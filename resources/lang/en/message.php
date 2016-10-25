@@ -29,4 +29,6 @@ return [
     'sendpassword' => 'Send Password Reset Link',
     'membership' => 'Already registered?',
     'passwordreset' => 'Reset Password',
+    'agree_terms' => 'Agree to Terms',
+    'terms' => 'Terms and conditions',
 ];

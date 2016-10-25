@@ -47,17 +47,4 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     {
         factory(App\Models\User::class)->create(['email' => $email, 'password' => $password]);
     }
-
-    /**
-     * @Then /^(?:|I )should see "([^"]*)" in popup$/
-     *
-     * @param string $message The message.
-     */
-    public function assertPopupMessage($message)
-    {
-        $alertText = $this->getMainContext()->getSession()->getDriver()->getWebDriverSession()->getAlert_text();
-        if ($alertText !== $message){
-            throw new Exception("Modal dialog present: $alertText, when expected was $message");
-        }   
-    }
 }
