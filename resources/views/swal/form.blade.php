@@ -10,7 +10,11 @@
         }).done(function(data) {
             // Capitalise the first letter and send the user to the redirected page
     		swal({title: data.status.charAt(0).toUpperCase() + data.status.slice(1), text: data.msg, type: data.status}, function(){
-                window.location.href = form.attr('redirect');
+                // If the form is successfully submitted then 
+                // redirect to the new page
+                if(data.status == 'success'){
+                    window.location.href = form.attr('redirect');
+                }
             });
     	}).fail(function(data) {
             // Display any errors that have been returned
@@ -19,7 +23,7 @@
             $.each(errors, function(key,value){
                 errorsHTML += "<span class='text-danger'>" + value[0] + "</span><br>";
             });
-            swal({title: "{!! trans('swal.text_oops') !!}", text: errorsHTML, type: data.status, html: true});
+            swal({title: "{!! trans('swal.text_oops') !!}", text: errorsHTML, type: "error", html: true});
     	});
     });
 </script>

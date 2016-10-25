@@ -24,8 +24,8 @@ class PasswordFormRequest extends Request
     public function rules()
     {
         return [
-            'old_password' => 'required|max:255',
-            'password' => 'required|confirmed|max:255',
+            'old_password' => 'required|min:6|max:255',
+            'password' => 'required|confirmed|min:6|max:255',
         ];
     }
 }

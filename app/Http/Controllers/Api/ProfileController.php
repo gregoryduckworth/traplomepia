@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordFormRequest;
 use App\Http\Requests\UserFormRequest;
 use App\Repositories\Eloquent\UserRepository as User;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
@@ -49,12 +50,12 @@ class ProfileController extends Controller
         $user = $this->user->find(\Auth::user()->id);
 
         // Check the old password typed in matches
-        if (!\Hash::check($request->old_password, $user->password)) {
-            return response()->json(['msg' => trans('json.password_not_match'), 'status' => 'error']);
-        }
-        // Update the current user with their new password
-        elseif ($user->update($request->only('password'))) {
+        if (\Hash::check($request->old_password, $user->password)) {
+            // Update the user to have the new password
+            $user->update(['password' => $request->password_confirmation]);
             return response()->json(['msg' => trans('json.password_update', ['type' => 'User']), 'status' => 'success']);
+        }else{
+            return response()->json(['msg' => trans('json.password_not_match'), 'status' => 'error']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
     }

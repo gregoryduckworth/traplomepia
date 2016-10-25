@@ -21,5 +21,6 @@ return [
     'profile_updated' => 'Your profile has been updated',
     'something_went_wrong' => 'Something went wrong',
     'password_update' => 'You have successfully updated your password',
+    'password_not_match' => 'Sorry, your old password did not match',
 
 ];
