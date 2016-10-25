@@ -20,6 +20,7 @@ return [
     'alltasks' => 'All Tasks',
     'register' => 'Register',
     'registered' => 'Registered',
+    'registration_closed' => 'Sorry currently registration is closed',
     'followers' => 'Followers',
     'sales' => 'Sales',
     'friends' => 'Friends',

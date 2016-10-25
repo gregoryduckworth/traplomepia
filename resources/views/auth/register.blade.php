@@ -75,7 +75,7 @@
                 </div>
             @else
                 <div class="panel-body">
-                    <p class="text-center">Sorry currently registration is closed.</p>
+                    <p class="text-center">{!! trans('message.registration_closed') !!}</p>
                 </div>
             @endif
         </div>
