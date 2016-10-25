@@ -25,4 +25,6 @@
 		*/
 		'colour' => 'blue',
 
+		'version' => '0.1',
+
 	];

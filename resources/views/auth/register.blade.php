@@ -13,7 +13,7 @@
                 <h4 class="text-center">{!! trans('message.register') !!}</h4>
             </div>
 
-            @if(\Config::get('site.registration') == 'on')
+            @if(Config::get('site.registration') == 'on')
                 <div class="panel-body">
                     {!! Form::open(['url' => 'register', 'class' => 'form-horizontal']) !!}
                         <div class="form-group">
