@@ -63,14 +63,12 @@
 		var swal_confirm = "{!! trans('swal.confirm_delete') !!}";
 		var ajax_type = "DELETE";
 		var ajax_route = "{!! route('api.users.index') !!}";
-		var swal_success = "{!! trans('swal.success_delete') !!}";
 	@else
 		var btn = "#restore_btn";
 		var swal_text = "{!! trans('swal.text_restore', ['type' => trans('users.user')]) !!}";
 		var swal_confirm = "{!! trans('swal.confirm_restore') !!}";
 		var ajax_type = "GET";
 		var ajax_route = "{!! route('api.users.restore') !!}";
-		var swal_success = "{!! trans('swal.success_restore') !!}";
 	@endif
 </script>
 @include('swal.table')

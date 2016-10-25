@@ -56,7 +56,6 @@
 	var swal_confirm = "{!! trans('swal.confirm_delete') !!}";
 	var ajax_type = "DELETE";
 	var ajax_route = "{!! route('api.roles.index') !!}";
-	var swal_success = "{!! trans('swal.success_delete') !!}";
 </script>
 @include('swal.table')
 @endpush
