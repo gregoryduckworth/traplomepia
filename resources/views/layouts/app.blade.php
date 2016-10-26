@@ -29,7 +29,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="skin-{!! Config::get('site.colour') !!} sidebar-mini">
+<body class="skin-{!! $global_settings['colour_scheme'] !!} sidebar-mini">
 
     <div class="wrapper">
 

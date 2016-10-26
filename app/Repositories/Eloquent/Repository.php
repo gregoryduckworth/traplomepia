@@ -80,7 +80,7 @@ abstract class Repository implements RepositoryInterface
      */
     public function lists($value, $key = null)
     {
-        $lists = $this->model->lists($value, $key);
+        $lists = $this->model->pluck($value, $key);
         if (is_array($lists)) {
             return $lists;
         }

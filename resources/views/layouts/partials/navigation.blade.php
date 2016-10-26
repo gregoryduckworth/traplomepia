@@ -31,7 +31,7 @@
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
                     <li><a href="{!! url('/login') !!}"><i class="fa fa-sign-in"></i> {!! trans('message.login') !!}</a></li>
-                    @if(Config::get('site.registration') == 'on')<li><a href="{!! url('/register') !!}"><i class="fa fa-user-plus"></i> {!! trans('message.register') !!}</a></li>@endif
+                    @if($global_settings['registration'] === 'on')<li><a href="{!! url('/register') !!}"><i class="fa fa-user-plus"></i> {!! trans('message.register') !!}</a></li>@endif
                 @else
                     <li><a href="/home">{!! $currentUser->name !!}</a></li>
                 @endif

@@ -33,7 +33,7 @@ class ProfileController extends Controller
         $user = $this->user->find(\Auth::user()->id);
 
         if ($user->update($request->all())) {
-            return response()->json(['msg' => trans('json.profile_updated', ['type' => 'User']), 'status' => 'success']);
+            return response()->json(['msg' => trans('json.profile_updated', ['type' => trans('users.user')]), 'status' => 'success']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
     }
@@ -53,7 +53,7 @@ class ProfileController extends Controller
         if (\Hash::check($request->old_password, $user->password)) {
             // Update the user to have the new password
             $user->update(['password' => $request->password_confirmation]);
-            return response()->json(['msg' => trans('json.password_update', ['type' => 'User']), 'status' => 'success']);
+            return response()->json(['msg' => trans('json.password_update', ['type' => trans('users.user')]), 'status' => 'success']);
         }else{
             return response()->json(['msg' => trans('json.password_not_match'), 'status' => 'error']);
         }

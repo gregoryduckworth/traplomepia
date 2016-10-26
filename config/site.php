@@ -10,21 +10,6 @@
 		'company_name' => 'Duckworth Ltd',
 		'company_url' => 'http://www.google.com',
 
-		// Registration for the site can be on or off
-		'registration' => 'off',
-
-		/* Pick a site colour 
-		|------------------|
-		| SKINS  | blue    |
-		|        | black   |
-		|        | purple  |
-		|        | yellow  |
-		|        | red     |
-		|        | green   |
-		|------------------|
-		*/
-		'colour' => 'blue',
-
 		'version' => '0.1',
 
 	];

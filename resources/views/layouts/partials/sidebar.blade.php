@@ -33,6 +33,9 @@
         <ul class="sidebar-menu">
             @permission('*')
                 <li class="header text-uppercase">{!! trans('common.admin') !!}</li>
+                @role('administrator')
+                <li><a href="{!! route('admin.settings.index') !!}"><i class='fa fa-user'></i> <span>{!! trans('site.settings') !!}</span></a></li>
+                @endrole
                 @permission('manage-users')
                 <li class="treeview {!! Request::segment(2) == 'users' ? 'active' : null !!}">
                     <a href="#"><i class="fa fa-users"></i><span>{!! trans('users.heading') !!}</span><i class="fa fa-angle-left pull-right"></i></a>

@@ -45,6 +45,10 @@ Route::group(['middleware' => ['auth']], function () {
 // Admin Routes...
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
 
+    Route::group(['middleware' => ['role:administrator']], function(){
+        Route::get('site/settings', ['as' => 'settings.index', 'uses' => 'SiteSettingsController@index']);
+    });
+
     // User Management Routes...
     Route::group(['middleware' => ['permission:manage-users']], function () {
         Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);

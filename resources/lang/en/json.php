@@ -23,4 +23,7 @@ return [
     'password_update' => 'You have successfully updated your password',
     'password_not_match' => 'Sorry, your old password did not match',
 
+    // Settings
+    'site_settings_updated' => 'The site settings has been updated successfully',
+
 ];

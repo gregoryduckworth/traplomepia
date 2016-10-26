@@ -11,6 +11,11 @@
 |
  */
 
+// Settings Api
+Route::group(['middleware' => 'role:administrator'], function () {
+    Route::patch('site/settings', ['as' => 'settings.update', 'uses' => 'SiteSettingsController@update']);
+});
+
 // User Api
 Route::group(['middleware' => 'permission:manage-users'], function () {
     Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);
