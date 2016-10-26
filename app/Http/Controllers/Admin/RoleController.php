@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Interface\PermissionInterface as Permission;
-use App\Repositories\Interface\RoleInterface as Role;
+use App\Repositories\Contracts\PermissionInterface as Permission;
+use App\Repositories\Contracts\RoleInterface as Role;
 
 /**
  * Class RoleController

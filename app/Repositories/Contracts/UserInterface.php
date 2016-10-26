@@ -1,8 +1,6 @@
 <?php 
 
-namespace App\Repositories\Interface;
-
-use App\Repositories\RepositoryInterface;
+namespace App\Repositories\Contracts;
 
 /**
  * Interface UserInterface

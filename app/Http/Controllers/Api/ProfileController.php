@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordFormRequest;
 use App\Http\Requests\UserFormRequest;
-use App\Repositories\Interface\UserInterface as User;
+use App\Repositories\Contracts\UserInterface as User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller

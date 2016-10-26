@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
 
     Route::group(['middleware' => ['role:administrator']], function(){
-        Route::get('site/settings', ['as' => 'settings.index', 'uses' => 'SiteSettingsController@index']);
+        Route::get('settings', ['as' => 'settings.index', 'uses' => 'SiteSettingsController@index']);
     });
 
     // User Management Routes...

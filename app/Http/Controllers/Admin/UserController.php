@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Interface\RoleInterface as Role;
-use App\Repositories\Interface\UserInterface as User;
+use App\Repositories\Contracts\RoleInterface as Role;
+use App\Repositories\Contracts\UserInterface as User;
 
 /**
  * Class UserController

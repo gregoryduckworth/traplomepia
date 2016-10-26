@@ -31,8 +31,7 @@ class BackendServiceProvider extends ServiceProvider
         ];
 
         foreach($models as $model){
-            \Log::info($model.'Interface');
-            $this->app->bind('App\Repositories\Interface\\'.$model.'Interface', 'App\Repositories\Eloquent\\'.$model.'Repository');
+            $this->app->bind('App\Repositories\Contracts\\'.$model.'Interface', 'App\Repositories\Eloquent\\'.$model.'Repository');
         }
     }
 }

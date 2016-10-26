@@ -3,7 +3,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Repositories\Eloquent\Repository;
-use App\Repositories\PermissionInterface;
+use App\Repositories\Contracts\PermissionInterface;
 
 class PermissionRepository extends Repository implements PermissionInterface {
 

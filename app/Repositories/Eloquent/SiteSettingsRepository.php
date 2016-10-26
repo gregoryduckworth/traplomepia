@@ -3,7 +3,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Repositories\Eloquent\Repository;
-use App\Repositories\SiteSettingsInterface;
+use App\Repositories\Contracts\SiteSettingsInterface;
 
 class SiteSettingsRepository extends Repository implements SiteSettingsInterface{
 

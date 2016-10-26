@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Repositories\RepositoryInterface;
+use App\Repositories\Contracts\RepositoryInterface;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
