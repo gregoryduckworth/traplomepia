@@ -13,8 +13,18 @@ class SiteSettingsTableSeeder extends Seeder
     public function run()
     {
         SiteSettings::create([
+            'key' => 'site_full_name',
+            'value' => 'AdminSite'
+        ]);
+
+        SiteSettings::create([
+            'key' => 'site_short_name',
+            'value' => 'ASite'
+        ]);
+
+        SiteSettings::create([
             'key' => 'registration',
-            'value' => 'on'
+            'value' => 'open'
         ]);
 
         SiteSettings::create([

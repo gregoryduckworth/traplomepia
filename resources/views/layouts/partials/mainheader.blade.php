@@ -4,9 +4,9 @@
     <!-- Logo -->
     <a href="{!! route('home') !!}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini">{!! Config::get('site.short_name') !!}</span>
+        <span class="logo-mini">{!! $global_settings['site_short_name'] !!}</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg">{!! Config::get('site.full_name') !!}</span>
+        <span class="logo-lg">{!! $global_settings['site_full_name'] !!}</span>
     </a>
 
     <!-- Header Navbar -->

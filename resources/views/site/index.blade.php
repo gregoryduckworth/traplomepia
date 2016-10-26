@@ -15,6 +15,16 @@
     	{!! Form::model($global_settings, ['id' => 'form', 'route' => 'api.settings.update', 'redirect' => route('admin.settings.index'), '_method' => 'PATCH', 'class' => 'col-md-12']) !!}
 
             <div class="form-group">
+                {!! Form::label('site_full_name', trans('settings.site_full_name') ) !!}
+                {!! Form::text('site_full_name', null, ['class' => 'form-control']) !!}
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('site_short_name', trans('settings.site_short_name') ) !!}
+                {!! Form::text('site_short_name', null, ['class' => 'form-control']) !!}
+            </div>
+
+            <div class="form-group">
                 {!! Form::label('registration', trans('settings.registration') ) !!}
                 {!! Form::select('registration', [ 'open' => trans('settings.open'), 'closed' => trans('settings.closed')], null, ['class' => 'form-control']) !!}
             </div>

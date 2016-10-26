@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\SiteSettingsInterface as SiteSettings;
-use Illuminate\Http\Request;
+use App\Http\Requests\SiteSettingsFormRequest;
 
 class SiteSettingsController extends Controller
 {
@@ -21,10 +21,10 @@ class SiteSettingsController extends Controller
     /**
      * Update the site settings in the system
      *
-     * @param  Request $request
+     * @param  SiteSettingsFormRequest $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(SiteSettingsFormRequest $request)
     {
         // Run through each of the settings that we want to update
         // and if any fail then return an error
