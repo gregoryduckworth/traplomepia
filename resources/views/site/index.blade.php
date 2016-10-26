@@ -16,7 +16,7 @@
 
             <div class="form-group">
                 {!! Form::label('registration', trans('settings.registration') ) !!}
-                {!! Form::select('registration', [ 'on' => trans('settings.on'), 'off' => trans('settings.off')], null, ['class' => 'form-control']) !!}
+                {!! Form::select('registration', [ 'open' => trans('settings.open'), 'closed' => trans('settings.closed')], null, ['class' => 'form-control']) !!}
             </div>
 
             <div class="form-group">

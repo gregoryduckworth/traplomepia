@@ -6,8 +6,8 @@
 		
 		// Registration
 		'registration' => 'Registration',
-		'on' => 'On',
-		'off' => 'Off',
+		'open' => 'Open',
+		'closed' => 'Closed',
 
 		// Colour Scheme
 		'colour_scheme' => 'Colour Scheme',
