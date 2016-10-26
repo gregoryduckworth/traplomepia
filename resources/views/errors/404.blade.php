@@ -6,7 +6,7 @@
 <div class="box box-solid">
 	<div class="box-body">
 		<div class="error-page">
-		    <h2 class="headline text-yellow"> 404</h2>
+		    <h2 class="headline text-yellow">404</h2>
 		    <div class="error-content">
 		        <h3><i class="fa fa-warning text-yellow"></i> {!! trans('errors.oops') !!}</h3>
 		        <h3>{!! trans('errors.page_not_found') !!}.</h3>
