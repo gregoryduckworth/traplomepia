@@ -14,7 +14,7 @@
 
     <div class="box-body">
     	<div class="col-md-3">
-    		<img class="img-thumbnail img-responsive center-block" src="//www.clker.com/cliparts/B/R/Y/m/P/e/blank-profile-hi.png">
+    		<img class="img-thumbnail img-responsive center-block" src="//placeholdit.imgix.net/~text?txtsize=33&amp;txt={!! $currentUser->name !!}&amp;w=180&amp;h=180">
     	</div>
     	<div class="col-md-9">
 	    	<table class="table table-striped">
