@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Eloquent\RoleRepository as Role;
-use App\Repositories\Eloquent\UserRepository as User;
+use App\Repositories\Interface\RoleInterface as Role;
+use App\Repositories\Interface\UserInterface as User;
 
 /**
  * Class UserController

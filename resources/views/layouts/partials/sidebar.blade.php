@@ -34,7 +34,7 @@
             @permission('*')
                 <li class="header text-uppercase">{!! trans('common.admin') !!}</li>
                 @role('administrator')
-                <li><a href="{!! route('admin.settings.index') !!}"><i class='fa fa-user'></i> <span>{!! trans('site.settings') !!}</span></a></li>
+                <li><a href="{!! route('admin.settings.index') !!}"><i class='fa fa-user'></i> <span>{!! trans('settings.site') !!}</span></a></li>
                 @endrole
                 @permission('manage-users')
                 <li class="treeview {!! Request::segment(2) == 'users' ? 'active' : null !!}">

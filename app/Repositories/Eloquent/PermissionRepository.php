@@ -3,8 +3,9 @@
 namespace App\Repositories\Eloquent;
 
 use App\Repositories\Eloquent\Repository;
+use App\Repositories\PermissionInterface;
 
-class PermissionRepository extends Repository {
+class PermissionRepository extends Repository implements PermissionInterface {
 
     public function model() 
     {

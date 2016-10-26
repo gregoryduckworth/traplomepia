@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleFormRequest;
-use App\Repositories\Eloquent\PermissionRepository as Permission;
-use App\Repositories\Eloquent\RoleRepository as Role;
+use App\Repositories\Interface\PermissionInterface as Permission;
+use App\Repositories\Interface\RoleInterface as Role;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\Datatables;
 

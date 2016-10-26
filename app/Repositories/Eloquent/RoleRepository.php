@@ -3,8 +3,9 @@
 namespace App\Repositories\Eloquent;
 
 use App\Repositories\Eloquent\Repository;
+use App\Repositories\RoleInterface;
 
-class RoleRepository extends Repository {
+class RoleRepository extends Repository implements RoleInterface{
 
     public function model() 
     {
