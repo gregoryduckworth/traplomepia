@@ -41,7 +41,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'title', 'first_name', 'last_name', 'email', 'dob', 'password', 'api_token',
+        'title', 'first_name', 'last_name', 'email', 'dob', 'password', 'api_token', 'profile_picture',
     ];
 
     /**
@@ -78,6 +78,20 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    /**
+     * Generate a thumbnail for the user if they have not uploaded
+     * a profile picture
+     * 
+     * @return string
+     */
+    public function getPictureAttribute()
+    {
+        if($this->profile_picture == null){
+            return '//placeholdit.imgix.net/~text?txtsize=33&amp;txt='. $this->name .'&amp;w=180&amp;h=180';
+        }
+        return $this->profile_picture;
     }
     
 }

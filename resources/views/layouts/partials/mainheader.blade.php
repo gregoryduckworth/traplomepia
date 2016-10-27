@@ -115,14 +115,14 @@
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="user-menu">
                             <!-- The user image in the navbar-->
-                            <img src="//placeholdit.imgix.net/~text?txtsize=6&txt=50%C3%9750&w=50&h=50" class="user-image" alt="User Image"/>
+                            <img src="{!! $currentUser->picture !!}" class="user-image" alt="User Image"/>
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">{!! $currentUser->name !!}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="//placeholdit.imgix.net/~text?txtsize=33&amp;txt={!! $currentUser->name !!}&amp;w=160&amp;h=160" class="img-circle" alt="User Image"/>
+                                <img src="{!! $currentUser->picture !!}" class="img-circle" alt="User Image"/>
                                 <p>
                                     {!! $currentUser->name !!}
                                     <small>{!! trans('message.registered') !!}: {!! ($currentUser->created_at)->toFormattedDateString() !!}</small>

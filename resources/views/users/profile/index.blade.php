@@ -14,7 +14,7 @@
 
     <div class="box-body">
     	<div class="col-md-3">
-    		<img class="img-thumbnail img-responsive center-block" src="//placeholdit.imgix.net/~text?txtsize=33&amp;txt={!! $currentUser->name !!}&amp;w=180&amp;h=180">
+    		<img class="img-thumbnail img-responsive center-block" src="{!! $currentUser->picture !!}">
     	</div>
     	<div class="col-md-9">
 	    	<table class="table table-striped">
