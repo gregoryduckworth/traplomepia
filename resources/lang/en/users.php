@@ -29,6 +29,7 @@ return [
 
     // Profile
     'profile' => 'Profile',
+    'change_profile_picture' => 'Change Profile Picture',
     'change_password' => 'Change Password',
     'old_password' => 'Old Password',
     'new_password' => 'New Password',

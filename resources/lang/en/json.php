@@ -26,4 +26,7 @@ return [
     // Settings
     'site_settings_updated' => 'The site settings has been updated successfully',
 
+    //Profile
+    'profile_image_updated' => 'Your profile picture has been updated',
+
 ];

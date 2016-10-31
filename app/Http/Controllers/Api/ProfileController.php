@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordFormRequest;
 use App\Http\Requests\UserFormRequest;
+use App\Http\Requests\ImageFormRequest;
 use App\Repositories\Contracts\UserInterface as User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProfileController extends Controller
 {
@@ -56,6 +57,31 @@ class ProfileController extends Controller
             return response()->json(['msg' => trans('json.password_update', ['type' => trans('users.user')]), 'status' => 'success']);
         }else{
             return response()->json(['msg' => trans('json.password_not_match'), 'status' => 'error']);
+        }
+        return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
+    }
+
+    /**
+     * Get the profile picture uploaded by the user for the site
+     * 
+     * @param  ImageFormRequest $request 
+     * @return Response
+     */
+    public function updateProfilePicture(ImageFormRequest $request)
+    {
+        // Find the current user
+        $user = $this->user->find(\Auth::user()->id);
+
+        if($image = $request->image){
+            // Delete the previous profile picture
+            File::delete(public_path() . $user->profile_picture);
+
+            // Create a new file name and move the uploaded picture to
+            // the users directory
+            $fileName = str_random(20) . '.'. $image->extension();
+            $image->move(public_path('/users/' . $user->id . '/img/'), $fileName);
+            $user->update(['profile_picture' =>  '/users/' . $user->id .'/img/'.$fileName]);
+            return response()->json(['msg' => trans('json.profile_image_updated', ['type' => trans('users.user')]), 'status' => 'success']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
     }

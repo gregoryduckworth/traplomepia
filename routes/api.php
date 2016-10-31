@@ -31,5 +31,6 @@ Route::group(['middleware' => 'permission:manage-roles'], function () {
 });
 
 // Profile Api
+Route::post('profile/image', ['as' => 'profile.image', 'uses' => 'ProfileController@updateProfilePicture']);
 Route::patch('profile/update', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 Route::patch('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@updatePassword']);

@@ -22,6 +22,7 @@ var elixir = require('laravel-elixir');
  *      bower install jquery-slimscroll --save
  *      bower install fastclick --save
  *      bower install sweetalert --save
+ *      bower install bootstrap-fileinput --save
  *
  */
 
@@ -64,6 +65,11 @@ elixir(function(mix) {
     mix.copy('bower_components/sweetalert/dist/sweetalert.css', 'public/css/libs/sweetalert.css');
     mix.copy('bower_components/sweetalert/dist/sweetalert.min.js', 'public/js/libs/sweetalert.js');
 
+    // Bootstrap Fileinput
+    mix.copy('bower_components/bootstrap-fileinput/css/fileinput.css', 'public/css/libs/bootstrap-fileinput.css');
+    mix.copy('bower_components/bootstrap-fileinput/js/fileinput.js', 'public/js/libs/bootstrap-fileinput.js');
+    mix.copy('bower_components/bootstrap-fileinput/img/loading.gif', 'public/build/img/loading.gif');
+
     // JQuery
     mix.copy('bower_components/jquery/dist/jquery.js', 'public/js/libs/jquery.js');
 
@@ -75,6 +81,7 @@ elixir(function(mix) {
         '/libs/datatables.css',
         '/libs/font-awesome.css',
         '/libs/sweetalert.css',
+        '/libs/bootstrap-fileinput.css',
     ], 'public/css/external.css', 'public/css');
 
     // Merge all JS  files in one file.
@@ -89,6 +96,7 @@ elixir(function(mix) {
         '/libs/fastclick.js',        
         '/libs/jquery.slimscroll.js',
         '/libs/sweetalert.js',
+        '/libs/bootstrap-fileinput.js',
     ], 'public/js/external.js', 'public/js');
 
     // Mix at the end to avoid an issue where only the last 
