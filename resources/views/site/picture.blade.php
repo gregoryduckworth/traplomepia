@@ -1,9 +1,9 @@
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">{!! trans('users.change_profile_picture') !!}</h3>
+        <h3 class="box-title">{!! trans('site.change_site_picture') !!}</h3>
     </div>
     <div class="box-body">
-        {!! Form::open(['id' => 'form-file', 'route' => 'api.profile.image', 'redirect' => route('profile.index'), '_method' => 'POST', 'class' => 'col-md-12']) !!}
+        {!! Form::open(['id' => 'form-file', 'route' => 'api.settings.image', 'redirect' => route('admin.settings.index'), '_method' => 'POST', 'class' => 'col-md-12']) !!}
             <span id="image-text"></span>
             <div class="form-group">
                 {!! Form::file('image', ['id' => 'image', 'class' => 'file-loading']) !!}

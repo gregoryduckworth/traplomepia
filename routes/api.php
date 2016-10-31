@@ -14,6 +14,7 @@
 // Settings Api
 Route::group(['middleware' => 'role:administrator'], function () {
     Route::patch('site/settings', ['as' => 'settings.update', 'uses' => 'SiteSettingsController@update']);
+    Route::post('site/image', ['as' => 'settings.image', 'uses' => 'SiteSettingsController@updatePicture']);
 });
 
 // User Api

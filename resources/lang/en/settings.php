@@ -4,8 +4,8 @@
 
 		// Site Settings
 		'site' => 'Site Settings',
-		'site_full_name' => 'Site Full Name (max: 16)',
-		'site_short_name' => 'Site Short Name (max: 6)',
+		'full_name' => 'Site Full Name (max: 16)',
+		'short_name' => 'Site Short Name (max: 6)',
 		
 		// Registration
 		'registration' => 'Registration',

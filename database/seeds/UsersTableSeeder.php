@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
         foreach(Role::all() as $role){
             $role_user = User::create([
                 'title' => 'Mr.',
-                'first_name' => $role->name,
+                'first_name' => $role->display_name,
                 'last_name' => $role->display_name,
                 'email' => $role->name . '@example.com',
                 'password' => 'password',

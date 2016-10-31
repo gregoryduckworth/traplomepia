@@ -13,12 +13,12 @@ class SiteSettingsTableSeeder extends Seeder
     public function run()
     {
         SiteSettings::create([
-            'key' => 'site_full_name',
+            'key' => 'full_name',
             'value' => 'AdminSite'
         ]);
 
         SiteSettings::create([
-            'key' => 'site_short_name',
+            'key' => 'short_name',
             'value' => 'ASite'
         ]);
 
@@ -30,6 +30,11 @@ class SiteSettingsTableSeeder extends Seeder
         SiteSettings::create([
             'key' => 'colour_scheme',
             'value' => 'blue'
+        ]);
+
+        SiteSettings::create([
+            'key' => 'picture',
+            'value' => 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Admin&w=100&h=100'
         ]);
     }
 }
