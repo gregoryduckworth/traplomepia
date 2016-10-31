@@ -73,6 +73,10 @@ class ProfileController extends Controller
         $user = $this->user->find(\Auth::user()->id);
 
         if($image = $request->image){
+
+            // New Function
+            // Helper::createFile($model, $currentImage, $image)
+            
             // Delete the previous profile picture
             File::delete(public_path() . $user->profile_picture);
 

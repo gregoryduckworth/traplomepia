@@ -21,4 +21,7 @@
         'yellow' => 'Yellow',
         'purple' => 'Purple',
 
+        // Logo
+        'change_site_picture' => 'Change Site Picture',
+
 	];

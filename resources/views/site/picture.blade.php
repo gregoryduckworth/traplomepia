@@ -1,6 +1,6 @@
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">{!! trans('site.change_site_picture') !!}</h3>
+        <h3 class="box-title">{!! trans('settings.change_site_picture') !!}</h3>
     </div>
     <div class="box-body">
         {!! Form::open(['id' => 'form-file', 'route' => 'api.settings.image', 'redirect' => route('admin.settings.index'), '_method' => 'POST', 'class' => 'col-md-12']) !!}
