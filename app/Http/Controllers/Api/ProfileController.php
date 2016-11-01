@@ -7,7 +7,9 @@ use App\Http\Requests\PasswordFormRequest;
 use App\Http\Requests\UserFormRequest;
 use App\Http\Requests\ImageFormRequest;
 use App\Repositories\Contracts\UserInterface as User;
-use Illuminate\Support\Facades\File;
+use App\Helpers\Helper;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -31,7 +33,7 @@ class ProfileController extends Controller
     {
         // We need to get the details of the current
         // user so that we can update them
-        $user = $this->user->find(\Auth::user()->id);
+        $user = $this->user->find(Auth::user()->id);
 
         if ($user->update($request->all())) {
             return response()->json(['msg' => trans('json.profile_updated', ['type' => trans('users.user')]), 'status' => 'success']);
@@ -51,7 +53,7 @@ class ProfileController extends Controller
         $user = $this->user->find(\Auth::user()->id);
 
         // Check the old password typed in matches
-        if (\Hash::check($request->old_password, $user->password)) {
+        if (Hash::check($request->old_password, $user->password)) {
             // Update the user to have the new password
             $user->update(['password' => $request->password_confirmation]);
             return response()->json(['msg' => trans('json.password_update', ['type' => trans('users.user')]), 'status' => 'success']);
@@ -69,22 +71,10 @@ class ProfileController extends Controller
      */
     public function updateProfilePicture(ImageFormRequest $request)
     {
-        // Find the current user
-        $user = $this->user->find(\Auth::user()->id);
-
         if($image = $request->image){
-
-            // New Function
-            // Helper::createFile($model, $currentImage, $image)
-            
-            // Delete the previous profile picture
-            File::delete(public_path() . $user->profile_picture);
-
-            // Create a new file name and move the uploaded picture to
-            // the users directory
-            $fileName = str_random(20) . '.'. $image->extension();
-            $image->move(public_path('/users/' . $user->id . '/img/'), $fileName);
-            $user->update(['profile_picture' =>  '/users/' . $user->id .'/img/'.$fileName]);
+            // Find the current user
+            $user = $this->user->find(Auth::user()->id);
+            $user->update(['profile_picture' => Helper::createImage($user, $user->profile_picture, $image)]);
             return response()->json(['msg' => trans('json.profile_image_updated', ['type' => trans('users.user')]), 'status' => 'success']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);

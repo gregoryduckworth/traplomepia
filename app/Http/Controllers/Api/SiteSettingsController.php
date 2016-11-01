@@ -7,6 +7,7 @@ use App\Repositories\Contracts\SiteSettingsInterface as SiteSettings;
 use App\Http\Requests\SiteSettingsFormRequest;
 use App\Http\Requests\ImageFormRequest;
 use Illuminate\Support\Facades\File;
+use App\Helpers\Helper;
 
 class SiteSettingsController extends Controller
 {
@@ -49,14 +50,9 @@ class SiteSettingsController extends Controller
     {
         // Get the image from the form
         if($image = $request->image){
-            $setting = $this->site_settings->where('key', '=', 'picture')->first();
-            // Delete the previous picture
-            File::delete(public_path() . $setting->value);
-
-            // Create the new image under the /site/ folder 
-            $fileName = str_random(20) . '.'. $image->extension();
-            $image->move(public_path('/site/img/'), $fileName);
-            $setting->where('key', '=', 'picture')->update([ 'value' => '/site/img/'.$fileName]);
+            // Get the picture row from the site_settings table
+            $setting = $this->site_settings->findBy('key', 'picture');
+            $setting->update(['value' => Helper::createImage($setting, $setting->value, $image)]);
             return response()->json(['msg' => trans('json.site_image_updated', ['type' => trans('site.site')]), 'status' => 'success']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);

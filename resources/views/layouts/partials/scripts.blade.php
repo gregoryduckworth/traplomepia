@@ -8,7 +8,7 @@
 	$.ajaxSetup({ 
 		beforeSend: function (xhr) {
     		xhr.setRequestHeader('Authorization', 'Bearer {!! $currentUser->api_token !!}');
-		},				 
+		}
 	});
 </script>
 @endif

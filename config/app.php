@@ -236,6 +236,7 @@ return [
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Form' => Collective\Html\FormFacade::class,
+        'Helper' => App\Helpers\Helper::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
     ],

@@ -69,6 +69,7 @@ elixir(function(mix) {
     mix.copy('bower_components/bootstrap-fileinput/css/fileinput.css', 'public/css/libs/bootstrap-fileinput.css');
     mix.copy('bower_components/bootstrap-fileinput/js/fileinput.js', 'public/js/libs/bootstrap-fileinput.js');
     mix.copy('bower_components/bootstrap-fileinput/img/loading.gif', 'public/build/img/loading.gif');
+    mix.copy('bower_components/bootstrap-fileinput/img/loading-sm.gif', 'public/build/img/loading-sm.gif');
 
     // JQuery
     mix.copy('bower_components/jquery/dist/jquery.js', 'public/js/libs/jquery.js');

@@ -16,13 +16,9 @@
 <script>
 $(function() {
     $("#image").fileinput({ 
-        'showPreview': false,
-        'showRemove': false,
-        'allowedFileTypes': ['image'],
-    }).on('fileerror', function(event, data, msg) {
-        $('#image-text').text(msg);
-    }).on('fileloaded', function(event, data, msg){
-        $('#image-text').text('');
+        //uploadUrl: '{!! route('api.settings.image') !!}',
+        showRemove: false,
+        allowedFileTypes: ['image'],
     });
 });
 </script>
