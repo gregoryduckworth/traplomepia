@@ -16,6 +16,7 @@
 $(function() {
     $("#image").fileinput({ 
         //uploadUrl: '{!! route('api.profile.image') !!}',
+        showPreview: false,
         showRemove: false,
         allowedFileTypes: ['image'],
     });

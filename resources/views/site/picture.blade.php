@@ -29,6 +29,7 @@
 $(function() {
     $("#image").fileinput({ 
         showRemove: false,
+        showPreview: false,
         allowedFileTypes: ['image'],
         browseOnZoneClick: true,
         dropZoneTitle: 'Drag &amp; drop new image here...',
