@@ -31,7 +31,7 @@ class RoleController extends Controller
     {
         return Datatables::of($this->role->all())
             ->addColumn('actions', function ($role) {
-                return view('datatables.roles', ['view' => 'roles', 'data' => $role])->render();
+                return view('layouts.partials.datatables.roles', ['view' => 'roles', 'data' => $role])->render();
             })
             ->make(true);
     }

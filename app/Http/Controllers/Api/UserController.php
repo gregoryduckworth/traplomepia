@@ -33,7 +33,7 @@ class UserController extends Controller
     {
         return Datatables::of($this->user->all())
             ->addColumn('actions', function ($user) {
-                return view('datatables.users', ['view' => 'users', 'data' => $user])->render();
+                return view('layouts.partials.datatables.users', ['view' => 'users', 'data' => $user])->render();
             })
             ->make(true);
     }
@@ -87,7 +87,7 @@ class UserController extends Controller
     {
         return Datatables::of($this->user->deleted())
             ->addColumn('actions', function ($user) {
-                return view('datatables.actions.restore', ['view' => 'users', 'data' => $user])->render();
+                return view('layouts.partials.datatables.actions.restore', ['view' => 'users', 'data' => $user])->render();
             })
             ->make(true);
     }
