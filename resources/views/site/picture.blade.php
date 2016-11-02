@@ -1,3 +1,4 @@
+
 <div class="box">
     <div class="box-header">
         <h3 class="box-title">{!! trans('settings.change_site_picture') !!}</h3>
@@ -11,6 +12,7 @@
             <h6>Update Picture</h6>
             {!! Form::open(['id' => 'form-file', 'route' => 'api.settings.image', 'redirect' => route('admin.settings.index'), '_method' => 'POST', 'class' => 'col-md-12']) !!}
                 <div class="form-group">
+                    <span id="text-error" class="text-danger"></span>
                     {!! Form::file('image', ['id' => 'image', 'class' => 'file-loading']) !!}
                 </div>
             {!! Form::close() !!}
@@ -20,19 +22,16 @@
 
 @push('javascript')
 <script>
-// TODO: Update it to upload the picture through uploadURL
-// - Watch out for 401 error, which could be due
-// to the api_token or _token
-// 
-// //uploadUrl: '{!! route('api.settings.image') !!}',
-// 
 $(function() {
     $("#image").fileinput({ 
+        uploadUrl: '{!! route('api.settings.image') !!}',
         showRemove: false,
         showPreview: false,
         allowedFileTypes: ['image'],
-        browseOnZoneClick: true,
-        dropZoneTitle: 'Drag &amp; drop new image here...',
+    }).on('filepreupload', function(event, data, msg) {
+       data.jqXHR.setRequestHeader('Authorization', 'Bearer {!! $currentUser->api_token !!}');
+    }).on('fileuploaderror', function(event, data, msg) {
+       $('#text-error').html(msg);
     });
 });
 </script>
