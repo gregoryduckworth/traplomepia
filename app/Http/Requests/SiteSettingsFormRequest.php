@@ -24,8 +24,8 @@ class SiteSettingsFormRequest extends Request
     public function rules()
     {
         return [
-            'site_full_name' => 'required|max:16',
-            'site_short_name' => 'required|max:6',
+            'full_name' => 'required|max:16',
+            'short_name' => 'required|max:6',
             'registration' => 'required|in:open,closed',
             'colour_scheme' => 'required',
         ];

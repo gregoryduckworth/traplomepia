@@ -48,5 +48,5 @@
 {!! Form::submit(trans('common.submit'), ['class' => 'pull-right btn btn-success']) !!}
 
 @push('javascript')
-@include('swal.form')
+@include('layouts.partials.swal.form')
 @endpush

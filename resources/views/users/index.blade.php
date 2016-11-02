@@ -71,5 +71,5 @@
 		var ajax_route = "{!! route('api.users.restore') !!}";
 	@endif
 </script>
-@include('swal.table')
+@include('layouts.partials.swal.table')
 @endpush

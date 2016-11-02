@@ -24,5 +24,5 @@
 </div>
 
 @push('javascript')
-@include('swal.form')
+@include('layouts.partials.swal.form')
 @endpush

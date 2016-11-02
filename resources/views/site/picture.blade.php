@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-8">
             <h6>Update Picture</h6>
-            {!! Form::open(['id' => 'form-file', 'route' => 'api.settings.image', 'redirect' => route('admin.settings.index'), '_method' => 'POST', 'class' => 'col-md-12']) !!}
+            {!! Form::open(['class' => 'col-md-12']) !!}
                 <div class="form-group">
                     {!! Form::file('image', ['id' => 'image', 'class' => 'file-loading']) !!}
                 </div>
@@ -19,22 +19,5 @@
 </div>
 
 @push('javascript')
-<script>
-// TODO: Update it to upload the picture through uploadURL
-// - Watch out for 401 error, which could be due
-// to the api_token or _token
-// 
-// //uploadUrl: '{!! route('api.settings.image') !!}',
-// 
-$(function() {
-    $("#image").fileinput({ 
-        showRemove: false,
-        showPreview: false,
-        allowedFileTypes: ['image'],
-        browseOnZoneClick: true,
-        dropZoneTitle: 'Drag &amp; drop new image here...',
-    });
-});
-</script>
-@include('swal.form-file')
+@include('layouts.partials.form.image-upload')
 @endpush

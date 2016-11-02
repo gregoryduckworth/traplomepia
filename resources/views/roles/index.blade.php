@@ -57,5 +57,5 @@
 	var ajax_type = "DELETE";
 	var ajax_route = "{!! route('api.roles.index') !!}";
 </script>
-@include('swal.table')
+@include('layouts.partials.swal.table')
 @endpush
