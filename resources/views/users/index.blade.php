@@ -37,7 +37,8 @@
 
 @push('javascript')
 <script>
-	// Fill the table with data
+	// Fill the table with data and provide the relevant information 
+	// based on the url for the correct view
 	var table = $("#datatable").DataTable({
 		"processing": true,
 		"serverSide": true,
@@ -57,6 +58,8 @@
 		"autoWidth": false,
 	});
 
+	// Depending on which view we are rendering, we need to decide whether we want 
+	// the delete button or the restore button to appear
 	@if(Request::segment(3) != 'deleted')
 		var btn = "#delete_btn";
 		var swal_text = "{!! trans('swal.text_delete', ['type' => trans('users.user')]) !!}";

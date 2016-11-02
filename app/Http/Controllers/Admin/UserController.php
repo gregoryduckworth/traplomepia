@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\RoleInterface as Role;
 use App\Repositories\Contracts\UserInterface as User;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class UserController
@@ -76,6 +77,22 @@ class UserController extends Controller
     {
         return view('users.edit')
             ->withUser($this->user->find($id));
+    }
+
+    /**
+     * With the ID of the user that we want, find their
+     * details and login in as them
+     * 
+     * @param  $id
+     * @return Response
+     */
+    public function impersonate($id)
+    {
+        // Find the user in the system
+        $user = $this->user->find($id);
+        // Login in as them and redirect to the home view
+        Auth::login($user);
+        return redirect()->action('HomeController@index');
     }
 
 }

@@ -10,7 +10,9 @@
 <div class="box">
     <div class="box-header">
         <h3 class="box-title">{!! $user->title !!} {!! $user->name !!}</h3>
-        <a href="{!! route('admin.users.edit', $user->id) !!}" class="pull-right btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="{!! trans('common.edit') !!}"><i class="fa fa-edit"></i></a>
+            @permission('manage-users')
+                <a href="{!! route('admin.users.edit', $user->id) !!}" class="pull-right btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="{!! trans('common.edit') !!}"><i class="fa fa-edit"></i></a>
+            @endpermission
     </div>
 
     <div class="box-body">
@@ -27,6 +29,12 @@
 	    	</table>
 	    </div>
     </div>
+
+    @role('administrator')
+    <div class="box-footer">
+        <a href="{!! route('admin.users.impersonate', $user->id) !!}" class="pull-right btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="{!! trans('common.impersonate') !!}"><i class="fa fa-user"></i></a>
+    </div>
+    @endrole
 </div>
 
 @endsection

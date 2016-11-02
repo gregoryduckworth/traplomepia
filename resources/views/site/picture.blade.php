@@ -5,7 +5,7 @@
     <div class="box-body">
         <div class="col-md-4">
             <h6>Current Picture</h6>
-            <img src="{!! $global_settings['picture'] !!}" class="img-responsive">
+            <img src="{!! $global_settings['picture'] !!}" class="img-thumbnail img-responsive center-block">
         </div>
         <div class="col-md-8">
             <h6>Update Picture</h6>

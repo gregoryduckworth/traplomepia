@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
     // User Management Routes...
     Route::group(['middleware' => ['permission:manage-users']], function () {
+        Route::get('users/imepersonate/{id}', ['as' =>'users.impersonate', 'uses' => 'UserController@impersonate']);
         Route::get('users/deleted', ['as' => 'users.deleted', 'uses' => 'UserController@deleted']);
         Route::resource('users', 'UserController');
     });
