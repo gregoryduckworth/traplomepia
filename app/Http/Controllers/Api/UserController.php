@@ -33,7 +33,7 @@ class UserController extends Controller
     {
         return Datatables::of($this->user->all())
             ->addColumn('actions', function ($user) {
-                return view('layouts.partials.datatables.users', ['view' => 'users', 'data' => $user])->render();
+                return view('users.datatables', ['view' => 'users', 'data' => $user])->render();
             })
             ->make(true);
     }
