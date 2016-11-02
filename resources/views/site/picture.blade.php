@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-8">
             <h6>Update Picture</h6>
-            {!! Form::open(['class' => 'col-md-12']) !!}
+            {!! Form::open(['id' => 'form-file', 'route' => 'api.settings.image', 'redirect' => route('admin.settings.index'), '_method' => 'POST', 'class' => 'col-md-12']) !!}
                 <div class="form-group">
                     {!! Form::file('image', ['id' => 'image', 'class' => 'file-loading']) !!}
                 </div>
@@ -20,4 +20,5 @@
 
 @push('javascript')
 @include('layouts.partials.form.image-upload')
+@include('layouts.partials.swal.form-file')
 @endpush
