@@ -1,6 +1,6 @@
 {
   "name": "orgchart",
-  "version": "1.2.3",
+  "version": "1.2.7",
   "homepage": "https://github.com/dabeng/OrgChart",
   "authors": [
     "dabeng <dabeng413@gmail.com>"
@@ -33,11 +33,11 @@
     "font-awesome": "^4.6.2",
     "html2canvas": "^0.4.1"
   },
-  "_release": "1.2.3",
+  "_release": "1.2.7",
   "_resolution": {
     "type": "version",
-    "tag": "v1.2.3",
-    "commit": "c86f76854159cd1b675d4934c6a475335d71551a"
+    "tag": "v1.2.7",
+    "commit": "b34f65df1f9692011412bd3d95fd4f35d834c32e"
   },
   "_source": "https://github.com/dabeng/OrgChart.git",
   "_target": "^1.2.0",

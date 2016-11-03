@@ -54,6 +54,16 @@
         return removeNodes.apply(this, Array.prototype.splice.call(arguments, 1));
       case 'getHierarchy':
         return getHierarchy.apply(this, Array.prototype.splice.call(arguments, 1));
+      case 'hideDescendants':
+        return hideDescendants.apply(this, Array.prototype.splice.call(arguments, 1));
+      case 'showDescendants':
+        return showDescendants.apply(this, Array.prototype.splice.call(arguments, 1));
+      case 'hideSiblings':
+        return hideSiblings.apply(this, Array.prototype.splice.call(arguments, 1));
+      case 'showSiblings':
+        return showSiblings.apply(this, Array.prototype.splice.call(arguments, 1));
+      case 'getNodeState':
+        return getNodeState.apply(this, Array.prototype.splice.call(arguments, 1));
       default: // initiation time
         var opts = $.extend(defaultOptions, options);
     }
@@ -322,11 +332,11 @@
     }
     if ($target.length) {
       if ($target.is(':visible')) {
-        return {"exist": true, "visible": true};
+        return { 'exist': true, 'visible': true, 'nodes': $target };
       }
-      return {"exist": true, "visible": false};
+      return { 'exist': true, 'visible': false, 'nodes': $target };
     }
-    return {"exist": false, "visible": false};
+    return { 'exist': false, 'visible': false, 'nodes': $target };
   }
 
   // recursively hide the ancestor node and sibling nodes of the specified node
@@ -559,9 +569,12 @@
 
   // create node
   function createNode(nodeData, level, opts) {
+    $.each(nodeData.children, function (index, child) {
+      child.parentId = nodeData.id;
+    })
     var dtd = $.Deferred();
     // construct the content of node
-    var $nodeDiv = $('<div' + (opts.draggable ? ' draggable="true"' : '') + (nodeData[opts.nodeId] ? ' id="' + nodeData[opts.nodeId] + '"' : '') + '>')
+    var $nodeDiv = $('<div' + (opts.draggable ? ' draggable="true"' : '') + (nodeData[opts.nodeId] ? ' id="' + nodeData[opts.nodeId] + '"' : '') + (nodeData.parentId ? ' data-parent="' + nodeData.parentId + '"' : '') + '>')
       .addClass('node ' + (nodeData.className || '') +  (level >= opts.depth ? ' slide-up' : ''))
       .append('<div class="title">' + nodeData[opts.nodeTitle] + '</div>')
       .append(typeof opts.nodeContent !== 'undefined' ? '<div class="content">' + (nodeData[opts.nodeContent] || '') + '</div>' : '');
@@ -616,6 +629,7 @@
 
     // define click event handler for the top edge
     $nodeDiv.on('click', '.topEdge', function(event) {
+      event.stopPropagation();
       var $that = $(this);
       var $node = $that.parent();
       var parentState = getNodeState($node, 'parent');
@@ -640,7 +654,7 @@
         // start up loading status
         if (startLoading($that, $node, opts)) {
         // load new nodes
-          $.ajax({ 'url': opts.ajaxURL.parent + nodeId + '/', 'dataType': 'json' })
+          $.ajax({ 'url': $.isFunction(opts.ajaxURL.parent) ? opts.ajaxURL.parent(nodeData) : opts.ajaxURL.parent + nodeId, 'dataType': 'json' })
           .done(function(data) {
             if ($node.closest('.orgchart').data('inAjax')) {
               if (!$.isEmptyObject(data)) {
@@ -656,6 +670,7 @@
 
     // bind click event handler for the bottom edge
     $nodeDiv.on('click', '.bottomEdge', function(event) {
+      event.stopPropagation();
       var $that = $(this);
       var $node = $that.parent();
       var childrenState = getNodeState($node, 'children');
@@ -671,7 +686,7 @@
       } else { // load the new children nodes of the specified node by ajax request
         var nodeId = $that.parent()[0].id;
         if (startLoading($that, $node, opts)) {
-          $.ajax({ 'url': opts.ajaxURL.children + nodeId + '/', 'dataType': 'json' })
+          $.ajax({ 'url': $.isFunction(opts.ajaxURL.children) ? opts.ajaxURL.children(nodeData) : opts.ajaxURL.children + nodeId, 'dataType': 'json' })
           .done(function(data, textStatus, jqXHR) {
             if ($node.closest('.orgchart').data('inAjax')) {
               if (data.children.length) {
@@ -714,6 +729,7 @@
 
     // bind click event handler for the left and right edges
     $nodeDiv.on('click', '.leftEdge, .rightEdge', function(event) {
+      event.stopPropagation();
       var $that = $(this);
       var $node = $that.parent();
       var siblingsState = getNodeState($node, 'siblings');
@@ -746,9 +762,11 @@
       } else {
         // load the new sibling nodes of the specified node by ajax request
         var nodeId = $that.parent()[0].id;
-        var url = (getNodeState($node, 'parent').exist) ? opts.ajaxURL.siblings : opts.ajaxURL.families;
+        var url = (getNodeState($node, 'parent').exist) ?
+          ($.isFunction(opts.ajaxURL.siblings) ? opts.ajaxURL.siblings(nodeData) : opts.ajaxURL.siblings + nodeId) :
+          ($.isFunction(opts.ajaxURL.families) ? opts.ajaxURL.families(nodeData) : opts.ajaxURL.families + nodeId);
         if (startLoading($that, $node, opts)) {
-          $.ajax({ 'url': url + nodeId + '/', 'dataType': 'json' })
+          $.ajax({ 'url': url, 'dataType': 'json' })
           .done(function(data, textStatus, jqXHR) {
             if ($node.closest('.orgchart').data('inAjax')) {
               if (data.siblings || data.children) {
@@ -858,8 +876,8 @@
         if (!$dropZone.closest('tr').siblings().length) { // if the drop zone is a leaf node
           $dropZone.append('<i class="edge verticalEdge bottomEdge fa"></i>')
             .parent().attr('colspan', 2)
-            .parent().after('<tr class="lines"><td colspan="2"><div class="down"></div></td></tr>'
-            + '<tr class="lines"><td class="right">&nbsp;</td><td class="left">&nbsp;</td></tr>'
+            .parent().after('<tr class="lines"><td colspan="2"><div class="downLine"></div></td></tr>'
+            + '<tr class="lines"><td class="rightLine">&nbsp;</td><td class="leftLine">&nbsp;</td></tr>'
             + '<tr class="nodes"></tr>')
             .siblings(':last').append($dragged.find('.horizontalEdge').remove().end().closest('table').parent());
         } else {
@@ -869,7 +887,7 @@
           if (!$dragged.find('.horizontalEdge').length) {
             $dragged.append(horizontalEdges);
           }
-          $dropZone.closest('tr').siblings().eq(1).children(':last').before('<td class="left top">&nbsp;</td><td class="right top">&nbsp;</td>')
+          $dropZone.closest('tr').siblings().eq(1).children(':last').before('<td class="leftLine topLine">&nbsp;</td><td class="rightLine topLine">&nbsp;</td>')
             .end().next().append($dragged.closest('table').parent());
           var $dropSibs = $dragged.closest('table').parent().siblings().find('.node:first');
           if ($dropSibs.length === 1) {
@@ -938,14 +956,14 @@
 
       // draw the line close to parent node
       if (!isVerticalLayer) {
-        $nodeWrapper.append('<tr class="lines' + isHidden + '"><td colspan="' + $childNodes.length * 2 + '"><div class="down"></div></td></tr>');
+        $nodeWrapper.append('<tr class="lines' + isHidden + '"><td colspan="' + $childNodes.length * 2 + '"><div class="downLine"></div></td></tr>');
       }
       // draw the lines close to children nodes
-      var lineLayer = '<tr class="lines' + isHidden + '"><td class="right">&nbsp;</td>';
+      var lineLayer = '<tr class="lines' + isHidden + '"><td class="rightLine">&nbsp;</td>';
       for (var i=1; i<$childNodes.length; i++) {
-        lineLayer += '<td class="left top">&nbsp;</td><td class="right top">&nbsp;</td>';
+        lineLayer += '<td class="leftLine topLine">&nbsp;</td><td class="rightLine topLine">&nbsp;</td>';
       }
-      lineLayer += '<td class="left">&nbsp;</td></tr>';
+      lineLayer += '<td class="leftLine">&nbsp;</td></tr>';
       var $nodeLayer;
       if (isVerticalLayer) {
         $nodeLayer = $('<ul>');
@@ -1000,8 +1018,8 @@
     $.when(createNode(nodeData, 0, opts || $currentRoot.closest('.orgchart').data('options')))
       .done(function($nodeDiv) {
         $table.append($nodeDiv.removeClass('slide-up').addClass('slide-down').wrap('<tr class="hidden"><td colspan="2"></td></tr>').closest('tr'));
-        $table.append('<tr class="lines hidden"><td colspan="2"><div class="down"></div></td></tr>');
-        var linesRow = '<td class="right">&nbsp;</td><td class="left">&nbsp;</td>';
+        $table.append('<tr class="lines hidden"><td colspan="2"><div class="downLine"></div></td></tr>');
+        var linesRow = '<td class="rightLine">&nbsp;</td><td class="leftLine">&nbsp;</td>';
         $table.append('<tr class="lines hidden">' + linesRow + '</tr>');
         var $oc = that.children('.orgchart');
         $oc.prepend($table)
@@ -1028,7 +1046,7 @@
   function complementLine($oneSibling, siblingCount, existingSibligCount) {
     var lines = '';
     for (var i = 0; i < existingSibligCount; i++) {
-      lines += '<td class="left top">&nbsp;</td><td class="right top">&nbsp;</td>';
+      lines += '<td class="leftLine topLine">&nbsp;</td><td class="rightLine topLine">&nbsp;</td>';
     }
     $oneSibling.parent().prevAll('tr:gt(0)').children().attr('colspan', siblingCount * 2)
       .end().next().children(':first').after(lines);
@@ -1093,7 +1111,7 @@
     var $sibs = $parent.parent().siblings();
     if ($parent.is('td')) {
       if (getNodeState($node, 'siblings').exist) {
-        $sibs.eq(2).children('.top:lt(2)').remove();
+        $sibs.eq(2).children('.topLine:lt(2)').remove();
         $sibs.eq(':lt(2)').children().attr('colspan', $sibs.eq(2).children().length);
         $parent.remove();
       } else {

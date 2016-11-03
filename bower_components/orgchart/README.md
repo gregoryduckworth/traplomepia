@@ -172,8 +172,14 @@ var datasource = {
 var ajaxURLs = {
   'children': '/orgchart/children/',
   'parent': '/orgchart/parent/',
-  'siblings': '/orgchart/siblings/',
-  'families': '/orgchart/families/'
+  // It would be helpful to have functions instead of URLs for the AJAX fetching
+  // as it would allow a more flexible treatment of the results.
+  'siblings': function(nodeData) {
+    return '/orgchart/siblings/' + nodeData.id;
+  },
+  'families': function(nodeData) {
+    return '/orgchart/families/' + nodeData.id;
+  }
 };
 
 $('#chart-container').orgchart({
@@ -483,7 +489,8 @@ $('#chartContainerId').orgchart(options);
 ### Structure of Datasource
 ```js
 {
-  'id': 'rootNode', // It's a optional property which will be used as id attribute of node.
+  'id': 'rootNode', // It's a optional property which will be used as id attribute of node
+  // and data-parent attribute, which contains the id of the parent node
   'className': 'top-level', // It's a optional property which will be used as className attribute of node.
   'nodeTitlePro': 'Lao Lao',
   'nodeContentPro': 'general manager',
@@ -533,7 +540,7 @@ $('#chartContainerId').orgchart(options);
       <td>toggleSiblingsResp</td><td>boolean</td><td>no</td><td>false</td><td>Once enable this option, users can show/hide left/right sibling nodes respectively by clicking left/right arrow.</td>
     </tr>
     <tr>
-      <td>ajaxURL</td><td>json</td><td>no</td><td></td><td>It inclueds four properites -- parent, children, siblings, families(ask for parent node and siblings nodes). As their names imply, different propety indicates the URL to which ajax request for different nodes is sent.</td>
+      <td>ajaxURL</td><td>json</td><td>no</td><td></td><td>It inclueds four properites -- parent, children, siblings, families(ask for parent node and siblings nodes). As their names imply, different propety provides the URL to which ajax request for different nodes is sent.</td>
     </tr>
     <tr>
       <td>depth</td><td>positive integer</td><td>no</td><td>999</td><td>It indicates the level that at the very beginning orgchart is expanded to.</td>
@@ -622,6 +629,125 @@ Removes the designated node and its descedant nodes.
 </table>
 ##### .orgchart('getHierarchy'）
 This method is designed to get the hierarchy relationships of orgchart for further processing. For example, after editing the orgchart, you could send the returned value of this method to server-side and save the new state of orghcart.
+##### .orgchart('hideDescendants',$node)
+This method allows you to hide programatically the children of any specific node(.node element), if it has
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>$node</td>
+    <td>JQuery Object</td>
+    <td>Yes</td>
+    <td>None</td>
+    <td>Is the desired JQuery Object to hide its children nodes</td>
+  </tr>
+</table>
+##### .orgchart('showDescendants',$node)
+This method allows you to show programatically the children of any specific node(.node element), if it has
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>$node</td>
+    <td>JQuery Object</td>
+    <td>Yes</td>
+    <td>None</td>
+    <td>Is the desired JQuery Object to show its children nodes</td>
+  </tr>
+</table>
+##### .orgchart('hideSiblings',$node,direction)
+This method allows you to hide programatically the siblings of any specific node(.node element), if it has
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>$node</td>
+    <td>JQuery Object</td>
+    <td>Yes</td>
+    <td>None</td>
+    <td>Is the desired JQuery Object to hide its siblings nodes</td>
+  </tr>
+  <tr>
+    <td>direction</td>
+    <td>string</td>
+    <td>No</td>
+    <td>None</td>
+    <td>Possible values:"left","rigth". Specifies if hide the siblings at left or rigth. If not defined hide both of them.</td>
+  </tr>
+</table>
+##### .orgchart('showSiblings',$node,direction)
+This method allows you to show programatically the siblings of any specific node(.node element), if it has
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>$node</td>
+    <td>JQuery Object</td>
+    <td>Yes</td>
+    <td>None</td>
+    <td>Is the desired JQuery Object to show its siblings nodes</td>
+  </tr>
+  <tr>
+    <td>direction</td>
+    <td>string</td>
+    <td>No</td>
+    <td>None</td>
+    <td>Possible values:"left","rigth". Specifies if hide the siblings at left or rigth. If not defined hide both of them.</td>
+  </tr>
+</table>
+##### .orgchart('getNodeState',$node,relation)
+This method returns you the specified relation of a node
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>$node</td>
+    <td>JQuery Object</td>
+    <td>Yes</td>
+    <td>None</td>
+    <td>Is the desired JQuery Object to know its relationship</td>
+  </tr>
+  <tr>
+    <td>relation</td>
+    <td>String</td>
+    <td>No</td>
+    <td>None</td>
+    <td>Possible values:"children","parent". Specifies the desired relation to return, in case the parameter is not defined, it will return the siblings.</td>
+  </tr>
+</table>
+The returning object will have the next structure:
+```js
+{
+  "exists": true|false,  //Indicates if has parent|children|siblings
+  "visible":true|false,  //Indicates if the relationship nodes are visible
+  "nodes": JQueryObject  //The jquery object with the matching elements
+}
+```
 
 ### Events
 <table>
@@ -636,13 +762,50 @@ This method is designed to get the hierarchy relationships of orgchart for furth
 ### Tips
 **How can I deactivate expand/collapse feature of orgchart?**
 
-This use case is inspired by the [issue](https://github.com/dabeng/OrgChart/issues/25). Thank [der-robert](https://github.com/der-robert) and [ActiveScottShaw](https://github.com/ActiveScottShaw) for their constructive discussions:blush:
+This use case is inspired by the [issue](https://github.com/dabeng/OrgChart/issues/25). Thanks [der-robert](https://github.com/der-robert) and [ActiveScottShaw](https://github.com/ActiveScottShaw) for their constructive discussions:blush:
 
 Users can enable/disable exapand/collapse feature with className "noncollapsable" as shown below.
 ```js
 $('.orgchart').addClass('noncollapsable'); // deactivate
 
 $('.orgchart').removeClass('noncollapsable'); // activate
+```
+
+**How can I search nodes and show the minimized chart?**
+
+This use case is inspired by the [issue](https://github.com/dabeng/OrgChart/issues/78). Thanks [Mmannem](https://github.com/Mmannem) for his constructive discussions:blush:
+The following statements show the core logic and this is the complete [demo - filter node](http://dabeng.github.io/OrgChart/filter-node).
+```js
+var $chart = $('.orgchart');
+// disalbe the expand/collapse feture
+$chart.addClass('noncollapsable');
+// distinguish the matched nodes and the unmatched nodes according to the given key word
+$chart.find('.node').filter(function(index, node) {
+    return $(node).text().toLowerCase().indexOf(keyWord) > -1;
+  }).addClass('matched')
+  .closest('table').parents('table').find('tr:first').find('.node').addClass('retained');
+// hide the unmatched nodes
+$chart.find('.matched,.retained').each(function(index, node) {
+  var $unmatched = $(node).closest('table').parent().siblings().find('.node:first:not(.matched,.retained)')
+    .closest('table').parent().addClass('hidden');
+  $unmatched.parent().prev().children().slice(1, $unmatched.length * 2 + 1).addClass('hidden');
+});
+// hide the redundant descendant nodes of the matched nodes
+$chart.find('.matched').each(function(index, node) {
+  if (!$(node).closest('tr').siblings(':last').find('.matched').length) {
+    $(node).closest('tr').siblings().addClass('hidden');
+  }
+});
+```
+
+**Why is the root node gone?**
+
+When I have a huge orgchart with enabled "pan" option, if I hide all the children of one of the topmost parents then the chart disappear from screen. It seems that we need to add a reset button to keep the chart visible.
+For details, please refer to the [issue](https://github.com/dabeng/OrgChart/issues/85) opened by [manuel-84](https://github.com/manuel-84) :blush:
+
+Users can embed any clear up logics into the click handler of the reset buttton as shown below.
+```js
+$('.orgchart').css('transform',''); // remove the tansform settings
 ```
 
 ## Browser Compatibility
