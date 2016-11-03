@@ -15,12 +15,16 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot(SiteSettings $global_settings)
     {
-        $this->global_settings = $global_settings->lists('value', 'key');
 
         view()->composer('*', function($view)
         {
             $view->with('currentUser', Auth::user());
-            $view->with('global_settings', $this->global_settings);
+            
+            // If the database is empty, then do not try and set the global_settings
+            if($this->global_settings = $global_settings->lists('value', 'key')){
+                $view->with('global_settings', $this->global_settings);
+            }
+            
         });
     }
 
