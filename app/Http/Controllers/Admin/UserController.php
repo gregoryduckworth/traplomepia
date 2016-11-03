@@ -92,6 +92,9 @@ class UserController extends Controller
         $user = $this->user->find($id);
         // Login in as them and redirect to the home view
         Auth::login($user);
+        // Set a session variable to show the callout 
+        // that the current user is being impersonated
+        session(['impersonate' => true]);
         return redirect()->action('HomeController@index');
     }
 

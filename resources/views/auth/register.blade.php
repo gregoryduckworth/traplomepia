@@ -14,7 +14,7 @@
             </div>
             @if($global_settings['registration'] === 'open')
                 <div class="panel-body">
-                    {!! Form::open(['url' => 'register', 'class' => 'form-horizontal']) !!}
+                    {!! Form::open(['route' => 'register.post', 'class' => 'form-horizontal']) !!}
                         <div class="form-group">
                             {!! Form::label('first_name', trans('users.first_name'), ['class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-8">

@@ -10,6 +10,11 @@ return [
     'users' => 'Users',
     'user' => 'User',
 
+    // Admin 
+    'admin_section' => 'Admin Only Section',
+    'impersonate' => 'Impersonate',
+    'impersonating' => 'You are currently impersonating the user :name',
+
     // Data
     'title' => 'Title',
     'first_name' => 'First Name',
@@ -34,4 +39,5 @@ return [
     'old_password' => 'Old Password',
     'new_password' => 'New Password',
     'password_confirmation' => 'Confirm Password',
+    'passwordclickreset' => 'Click here to reset your password:',
 ];

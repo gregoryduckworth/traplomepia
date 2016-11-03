@@ -44,6 +44,7 @@ desired effect
 
             <!-- Main content -->
             <section class="content">
+                @include('users.impersonate')
                 <!-- Your Page Content Here -->
                 @yield('main-content')
             </section><!-- /.content -->

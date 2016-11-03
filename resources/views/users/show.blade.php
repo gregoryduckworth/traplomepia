@@ -32,7 +32,8 @@
 
     @role('administrator')
     <div class="box-footer">
-        <a href="{!! route('admin.users.impersonate', $user->id) !!}" class="pull-right btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="{!! trans('common.impersonate') !!}"><i class="fa fa-user"></i></a>
+        <h4>{!! trans('users.admin_section') !!}</h4>
+        <a href="{!! route('admin.users.impersonate', $user->id) !!}" class="btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="{!! trans('users.impersonate') !!}">{!! trans('users.impersonate') !!} <i class="fa fa-user"></i></a>
     </div>
     @endrole
 </div>

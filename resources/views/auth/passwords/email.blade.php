@@ -20,7 +20,7 @@
             </div>
 
             <div class="panel-body">
-                {!! Form::open(['url' => 'password/email', 'class' => 'form-horizontal']) !!}
+                {!! Form::open(['route' => 'password.email', 'class' => 'form-horizontal']) !!}
                     <div class="form-group has-feedback">
                         {!! Form::label('email', trans('message.email'), ['class' => 'col-md-3 control-label']) !!}
                         <div class="col-md-9">

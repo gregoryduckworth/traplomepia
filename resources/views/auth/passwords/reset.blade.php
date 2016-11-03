@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="form-group has-feedback">
-                        {!! Form::label('password_confirmation', trans('message.retrypepassword'), ['class' => 'col-md-3 control-label']) !!}
+                        {!! Form::label('password_confirmation', trans('users.password_confirmation'), ['class' => 'col-md-3 control-label']) !!}
                         <div class="col-md-9">
                             {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                             <i class="fa fa-lock form-control-feedback"></i>

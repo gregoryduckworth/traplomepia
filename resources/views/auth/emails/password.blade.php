@@ -1,3 +1,3 @@
 {{-- resources/views/emails/password.blade.php --}}
 
-{{ trans('adminlte_lang::message.passwordclickreset') }} <a href="{{ url('password/reset/'.$token) }}">{{ url('password/reset/'.$token) }}</a>
+{!! trans('users.passwordclickreset') !!} <a href="{!! route('password.reset', $token) !!}">{!! route('password.reset', $token) !!}</a>
