@@ -15,10 +15,10 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot(SiteSettings $global_settings)
     {
-        $this->global_settings = $global_settings->lists('value', 'key');
-
         view()->composer('*', function($view)
         {
+            $this->global_settings = $global_settings->lists('value', 'key');
+
             $view->with('currentUser', Auth::user());
             $view->with('global_settings', $this->global_settings);            
         });
