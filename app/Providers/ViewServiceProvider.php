@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Auth;
-use App\Repositories\Eloquent\SiteSettingsRepository as SiteSettings;
+use App\Repositories\Contracts\SiteSettingsInterface as SiteSettings;
 use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
