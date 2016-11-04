@@ -89,7 +89,7 @@ class User extends Authenticatable
     public function getPictureAttribute()
     {
         if($this->profile_picture == null){
-            return '//placeholdit.imgix.net/~text?txtsize=33&amp;txt='. $this->name .'&amp;w=180&amp;h=180';
+            return '//placeholdit.imgix.net/~text?txtsize=30&amp;txt='. $this->name .'&amp;w=180&amp;h=180';
         }
         return $this->profile_picture;
     }

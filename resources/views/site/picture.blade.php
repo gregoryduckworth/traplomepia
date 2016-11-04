@@ -16,6 +16,8 @@
             {!! Form::close() !!}
         </div>
     </div>
+    <div class="box-footer">
+    </div>
 </div>
 
 @push('javascript')
