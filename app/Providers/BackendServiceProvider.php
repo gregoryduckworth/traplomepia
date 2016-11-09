@@ -30,7 +30,7 @@ class BackendServiceProvider extends ServiceProvider
             'User',
         ];
 
-        foreach($models as $model){
+        foreach ($models as $model) {
             $this->app->bind('App\Repositories\Contracts\\'.$model.'Interface', 'App\Repositories\Eloquent\\'.$model.'Repository');
         }
     }

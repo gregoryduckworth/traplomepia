@@ -23,7 +23,7 @@ class User extends Authenticatable
 
         // When the model is created, ensure we automatically
         // generate the following
-        static::creating(function($model){
+        static::creating(function ($model) {
             $model->api_token = str_random(60);
         });
     }
@@ -31,7 +31,8 @@ class User extends Authenticatable
     /**
      * Required to ensure we restore in the correct way
      */
-    public function restore() {
+    public function restore()
+    {
         $this->sfRestore();
     }
 
@@ -62,7 +63,7 @@ class User extends Authenticatable
     
     /**
      * Return the first name and last name in an easy way
-     * 
+     *
      * @return String
      */
     public function getNameAttribute()
@@ -72,7 +73,7 @@ class User extends Authenticatable
 
     /**
      * Ensure that we always encrypt the password
-     * 
+     *
      * @param String
      */
     public function setPasswordAttribute($value)
@@ -83,15 +84,14 @@ class User extends Authenticatable
     /**
      * Generate a thumbnail for the user if they have not uploaded
      * a profile picture
-     * 
+     *
      * @return string
      */
     public function getPictureAttribute()
     {
-        if($this->profile_picture == null){
+        if ($this->profile_picture == null) {
             return '//placeholdit.imgix.net/~text?txtsize=30&amp;txt='. $this->name .'&amp;w=180&amp;h=180';
         }
         return $this->profile_picture;
     }
-    
 }

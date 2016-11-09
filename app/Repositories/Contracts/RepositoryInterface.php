@@ -5,7 +5,8 @@ namespace App\Repositories\Contracts;
 /**
  * Interface RepositoryInterface
  */
-interface RepositoryInterface {
+interface RepositoryInterface
+{
 
     /**
      * @param array $columns
@@ -50,7 +51,7 @@ interface RepositoryInterface {
     public function deleted();
 
     /**
-     * @param  $id 
+     * @param  $id
      * @return Boolean
      */
     public function restore($id);
@@ -93,5 +94,4 @@ interface RepositoryInterface {
      * @return mixed
      */
     public function selectChild($id);
-
 }

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "70001c157541b107495902d311156ecb",
-    "content-hash": "d37393cf5adbb32c0824eef3a02d3bc8",
+    "hash": "354d4aab494ab156a765b492d9ee80d1",
+    "content-hash": "bac697d4d2f300ed4cce8e7c784eb636",
     "packages": [
         {
             "name": "acacha/admin-lte-template-laravel",
@@ -421,16 +421,16 @@
         },
         {
             "name": "jeroennoten/laravel-adminlte",
-            "version": "v1.15.1",
+            "version": "v1.16.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeroennoten/Laravel-AdminLTE.git",
-                "reference": "22b591c455f588f91f3f2ddc343a77de3b8dfb06"
+                "reference": "314b866690b3e0e6285040f8576f08f3ade34d88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/22b591c455f588f91f3f2ddc343a77de3b8dfb06",
-                "reference": "22b591c455f588f91f3f2ddc343a77de3b8dfb06",
+                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/314b866690b3e0e6285040f8576f08f3ade34d88",
+                "reference": "314b866690b3e0e6285040f8576f08f3ade34d88",
                 "shasum": ""
             },
             "require": {
@@ -463,20 +463,20 @@
                 "administrator",
                 "laravel"
             ],
-            "time": "2016-10-20 08:08:39"
+            "time": "2016-11-03 17:28:24"
         },
         {
             "name": "laravel/framework",
-            "version": "v5.3.21",
+            "version": "v5.3.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "140ad823863d5cc6f4580f1cdf9b18b9a6a457f4"
+                "reference": "715328dd4fb1a7bcf3cb41b3472f9e3499d068fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/140ad823863d5cc6f4580f1cdf9b18b9a6a457f4",
-                "reference": "140ad823863d5cc6f4580f1cdf9b18b9a6a457f4",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/715328dd4fb1a7bcf3cb41b3472f9e3499d068fc",
+                "reference": "715328dd4fb1a7bcf3cb41b3472f9e3499d068fc",
                 "shasum": ""
             },
             "require": {
@@ -591,7 +591,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-10-26 13:27:05"
+            "time": "2016-11-01 18:52:00"
         },
         {
             "name": "laravelcollective/html",
@@ -1082,16 +1082,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb"
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c0125896dbb151380ab47e96c621741e79623beb",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
                 "shasum": ""
             },
             "require": {
@@ -1126,7 +1126,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-10-17 15:23:22"
+            "time": "2016-11-07 23:38:38"
         },
         {
             "name": "phenx/php-font-lib",
@@ -2548,16 +2548,16 @@
         },
         {
             "name": "zizaco/entrust",
-            "version": "5.2.x-dev",
+            "version": "1.8.0-alpha1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Zizaco/entrust.git",
-                "reference": "b749bff868026336dec1ba1a16c150728697353d"
+                "reference": "7bc1d1448096b94a8dfd55a39c8dc3783a59ff71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/b749bff868026336dec1ba1a16c150728697353d",
-                "reference": "b749bff868026336dec1ba1a16c150728697353d",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/7bc1d1448096b94a8dfd55a39c8dc3783a59ff71",
+                "reference": "7bc1d1448096b94a8dfd55a39c8dc3783a59ff71",
                 "shasum": ""
             },
             "require": {
@@ -2612,7 +2612,7 @@
                 "permission",
                 "roles"
             ],
-            "time": "2016-03-24 15:24:42"
+            "time": "2016-11-04 16:29:09"
         }
     ],
     "packages-dev": [
@@ -2672,16 +2672,16 @@
         },
         {
             "name": "behat/behat",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "df7d9225e9ee37fdaa54273e3e0aecf2515bbe76"
+                "reference": "30aa3836825416f28581ee55fcfe6a5b0cdeeb85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/df7d9225e9ee37fdaa54273e3e0aecf2515bbe76",
-                "reference": "df7d9225e9ee37fdaa54273e3e0aecf2515bbe76",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/30aa3836825416f28581ee55fcfe6a5b0cdeeb85",
+                "reference": "30aa3836825416f28581ee55fcfe6a5b0cdeeb85",
                 "shasum": ""
             },
             "require": {
@@ -2749,7 +2749,7 @@
                 "symfony",
                 "testing"
             ],
-            "time": "2016-09-25 09:40:39"
+            "time": "2016-11-05 17:13:53"
         },
         {
             "name": "behat/gherkin",
@@ -3347,16 +3347,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.5.4",
+            "version": "1.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "ea74994a3dc7f8d2f65a06009348f2d63c81e61f"
+                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/ea74994a3dc7f8d2f65a06009348f2d63c81e61f",
-                "reference": "ea74994a3dc7f8d2f65a06009348f2d63c81e61f",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/399c1f9781e222f6eb6cc238796f5200d1b7f108",
+                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108",
                 "shasum": ""
             },
             "require": {
@@ -3385,7 +3385,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2016-09-16 13:37:59"
+            "time": "2016-10-31 17:19:45"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -3597,16 +3597,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "5f3f7e736d6319d5f1fc402aff8b026da26709a3"
+                "reference": "6cba06ff75a1a63a71033e1a01b89056f3af1e8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/5f3f7e736d6319d5f1fc402aff8b026da26709a3",
-                "reference": "5f3f7e736d6319d5f1fc402aff8b026da26709a3",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/6cba06ff75a1a63a71033e1a01b89056f3af1e8d",
+                "reference": "6cba06ff75a1a63a71033e1a01b89056f3af1e8d",
                 "shasum": ""
             },
             "require": {
@@ -3656,7 +3656,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-07-26 14:39:29"
+            "time": "2016-11-01 05:06:24"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -4927,7 +4927,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "zizaco/entrust": 20
+        "zizaco/entrust": 15
     },
     "prefer-stable": false,
     "prefer-lowest": false,

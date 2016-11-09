@@ -31,25 +31,25 @@ class SiteSettingsController extends Controller
     {
         // Run through each of the settings that we want to update
         // and if any fail then return an error
-        foreach($request->except('_token') as $key => $value){
+        foreach ($request->except('_token') as $key => $value) {
             $setting = $this->site_settings->where('key', '=', $key)->first();
-            if(!$setting->update(['value' => $value])){
+            if (!$setting->update(['value' => $value])) {
                 return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
             }
         }
-        return response()->json(['msg' => trans('json.site_settings_updated'), 'status' => 'success']);   
+        return response()->json(['msg' => trans('json.site_settings_updated'), 'status' => 'success']);
     }
 
     /**
      * Update the logo for the entire site
-     * 
-     * @param  ImageFormRequest $request 
+     *
+     * @param  ImageFormRequest $request
      * @return Response
      */
     public function updatePicture(ImageFormRequest $request)
     {
         // Get the image from the form
-        if($image = $request->image){
+        if ($image = $request->image) {
             // Get the picture row from the site_settings table
             $setting = $this->site_settings->findBy('key', 'picture');
             $setting->update(['value' => Helper::createImage($setting, $setting->value, $image)]);

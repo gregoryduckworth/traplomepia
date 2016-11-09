@@ -57,7 +57,7 @@ class ProfileController extends Controller
             // Update the user to have the new password
             $user->update(['password' => $request->password_confirmation]);
             return response()->json(['msg' => trans('json.password_update', ['type' => trans('users.user')]), 'status' => 'success']);
-        }else{
+        } else {
             return response()->json(['msg' => trans('json.password_not_match'), 'status' => 'error']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);
@@ -65,13 +65,13 @@ class ProfileController extends Controller
 
     /**
      * Get the profile picture uploaded by the user for the site
-     * 
-     * @param  ImageFormRequest $request 
+     *
+     * @param  ImageFormRequest $request
      * @return Response
      */
     public function updateProfilePicture(ImageFormRequest $request)
     {
-        if($image = $request->image){
+        if ($image = $request->image) {
             // Find the current user
             $user = $this->user->find(Auth::user()->id);
             $user->update(['profile_picture' => Helper::createImage($user, $user->profile_picture, $image)]);

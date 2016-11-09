@@ -8,5 +8,5 @@ namespace App\Repositories\Contracts;
 
 interface PermissionInterface extends RepositoryInterface
 {
-
+	//
 }

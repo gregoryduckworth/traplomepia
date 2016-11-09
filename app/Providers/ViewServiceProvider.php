@@ -17,14 +17,13 @@ class ViewServiceProvider extends ServiceProvider
     {
         // If the App is running in the console (usually during a migrate)
         // then we do not need to set the global settings just yet
-        if(!\App::runningInConsole()){
+        if (!\App::runningInConsole()) {
             $this->global_settings = $global_settings->lists('value', 'key');
         }
 
-        view()->composer('*', function($view)
-        {
+        view()->composer('*', function ($view) {
             $view->with('currentUser', Auth::user());
-            $view->with('global_settings', $this->global_settings);            
+            $view->with('global_settings', $this->global_settings);
         });
     }
 

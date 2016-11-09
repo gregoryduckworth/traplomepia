@@ -77,5 +77,4 @@ class RoleController extends Controller
         return view('roles.edit')
             ->withRole($this->role->find($id));
     }
-
 }

@@ -34,7 +34,7 @@ abstract class Repository implements RepositoryInterface
      *
      * @return mixed
      */
-    public abstract function model();
+    abstract public function model();
 
     /**
      * @param array $columns
@@ -135,7 +135,7 @@ abstract class Repository implements RepositoryInterface
     }
 
     /**
-     * @param  $id 
+     * @param  $id
      * @return Boolean
      */
     public function restore($id)
@@ -165,9 +165,9 @@ abstract class Repository implements RepositoryInterface
     }
 
     /**
-     * @param  $attribute 
-     * @param  $operator  
-     * @param  $value     
+     * @param  $attribute
+     * @param  $operator
+     * @param  $value
      * @return mixed
      */
     public function where($attribute, $operator, $value)
@@ -194,17 +194,18 @@ abstract class Repository implements RepositoryInterface
     public function setModel($eloquentModel)
     {
         $this->model = $this->app->make($eloquentModel);
-        if (!$this->model instanceof Model)
+        if (!$this->model instanceof Model) {
             throw new RepositoryException("Class {$this->model} must be an instance of Illuminate\\Database\\Eloquent\\Model");
+        }
         return $this->model;
     }
 
     /**
      * Order the collection by a certain column
      * and set the sorting order
-     * 
+     *
      * @param  $column
-     * @param  $sorting 
+     * @param  $sorting
      * @return mixed
      */
     public function orderBy($column, $sorting = 'ASC')
@@ -214,25 +215,25 @@ abstract class Repository implements RepositoryInterface
 
     /**
      * Fetch the nested structure from the database
-     * 
+     *
      * @return mixed
      */
     public function nest()
     {
-        $nest = $this->model->orderBy('parent_id')->where('parent_id', NULL)->get();
+        $nest = $this->model->orderBy('parent_id')->where('parent_id', null)->get();
         $nest = $this->addRelation($nest);
         return $nest;
     }
 
     /**
      * Create the relation between the parent and the child
-     * 
+     *
      * @param $nest
      */
-    public function addRelation($nest){
-
+    public function addRelation($nest)
+    {
         $nest->map(function ($item, $key) {
-            $sub = $this->selectChild($item->id); 
+            $sub = $this->selectChild($item->id);
             return $item = array_add($item, 'children', $sub);
         });
         return $nest;
@@ -241,7 +242,7 @@ abstract class Repository implements RepositoryInterface
     /**
      * Select the children from the database
      * and recursively add the iteration
-     * 
+     *
      * @param  $id
      * @return mixed
      */
@@ -251,5 +252,4 @@ abstract class Repository implements RepositoryInterface
         $nest = $this->addRelation($nest);
         return $nest;
     }
-
 }
