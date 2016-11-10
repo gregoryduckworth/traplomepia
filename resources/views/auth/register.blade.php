@@ -12,7 +12,7 @@
             <div class="panel-heading">
                 <h4 class="text-center">{!! trans('message.register') !!}</h4>
             </div>
-            @if($global_settings['registration'] === 'open')
+            @if(config('settings.registration') === 'open')
                 <div class="panel-body">
                     {!! Form::open(['route' => 'register.post', 'class' => 'form-horizontal']) !!}
                         <div class="form-group">

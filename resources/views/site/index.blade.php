@@ -12,7 +12,7 @@
     </div>
 
     <div class="box-body">
-    	{!! Form::model($global_settings, ['id' => 'form', 'route' => 'api.settings.update', 'redirect' => route('admin.settings.index'), '_method' => 'PATCH', 'class' => 'col-md-12']) !!}
+    	{!! Form::model(config('settings'), ['id' => 'form', 'route' => 'api.settings.update', 'redirect' => route('admin.settings.index'), '_method' => 'PATCH', 'class' => 'col-md-12']) !!}
 
             <div class="form-group">
                 {!! Form::label('full_name', trans('settings.full_name') ) !!}

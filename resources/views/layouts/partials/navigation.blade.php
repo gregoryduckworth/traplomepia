@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">{!! $global_settings['full_name'] !!}</a>
+            <a class="navbar-brand" href="#">{!! config('settings.full_name') !!}</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -31,7 +31,7 @@
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
                     <li><a href="{!! route('login') !!}"><i class="fa fa-sign-in"></i> {!! trans('message.login') !!}</a></li>
-                    @if($global_settings['registration'] === 'open')<li><a href="{!! route('register') !!}"><i class="fa fa-user-plus"></i> {!! trans('message.register') !!}</a></li>@endif
+                    @if(config('settings.registration') === 'open')<li><a href="{!! route('register') !!}"><i class="fa fa-user-plus"></i> {!! trans('message.register') !!}</a></li>@endif
                 @else
                     <li><a href="/home">{!! $currentUser->name !!}</a></li>
                 @endif

@@ -5,8 +5,8 @@
     <!-- Main component for a primary marketing message or call to action -->
     <div>
         <h1>
-        	<img src="{!! $global_settings['picture'] !!}" class="pull-right">
-        	{!! $global_settings['full_name'] !!}
+        	<img src="{!! config('settings.picture') !!}" class="pull-right">
+        	{!! config('settings.full_name') !!}
         </h1>
         <p>Main homepage for the site</p>
     </div>
