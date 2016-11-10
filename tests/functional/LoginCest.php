@@ -17,6 +17,6 @@ class LoginCest
         $I->amOnPage('/login');
         $I->fillField('#login input[name=email]', 'administrator@example.com');
         $I->fillField('#login input[name=password]', 'password');
-        $I->click('Sign In');
+        $I->click('sign-in');
     }
 }
