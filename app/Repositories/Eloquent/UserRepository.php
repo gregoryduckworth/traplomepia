@@ -10,9 +10,6 @@ class UserRepository extends Repository implements UserInterface
 {
 	use CacheableRepository;
 
-	// Set the lifetime of the cache 
-	protected $cacheMinutes = 90;
-
     public function model()
     {
         return 'App\Models\User';

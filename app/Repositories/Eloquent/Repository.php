@@ -7,6 +7,9 @@ use App\Repositories\Contracts\RepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Repositories\Events\RepositoryEntityCreated;
+use App\Repositories\Events\RepositoryEntityDeleted;
+use App\Repositories\Events\RepositoryEntityUpdated;
 
 /**
  * Class Repository
@@ -103,7 +106,9 @@ abstract class Repository implements RepositoryInterface
      */
     public function create(array $data)
     {
-        return $this->model->create($data);
+        $model = $this->model->create($data);
+        event(new RepositoryEntityCreated($this, $model));
+        return $model;
     }
 
     /**
@@ -114,7 +119,9 @@ abstract class Repository implements RepositoryInterface
      */
     public function update(array $data, $id, $attribute = "id")
     {
-        return $this->model->where($attribute, '=', $id)->update($data);
+        $model = $this->model->where($attribute, '=', $id)->update($data);
+        event(new RepositoryEntityUpdated($this, $model));
+        return $model;
     }
 
     /**
@@ -123,7 +130,10 @@ abstract class Repository implements RepositoryInterface
      */
     public function delete($id)
     {
-        return $this->model->destroy($id);
+        $model = $this->model->find($id);
+        \Log::info('delete');
+        event(new RepositoryEntityDeleted($this, $model));
+        return $model->destroy($id);
     }
 
     /**

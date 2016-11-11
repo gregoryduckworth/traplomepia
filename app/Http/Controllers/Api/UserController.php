@@ -61,17 +61,10 @@ class UserController extends Controller
     public function destroy($id)
     {
         // Find the user who we want to delete
-        if ($user = $this->user->find($id)) {
-
-            // If the user has a role within the system, we do not want to delete them
-            if ($user->can('*')) {
-                return response()->json(['msg' => trans('json.user_has_roles'), 'status' => 'warning']);
-            }
+        if ($this->user->find($id)) {
             // Delete the user from the system
-            else {
-                $user->delete();
-                return response()->json(['msg' => trans('json.deletion_success', ['type' => trans('users.user')]), 'status' => 'success']);
-            }
+            $this->user->delete($id);
+            return response()->json(['msg' => trans('json.deletion_success', ['type' => trans('users.user')]), 'status' => 'success']);
         }
         // If there was an error somewhere, return a failure
         else {
