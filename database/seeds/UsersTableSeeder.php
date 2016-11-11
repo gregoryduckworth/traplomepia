@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
                 'email' => $role->name . '@example.com',
                 'password' => 'password',
                 'dob' => '2000-01-01',
+                'gender' => 'male',
                 'api_token' => str_random(60),
             ]);
 

@@ -157,7 +157,7 @@ class UserController extends Controller
             $user->attachRoles($request['roles']);
         }
 
-        if ($user->update($request->all())) {
+        if ($this->user->update($request->except(['_token', 'roles']), $request->id)) {
             return response()->json(['msg' => trans('json.data_updated', ['type' => trans('users.user')]), 'status' => 'success']);
         }
         return response()->json(['msg' => trans('json.something_went_wrong'), 'status' => 'error']);

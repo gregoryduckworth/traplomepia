@@ -119,9 +119,8 @@ abstract class Repository implements RepositoryInterface
      */
     public function update(array $data, $id, $attribute = "id")
     {
-        $model = $this->model->where($attribute, '=', $id)->update($data);
-        event(new RepositoryEntityUpdated($this, $model));
-        return $model;
+        event(new RepositoryEntityUpdated($this, $this->model->find($id)));
+        return $this->model->where($attribute, '=', $id)->update($data);
     }
 
     /**
@@ -131,7 +130,6 @@ abstract class Repository implements RepositoryInterface
     public function delete($id)
     {
         $model = $this->model->find($id);
-        \Log::info('delete');
         event(new RepositoryEntityDeleted($this, $model));
         return $model->destroy($id);
     }
