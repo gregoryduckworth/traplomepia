@@ -118,10 +118,8 @@ trait CacheableRepository
      */
     public function getCacheKey($method, $args = null)
     {
-
         $request = app('Illuminate\Http\Request');
-        $args = serialize($args);
-        $key = sprintf('%s@%s-%s', get_called_class(), $method, md5($args . $request->fullUrl()));
+        $key = sprintf('%s@%s', get_called_class(), $method);
 
         CacheKeys::putKey(get_called_class(), $key);
 

@@ -13,8 +13,16 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
+        'App\Repositories\Events\RepositoryEntityCreated' => [
+            'App\Repositories\Listeners\CleanCacheRepository',
+        ],
+
+        'App\Repositories\Events\RepositoryEntityUpdated' => [
+            'App\Repositories\Listeners\CleanCacheRepository',
+        ],
+
+        'App\Repositories\Events\RepositoryEntityDeleted' => [
+            'App\Repositories\Listeners\CleanCacheRepository',
         ],
     ];
 
@@ -27,6 +35,10 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+        foreach ($this->listen as $event => $listeners) {
+            foreach ($listeners as $listener) {
+                Event::listen($event, $listener);
+            }
+        }
     }
 }
