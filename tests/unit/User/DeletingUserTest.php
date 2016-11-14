@@ -7,7 +7,7 @@ class DeletingUserTest extends \Codeception\Test\Unit
     /**
      * @var UnitTester
      */
-    protected $tester; 
+    protected $tester;
 
     /**
      * Delete the record from the database
@@ -28,8 +28,8 @@ class DeletingUserTest extends \Codeception\Test\Unit
         // Delete the User
         $user->delete();
 
-        // Check the record is has been updated so that the 
+        // Check the record is has been updated so that the
         // deleted_at column now contains a value
-        $this->tester->dontSeeRecord('users', ['email' => 'john.doe@example.com', 'deleted_at' => NULL]);
-    } 
+        $this->tester->dontSeeRecord('users', ['email' => 'john.doe@example.com', 'deleted_at' => null]);
+    }
 }

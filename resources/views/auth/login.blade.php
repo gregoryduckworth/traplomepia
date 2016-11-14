@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            {!! Form::submit('Sign in', ['id' => 'sign-in', 'class' => 'btn btn-success btn-sm']) !!}
+                            {!! Form::submit('Sign in', ['id' => 'submit', 'class' => 'btn btn-success btn-sm']) !!}
                         </div>
                     </div>
                 {!! Form::close() !!}

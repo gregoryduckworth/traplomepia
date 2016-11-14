@@ -7,12 +7,12 @@ class UpdatingRoleTest extends \Codeception\Test\Unit
     /**
      * @var UnitTester
      */
-    protected $tester; 
+    protected $tester;
 
     /**
      * Delete the record from the database
      */
-    public function testUpdatingUser()
+    public function testUpdatingRole()
     {
         // Create the new role
         $role = Role::create([
@@ -29,7 +29,5 @@ class UpdatingRoleTest extends \Codeception\Test\Unit
         // and the old one does not exist
         $this->tester->seeRecord('roles', ['display_name' => 'Updated Role']);
         $this->tester->dontSeeRecord('roles', ['display_name' => 'New Role']);
-
-
-    } 
+    }
 }

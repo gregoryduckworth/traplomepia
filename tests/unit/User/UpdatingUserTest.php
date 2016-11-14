@@ -7,7 +7,7 @@ class UpdatingUserTest extends \Codeception\Test\Unit
     /**
      * @var UnitTester
      */
-    protected $tester; 
+    protected $tester;
 
     /**
      * Delete the record from the database
@@ -32,7 +32,5 @@ class UpdatingUserTest extends \Codeception\Test\Unit
         // and the old one does not exist
         $this->tester->seeRecord('users', ['email' => 'doe.john@example.com']);
         $this->tester->dontSeeRecord('users', ['email' => 'john.doe@example.com']);
-
-
-    } 
+    }
 }

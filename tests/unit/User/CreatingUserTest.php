@@ -7,7 +7,7 @@ class CreatingUserTest extends \Codeception\Test\Unit
     /**
      * @var UnitTester
      */
-    protected $tester; 
+    protected $tester;
 
     /**
      * Create the record in the database
@@ -15,6 +15,7 @@ class CreatingUserTest extends \Codeception\Test\Unit
      */
     public function testCreatingUser()
     {
+        // Create the User
         $user = User::create([
             'title' => 'Mr',
             'first_name' => 'John',
@@ -22,6 +23,8 @@ class CreatingUserTest extends \Codeception\Test\Unit
             'email' => 'john.doe@example.com',
             'password' => bcrypt('password'),
         ]);
+
+        // Check to see if the record is in the database
         $this->tester->seeRecord('users', ['email' => 'john.doe@example.com']);
-    } 
+    }
 }

@@ -14,7 +14,7 @@
             </div>
             @if(config('settings.registration') === 'open')
                 <div class="panel-body">
-                    {!! Form::open(['route' => 'register.post', 'class' => 'form-horizontal']) !!}
+                    {!! Form::open(['id' => 'register', 'route' => 'register.post', 'class' => 'form-horizontal']) !!}
                         <div class="form-group">
                             {!! Form::label('first_name', trans('users.first_name'), ['class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-8">
@@ -63,7 +63,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-4 col-md-8">
-                                {!! Form::submit(trans('message.register'), ['class' => 'btn btn-success']) !!}
+                                {!! Form::submit(trans('message.register'), ['id' => 'submit', 'class' => 'btn btn-success']) !!}
                             </div>
                         </div>
                     {!! Form::close() !!}

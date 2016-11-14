@@ -7,12 +7,12 @@ class DeletingRoleTest extends \Codeception\Test\Unit
     /**
      * @var UnitTester
      */
-    protected $tester; 
+    protected $tester;
 
     /**
      * Delete the record from the database
      */
-    public function testDeletingUser()
+    public function testDeletingRole()
     {
         // Create the new role
         $role = Role::create([
@@ -25,10 +25,8 @@ class DeletingRoleTest extends \Codeception\Test\Unit
         // Delete the Role
         $role->delete();
 
-        // Check the record is has been updated so that the 
+        // Check the record is has been updated so that the
         // deleted_at column now contains a value
         $this->tester->dontSeeRecord('roles', ['display_name' => 'New Role']);
-    } 
+    }
 }
-
-        

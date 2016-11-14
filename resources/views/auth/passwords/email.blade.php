@@ -20,7 +20,7 @@
             </div>
 
             <div class="panel-body">
-                {!! Form::open(['route' => 'password.email', 'class' => 'form-horizontal']) !!}
+                {!! Form::open(['id' => 'reset-password', 'route' => 'password.email', 'class' => 'form-horizontal']) !!}
                     <div class="form-group has-feedback">
                         {!! Form::label('email', trans('message.email'), ['class' => 'col-md-3 control-label']) !!}
                         <div class="col-md-9">
@@ -30,7 +30,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-3 col-md-9">
-                            {!! Form::submit(trans('message.sendpassword'), ['class' => 'btn btn-success btn-sm']) !!}
+                            {!! Form::submit(trans('message.sendpassword'), ['id' => 'submit', 'class' => 'btn btn-success btn-sm']) !!}
                         </div>
                     </div>
                 {!! Form::close() !!}

@@ -8,7 +8,7 @@ class CreatingRoleTest extends \Codeception\Test\Unit
     /**
      * @var UnitTester
      */
-    protected $tester; 
+    protected $tester;
 
     /**
      * Create the record in the database
@@ -37,5 +37,5 @@ class CreatingRoleTest extends \Codeception\Test\Unit
 
         // Check that the relationship has been added
         $this->tester->seeRecord('permission_role', ['permission_id' => $permission->id, 'role_id' => $role->id]);
-    }  
+    }
 }
