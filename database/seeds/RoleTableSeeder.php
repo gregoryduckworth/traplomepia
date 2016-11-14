@@ -18,14 +18,14 @@ class RoleTableSeeder extends Seeder
         $manage_users = Permission::create([
             'name' => 'manage-users',
             'display_name' => 'Manage Users',
-            'description' => 'Abiliy to manage all the users',
+            'description' => 'Ability to manage all the users',
         ]);
 
         // Role Permission
         $manage_roles = Permission::create([
             'name' => 'manage-roles',
             'display_name' => 'Manage Roles',
-            'description' => 'Abiliy to manage all the roles',
+            'description' => 'Ability to manage all the roles',
         ]);
 
         // Create each of the roles  
