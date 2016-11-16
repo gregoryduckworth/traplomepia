@@ -14,7 +14,7 @@
             </div>
             @if(config('settings.registration') === 'open')
                 <div class="panel-body">
-                    {!! Form::open(['id' => 'register', 'route' => 'register.post', 'class' => 'form-horizontal']) !!}
+                    {!! Form::open(['id' => 'register_form', 'route' => 'register.post', 'class' => 'form-horizontal']) !!}
                         <div class="form-group">
                             {!! Form::label('first_name', trans('users.first_name'), ['class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-8">
@@ -56,14 +56,14 @@
                             <div class="col-md-offset-4 col-md-8">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="terms">{!! trans('message.agree_terms') !!}
+                                        <input type="checkbox" name="terms" id="terms">{!! trans('message.agree_terms') !!}
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-4 col-md-8">
-                                {!! Form::submit(trans('message.register'), ['id' => 'submit', 'class' => 'btn btn-success']) !!}
+                                {!! Form::submit(trans('message.register'), ['class' => 'btn btn-success']) !!}
                             </div>
                         </div>
                     {!! Form::close() !!}
@@ -81,11 +81,9 @@
     </div>
 </div>
 
-
+@include('auth.terms')
 @endsection
 
 @push('javascript')
-
-    @include('auth.terms')
 
 @endpush

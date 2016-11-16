@@ -14,7 +14,7 @@
             </div>
 
             <div class="panel-body">
-                {!! Form::open(['id' => 'login', 'route' => 'login.post', 'class' => 'form-horizontal']) !!}
+                {!! Form::open(['id' => 'login_form', 'route' => 'login.post', 'class' => 'form-horizontal']) !!}
                     <div class="form-group has-feedback">
                         {!! Form::label('email', trans('message.email'), ['class' => 'col-md-2 control-label']) !!}
                         <div class="col-md-10">
@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            {!! Form::submit('Sign in', ['id' => 'submit', 'class' => 'btn btn-success btn-sm']) !!}
+                            {!! Form::submit('Sign in', ['class' => 'btn btn-success btn-sm']) !!}
                         </div>
                     </div>
                 {!! Form::close() !!}
