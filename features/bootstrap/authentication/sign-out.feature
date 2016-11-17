@@ -7,4 +7,4 @@ Feature: Sign out
 		And I am on "/home"
 		When I follow "user-menu" 
 		And I follow "Sign Out" 
-		Then I should see "AdminSite"
+		Then I should be on the homepage
