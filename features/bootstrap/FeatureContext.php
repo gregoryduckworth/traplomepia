@@ -7,13 +7,13 @@ use Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Laracasts\Behat\Context\DatabaseTransactions;
+use Behat\Mink\Driver\Selenium2Driver;
 
 /**
  * Defines application features from the specific context.
  */
 class FeatureContext extends MinkContext implements Context, SnippetAcceptingContext
 {
-
     use DatabaseTransactions;
 
     /**
@@ -30,7 +30,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
 
     /**
      * Login as a specific user
-     * 
+     *
      * @Given I am logged in as :email
      */
     public function iAmLoggedInAs($email)
@@ -46,5 +46,21 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     public function iHaveAnAccount($email, $password)
     {
         factory(App\Models\User::class)->create(['email' => $email, 'password' => $password]);
+    }
+
+    /**
+     * @Given site setting :name is :value
+     */
+    public function siteSettingIs($name, $value)
+    {
+        config()->set('settings.' . $name, $value);
+    }
+
+    /**
+     * @Given get config :arg1
+     */
+    public function getConfig($arg1)
+    {
+        \Log::info(config('settings.'.$arg1));
     }
 }

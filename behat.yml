@@ -5,3 +5,6 @@ default:
         Behat\MinkExtension:
             default_session: laravel
             laravel: ~
+            selenium2:
+              wd_host: 'http://127.0.0.1:444/wd/hub'
+            browser_name: chrome

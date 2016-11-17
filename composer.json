@@ -25,6 +25,7 @@
         "behat/behat": "^3.2",
         "behat/mink": "^1.7",
         "behat/mink-extension": "^2.2",
+        "behat/mink-selenium2-driver":  "~1.1",
         "laracasts/behat-laravel-extension": "^1.0"
     },
     "autoload": {
