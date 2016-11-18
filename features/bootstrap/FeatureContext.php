@@ -1,13 +1,14 @@
 <?php
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
+use Behat\Behat\Context\SnippetAcceptingContext;
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
-use Behat\Behat\Context\SnippetAcceptingContext;
-use Laracasts\Behat\Context\DatabaseTransactions;
 use Behat\Mink\Driver\Selenium2Driver;
+use Illuminate\Support\Facades\Auth;
+use Laracasts\Behat\Context\DatabaseTransactions;
 
 /**
  * Defines application features from the specific context.
@@ -36,7 +37,6 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     public function iAmLoggedInAs($email)
     {
         $user = factory(App\Models\User::class)->create(['email' => $email]);
-
         \Auth::login($user);
     }
 
@@ -57,10 +57,11 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     }
 
     /**
-     * @Given get config :arg1
+     * @Given I am logged in as an :role
      */
-    public function getConfig($arg1)
+    public function iAmLoggedInAsAn($role)
     {
-        \Log::info(config('settings.'.$arg1));
+        $role = App\Models\Role::where('name', $role)->first();
+        \Auth::login($role->users->first());
     }
 }
