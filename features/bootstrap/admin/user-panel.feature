@@ -9,7 +9,6 @@ Feature: User Panel
 	@admin @user-panel @javascript
 	Scenario: Create a new user
 		Given I am on "/admin/users/create"
-		Then show last response
 		When I fill in the following:
 			| first_name | John |
 			| last_name | Doe |
