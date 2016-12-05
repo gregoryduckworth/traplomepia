@@ -9,6 +9,7 @@ use Behat\MinkExtension\Context\MinkContext;
 use Behat\Mink\Driver\Selenium2Driver;
 use Illuminate\Support\Facades\Auth;
 use Laracasts\Behat\Context\DatabaseTransactions;
+use Behat\Behat\Hook\Scope\AfterStepScope;
 
 /**
  * Defines application features from the specific context.
@@ -62,6 +63,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     public function iAmLoggedInAsAn($role)
     {
         $role = App\Models\Role::where('name', $role)->first();
-        \Auth::login($role->users->first());
+        $user = $role->users->first();
+        \Auth::loginUsingId($user->id);        
     }
 }

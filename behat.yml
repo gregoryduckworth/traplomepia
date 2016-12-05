@@ -5,7 +5,9 @@ default:
         Behat\MinkExtension:
             base_url: http://admin.dev
             default_session: laravel
+            javascript_session: selenium2
             laravel: ~
             selenium2:
               wd_host: 'http://127.0.0.1:4444/wd/hub'
             browser_name: chrome
+            show_cmd : C:\Program Files (x86)\Google\Chrome\Application\chrome.exe

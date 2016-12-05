@@ -104,7 +104,7 @@ Feature: Registration
 			| last_name | Doe |
 			| email | john.doe@example.com |
 			| password | password |
-			| password_confirmation | password |
-		And check "Agree to Terms"
+			| password_confirmation | password |	
+		And I check "terms"
 		And I press "Register"
 		Then the url should match "home"
