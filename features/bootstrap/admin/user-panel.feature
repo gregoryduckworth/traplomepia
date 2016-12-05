@@ -9,6 +9,7 @@ Feature: User Panel
 	@admin @user-panel @javascript
 	Scenario: Create a new user
 		Given I am on "/admin/users/create"
+		Then print last response
 		Then the url should match "/admin/users/create"
 		When I fill in the following:
 			| first_name | John |
