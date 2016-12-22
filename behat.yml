@@ -1,0 +1,15 @@
+default:
+    extensions:
+        Laracasts\Behat:
+            env_path: .env
+        Behat\MinkExtension:
+            base_url: http://admin.dev
+            default_session: laravel
+            laravel: ~
+            javascript_session: selenium2
+            selenium2:
+                wd_host: http://127.0.0.1:4444/wd/hub
+            show_cmd: "C:/Users/duckwg01/AppData/Local/Mozilla Firefox/firefox.exe"
+            browser_name: firefox
+            #browser_name: chrome
+            #show_cmd : C:\Program Files (x86)\Google\Chrome\Application\chrome.exe

@@ -19,10 +19,13 @@ settings:
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
+        - Codeception\Extension\Phantoman:
+            path: vendor/bin/phantomjs/bin/phantomjs
+            suites: ['acceptance']
 modules:
     config:
         Db:
             dsn: 'admin'
             user: 'root'
             password: ''
-            dump: tests/_data/dump.sql
+            dump: tests/_data/dump.sql            

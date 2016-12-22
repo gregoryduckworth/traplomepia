@@ -12,6 +12,6 @@ class SiteSettings extends Model
      * @var array
      */
     protected $fillable = [
-        'value',
+        'key', 'value',
     ];
 }
