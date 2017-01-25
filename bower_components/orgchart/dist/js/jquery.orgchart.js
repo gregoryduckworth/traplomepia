@@ -3,12 +3,7 @@
  * https://github.com/dabeng/OrgChart
  *
  * Demos of jQuery OrgChart Plugin
- * http://dabeng.github.io/OrgChart/local-datasource/
- * http://dabeng.github.io/OrgChart/ajax-datasource/
- * http://dabeng.github.io/OrgChart/ondemand-loading-data/
- * http://dabeng.github.io/OrgChart/option-createNode/
- * http://dabeng.github.io/OrgChart/export-orgchart/
- * http://dabeng.github.io/OrgChart/integrate-map/
+ * http://dabeng.github.io/OrgChart/
  *
  * Copyright 2016, dabeng
  * http://dabeng.github.io/
@@ -34,6 +29,7 @@
       'chartClass': '',
       'exportButton': false,
       'exportFilename': 'OrgChart',
+      'exportFileextension': 'png',
       'parentNodeSymbol': 'fa-users',
       'draggable': false,
       'direction': 't2b',
@@ -54,16 +50,22 @@
         return removeNodes.apply(this, Array.prototype.splice.call(arguments, 1));
       case 'getHierarchy':
         return getHierarchy.apply(this, Array.prototype.splice.call(arguments, 1));
-      case 'hideDescendants':
-        return hideDescendants.apply(this, Array.prototype.splice.call(arguments, 1));
-      case 'showDescendants':
-        return showDescendants.apply(this, Array.prototype.splice.call(arguments, 1));
+      case 'hideParent':
+        return hideParent.apply(this, Array.prototype.splice.call(arguments, 1));
+      case 'showParent':
+        return showParent.apply(this, Array.prototype.splice.call(arguments, 1));
+      case 'hideChildren':
+        return hideChildren.apply(this, Array.prototype.splice.call(arguments, 1));
+      case 'showChildren':
+        return showChildren.apply(this, Array.prototype.splice.call(arguments, 1));
       case 'hideSiblings':
         return hideSiblings.apply(this, Array.prototype.splice.call(arguments, 1));
       case 'showSiblings':
         return showSiblings.apply(this, Array.prototype.splice.call(arguments, 1));
       case 'getNodeState':
         return getNodeState.apply(this, Array.prototype.splice.call(arguments, 1));
+      case 'getRelatedNodes':
+        return getRelatedNodes.apply(this, Array.prototype.splice.call(arguments, 1));
       default: // initiation time
         var opts = $.extend(defaultOptions, options);
     }
@@ -131,8 +133,30 @@
                 .find('.orgchart:visible:first').css('transform', '');
             },
             'onrendered': function(canvas) {
-              $chartContainer.find('.mask').addClass('hidden')
-                .end().find('.oc-download-btn').attr('href', canvas.toDataURL())[0].click();
+              $chartContainer.find('.mask').addClass('hidden');
+              if (opts.exportFileextension.toLowerCase() === 'pdf') {
+                var doc = {};
+                var docWidth = Math.floor(canvas.width * 0.2646);
+                var docHeight = Math.floor(canvas.height * 0.2646);
+                if (docWidth > docHeight) {
+                  doc = new jsPDF('l', 'mm', [docWidth, docHeight]);
+                } else {
+                  doc = new jsPDF('p', 'mm', [docHeight, docWidth]);
+                }
+                doc.addImage(canvas.toDataURL(), 'png', 0, 0);
+                doc.save(opts.exportFilename + '.pdf');
+              } else {
+                var isWebkit = 'WebkitAppearance' in document.documentElement.style;
+                var isFf = !!window.sidebar;
+                var isEdge = navigator.appName === 'Microsoft Internet Explorer' || (navigator.appName === "Netscape" && navigator.appVersion.indexOf('Edge') > -1);
+
+                if ((!isWebkit && !isFf) || isEdge) {
+                  window.navigator.msSaveBlob(canvas.msToBlob(), opts.exportFilename + '.png');
+                }
+                else {
+                  $chartContainer.find('.oc-download-btn').attr('href', canvas.toDataURL())[0].click();
+                }
+              }
             }
           })
           .then(function() {
@@ -142,9 +166,12 @@
           });
         }
       });
-      var downloadBtn = '<a class="oc-download-btn' + (opts.chartClass !== '' ? ' ' + opts.chartClass : '') + '"'
-        + ' download="' + opts.exportFilename + '.png"></a>';
-      $chartContainer.append($exportBtn).append(downloadBtn);
+      $chartContainer.append($exportBtn);
+      if (opts.exportFileextension.toLowerCase() !== 'pdf') {
+        var downloadBtn = '<a class="oc-download-btn' + (opts.chartClass !== '' ? ' ' + opts.chartClass : '') + '"'
+          + ' download="' + opts.exportFilename + '.png"></a>';
+        $exportBtn.after(downloadBtn);
+      }
     }
 
     if (opts.pan) {
@@ -324,23 +351,34 @@
   function getNodeState($node, relation) {
     var $target = {};
     if (relation === 'parent') {
-      $target = $node.closest('table').closest('tr').siblings(':first').find('.node');
+      $target = $node.closest('.nodes').siblings(':first');
     } else if (relation === 'children') {
       $target = $node.closest('tr').siblings();
-    } else {
+    } else if (relation === 'siblings') {
       $target = $node.closest('table').parent().siblings();
     }
     if ($target.length) {
       if ($target.is(':visible')) {
-        return { 'exist': true, 'visible': true, 'nodes': $target };
+        return { 'exist': true, 'visible': true };
       }
-      return { 'exist': true, 'visible': false, 'nodes': $target };
+      return { 'exist': true, 'visible': false };
     }
-    return { 'exist': false, 'visible': false, 'nodes': $target };
+    return { 'exist': false, 'visible': false };
+  }
+
+  // find the related nodes
+  function getRelatedNodes($node, relation) {
+    if (relation === 'parent') {
+      return $node.closest('.nodes').parent().children(':first').find('.node');
+    } else if (relation === 'children') {
+      return $node.closest('table').children(':last').children().find('.node:first');
+    } else if (relation === 'siblings') {
+      return $node.closest('table').parent().siblings().find('.node:first');
+    }
   }
 
   // recursively hide the ancestor node and sibling nodes of the specified node
-  function hideAncestorsSiblings($node) {
+  function hideParent($node) {
     var $temp = $node.closest('table').closest('tr').siblings();
     if ($temp.eq(0).find('.spinner').length) {
       $node.closest('.orgchart').data('inAjax', false);
@@ -364,7 +402,7 @@
     }
     // if the current node has the parent node, hide it recursively
     if ($parent.length && grandfatherVisible) {
-      hideAncestorsSiblings($parent);
+      hideParent($parent);
     }
   }
 
@@ -386,7 +424,7 @@
   }
 
   // recursively hide the descendant nodes of the specified node
-  function hideDescendants($node) {
+  function hideChildren($node) {
     var $temp = $node.closest('tr').siblings();
     if ($temp.last().find('.spinner').length) {
       $node.closest('.orgchart').data('inAjax', false);
@@ -411,7 +449,7 @@
   }
 
   // show the children nodes of the specified node
-  function showDescendants($node) {
+  function showChildren($node) {
     var $temp = $node.closest('tr').siblings();
     var isVerticalDesc = $temp.is('.verticalNodes') ? true : false;
     var $descendants = isVerticalDesc
@@ -571,7 +609,7 @@
   function createNode(nodeData, level, opts) {
     $.each(nodeData.children, function (index, child) {
       child.parentId = nodeData.id;
-    })
+    });
     var dtd = $.Deferred();
     // construct the content of node
     var $nodeDiv = $('<div' + (opts.draggable ? ' draggable="true"' : '') + (nodeData[opts.nodeId] ? ' id="' + nodeData[opts.nodeId] + '"' : '') + (nodeData.parentId ? ' data-parent="' + nodeData.parentId + '"' : '') + '>')
@@ -582,7 +620,8 @@
     var flags = nodeData.relationship || '';
     if (opts.verticalDepth && (level + 2) > opts.verticalDepth) {
       if ((level + 1) >= opts.verticalDepth && Number(flags.substr(2,1))) {
-        $nodeDiv.append('<i class="toggleBtn fa fa-minus-square"></i>');
+        var icon = level + 1  >= opts.depth ? 'plus' : 'minus';
+        $nodeDiv.append('<i class="toggleBtn fa fa-' + icon + '-square"></i>');
       }
     } else {
       if (Number(flags.substr(0,1))) {
@@ -638,7 +677,7 @@
         if ($parent.is('.slide')) { return; }
         // hide the ancestor nodes and sibling nodes of the specified node
         if (parentState.visible) {
-          hideAncestorsSiblings($node);
+          hideParent($node);
           $parent.one('transitionend', function() {
             if (isInAction($node)) {
               switchVerticalArrow($that);
@@ -679,9 +718,9 @@
         if ($children.find('.node:visible').is('.slide')) { return; }
         // hide the descendant nodes of the specified node
         if (childrenState.visible) {
-          hideDescendants($node);
+          hideChildren($node);
         } else { // show the descendants
-          showDescendants($node);
+          showChildren($node);
         }
       } else { // load the new children nodes of the specified node by ajax request
         var nodeId = $that.parent()[0].id;
@@ -723,7 +762,8 @@
           $descendants.removeClass('slide');
           // $descWrapper.addClass('hidden');
           $descendants.closest('ul').addClass('hidden');
-        }).find('.toggleBtn').removeClass('fa-minus-square').addClass('fa-plus-square');
+        });
+        $descendants.find('.toggleBtn').removeClass('fa-minus-square').addClass('fa-plus-square');
       }
     });
 
@@ -855,11 +895,7 @@
       })
       .on('dragover', function(event) {
         event.preventDefault();
-        var $dropZone = $(this);
-        var $dragged = $dropZone.closest('.orgchart').data('dragged');
-        var $dragZone = $dragged.closest('.nodes').siblings().eq(0).find('.node:first');
-        if ($dragged.closest('table').find('.node').index($dropZone) > -1 ||
-          (opts.dropCriteria && !opts.dropCriteria($dragged, $dragZone, $dropZone))) {
+        if (!$(this).is('.allowedDrop')) {
           event.originalEvent.dataTransfer.dropEffect = 'none';
         }
       })
@@ -912,7 +948,7 @@
         $orgchart.triggerHandler({ 'type': 'nodedropped.orgchart', 'draggedNode': $dragged, 'dragZone': $dragZone.children(), 'dropZone': $dropZone });
       });
     }
-    // allow user to append dom modification after finishing node create of orgchart 
+    // allow user to append dom modification after finishing node create of orgchart
     if (opts.createNode) {
       opts.createNode($nodeDiv, nodeData);
     }
@@ -967,8 +1003,11 @@
       var $nodeLayer;
       if (isVerticalLayer) {
         $nodeLayer = $('<ul>');
+        if (isHidden) {
+          $nodeLayer.addClass(isHidden);
+        }
         if (level + 2 === opts.verticalDepth) {
-          $nodeWrapper.append('<tr class="verticalNodes"><td></td></tr>')
+          $nodeWrapper.append('<tr class="verticalNodes' + isHidden + '"><td></td></tr>')
             .find('.verticalNodes').children().append($nodeLayer);
         } else {
           $nodeWrapper.append($nodeLayer);
@@ -1005,7 +1044,7 @@
         if (!$node.find('.symbol').length) {
           $node.children('.title').prepend('<i class="fa '+ opts.parentNodeSymbol + ' symbol"></i>');
         }
-        showDescendants($node);
+        showChildren($node);
       }
     });
   }
@@ -1014,7 +1053,7 @@
   function buildParentNode($currentRoot, nodeData, opts, callback) {
     var that = this;
     var $table = $('<table>');
-    nodeData.relationship = '001';
+    nodeData.relationship = nodeData.relationship || '001';
     $.when(createNode(nodeData, 0, opts || $currentRoot.closest('.orgchart').data('options')))
       .done(function($nodeDiv) {
         $table.append($nodeDiv.removeClass('slide-up').addClass('slide-down').wrap('<tr class="hidden"><td colspan="2"></td></tr>').closest('tr'));
@@ -1112,7 +1151,7 @@
     if ($parent.is('td')) {
       if (getNodeState($node, 'siblings').exist) {
         $sibs.eq(2).children('.topLine:lt(2)').remove();
-        $sibs.eq(':lt(2)').children().attr('colspan', $sibs.eq(2).children().length);
+        $sibs.slice(0, 2).children().attr('colspan', $sibs.eq(2).children().length);
         $parent.remove();
       } else {
         $sibs.eq(0).children().removeAttr('colspan')

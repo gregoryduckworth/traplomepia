@@ -104,10 +104,30 @@ return [
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
     */
-
+    /*
+    5.4
     'redis' => [
 
-        'cluster' => false,
+        'client' => 'predis',
+
+        'options' => [
+            'cluster' => 'redis',
+        ],
+
+        'clusters' => [
+            'default' => [
+                [
+                    'host' => env('REDIS_HOST', '127.0.0.1'),
+                    'password' => env('REDIS_PASSWORD', null),
+                    'port' => env('REDIS_PORT', 6379),
+                    'database' => 0,
+                ],
+            ],
+        ],
+    ],*/
+    'redis' => [
+
+        'client' => 'predis',
 
         'default' => [
             'host' => env('REDIS_HOST', 'localhost'),
