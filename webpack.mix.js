@@ -48,8 +48,5 @@ mix.combine([
 ], 'public/js/external.js');
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
-
-// Mix at the end to avoid an issue where only the last 
-// version was being adding to the rev-manifest.json
-mix.version(['js/app.js', 'css/app.css', 'css/external.css', 'js/external.js']);
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .version();
