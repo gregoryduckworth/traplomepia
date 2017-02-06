@@ -5,13 +5,10 @@ namespace Tests\Browser;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Chrome;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Models\User;
 
 class LoginTest extends DuskTestCase
 {
-    // TODO: look at changing to database
-    // transactions rather than migrations
     use DatabaseMigrations;
 
     /**
@@ -25,8 +22,6 @@ class LoginTest extends DuskTestCase
             'email' => 'test@nowhere.com',
             'password' => '12345Hello!'
         ]);
-
-        \Log::info($user);
 
         $this->browse(function ($browser) use ($user) {
             $browser->visit('/login')
