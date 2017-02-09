@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
-    use EntrustUserTrait, SoftDeletes, Notifiable {
-        SoftDeletes::restore as sfRestore;
-        EntrustUserTrait::restore as euRestore;
-    }
+    use LaratrustUserTrait, SoftDeletes, Notifiable;
 
     /**
      * Remove conflicts between the Traits

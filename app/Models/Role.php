@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Zizaco\Entrust\EntrustRole;
+use Laratrust\LaratrustRole;
 
-class Role extends EntrustRole
+class Role extends LaratrustRole
 {
     /**
      * The attributes that are mass assignable.

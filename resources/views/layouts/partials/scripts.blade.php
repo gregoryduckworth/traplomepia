@@ -1,5 +1,5 @@
 <!-- REQUIRED JS SCRIPTS -->
-<script src="{!! asset('js/external.js') !!}" type="text/javascript"></script>
+<script src="/js/external.js " type="text/javascript"></script>
 <!-- App JS -->
 <script src="{!! mix('js/app.js') !!}" type="text/javascript"></script>
 

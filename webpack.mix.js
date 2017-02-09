@@ -13,7 +13,7 @@ const folder = 'node_modules/';
  */
 
 // Glyphicons
-mix.copy(folder + 'bootstrap/dist/fonts', 'public/fonts/bootstrap');
+mix.copy(folder + 'bootstrap/dist/fonts', 'public/fonts');
 
 // Font Awesome
 mix.copy(folder + 'font-awesome/fonts', 'public/fonts');
@@ -35,15 +35,15 @@ mix.combine([
 
 // Merge all JS  files in one file.
 mix.combine([
-    folder + 'jquery/dist/jquery.js',
-    folder + 'admin-lte/dist/js/app.js',
+    folder + 'jquery/dist/jquery.js',    
     folder + 'bootstrap/dist/js/bootstrap.js',
     folder + 'bootstrap-fileinput/js/fileinput.js',
-    folder + 'datatables.net-bs/js/dataTables.bootstrap.js',
+    folder + 'jquery-slimscroll/jquery.slimscroll.js',    
     folder + 'datatables/media/js/jquery.dataTables.js',
+    folder + 'datatables.net-bs/js/dataTables.bootstrap.js',
+    folder + 'admin-lte/dist/js/app.js',
     folder + 'fastclick/lib/fastclick.js',
     folder + 'sweetalert/dist/sweetalert.min.js',
-    folder + 'jquery-slimscroll/jquery.slimscroll.js',
     folder + 'bootstrap-fileinput/js/fileinput.js',
 ], 'public/js/external.js');
 

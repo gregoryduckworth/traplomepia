@@ -6,6 +6,7 @@ return [
 
     // JSON msg
     // Deletion
+    'role_with_name_already_exists' => 'Sorry, a role with that name already exists',
     'user_has_roles' => 'User has a role, so cannot be deleted',
     'deletion_success' => ':type successfully deleted',
     'deletion_failed' => ':type deletion failed',

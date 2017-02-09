@@ -169,9 +169,9 @@ return [
         
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Laratrust\LaratrustServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
-        Zizaco\Entrust\EntrustServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -237,7 +237,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Helper' => App\Helpers\Helper::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Entrust' => Zizaco\Entrust\EntrustFacade::class,
+        'Laratrust'   => Laratrust\LaratrustFacade::class,
     ],
 
 ];

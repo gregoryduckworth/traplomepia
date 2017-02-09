@@ -19,7 +19,7 @@
 			<label>{!! trans('roles.description') !!}</label>: {!! $role->description !!}<br />
 			<label>{!! trans('roles.permissions') !!}</label>: 
 				<ul>
-				@foreach($role->perms as $permission)
+				@foreach($role->permissions as $permission)
 					<li>{!! $permission->display_name !!}</li>
 				@endforeach
 				</ul>
