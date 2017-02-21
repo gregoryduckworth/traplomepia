@@ -14,7 +14,7 @@ class LoginTest extends DuskTestCase
     /**
      * Check that we cannot login with an email address
      * that does not exist
-     * 
+     *
      * @return void
      */
     public function testDoesNotExist()
@@ -31,7 +31,7 @@ class LoginTest extends DuskTestCase
 
     /**
      * Check that we cannot login with the wrong password
-     * 
+     *
      * @return void
      */
     public function testIncorrectPassword()
@@ -53,7 +53,7 @@ class LoginTest extends DuskTestCase
 
     /**
      * Check that we cannot login with the wrong email address
-     * 
+     *
      * @return void
      */
     public function testIncorrectEmail()
@@ -75,7 +75,7 @@ class LoginTest extends DuskTestCase
 
     /**
      * Check that we need to enter an email
-     * 
+     *
      * @return void
      */
     public function testEmailRequired()
@@ -91,7 +91,7 @@ class LoginTest extends DuskTestCase
 
     /**
      * Check that we need to enter a password
-     * 
+     *
      * @return void
      */
     public function testPasswordRequired()
@@ -123,6 +123,6 @@ class LoginTest extends DuskTestCase
                     ->type('password', 'password')
                     ->press('Sign in')
                     ->assertPathIs('/home');
-        }); 
+        });
     }
 }

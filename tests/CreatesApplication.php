@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Support\Facades\Artisan;
 
 trait CreatesApplication
 {
@@ -15,6 +16,12 @@ trait CreatesApplication
     {
         $app = require __DIR__.'/../bootstrap/app.php';
         $app->make(Kernel::class)->bootstrap();
+
+        // Required to seed the database with some 
+        // of the initial config setup
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+
         return $app;
     }
 }
