@@ -7,7 +7,7 @@ return [
     'remember' => 'Remember',
     'registermember' => 'Not Registered?',
     'forgotpassword' => 'Forgot Password',
-    'someproblems' => 'Some Problems',
+    'problem' => 'There was a problem.',
     'togglenav' => 'Toggle Nav',
     'tabmessages' => 'Tab Messages',
     'supteam' => 'Sup Team',
@@ -32,4 +32,5 @@ return [
     'passwordreset' => 'Reset Password',
     'agree_terms' => 'Agree to Terms',
     'terms' => 'Terms and conditions',
+    'whoops' => 'Whoops',
 ];
