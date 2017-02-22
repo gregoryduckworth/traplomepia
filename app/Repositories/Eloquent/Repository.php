@@ -1,15 +1,13 @@
-<?php 
+<?php
 
 namespace App\Repositories\Eloquent;
 
 use App\Repositories\Contracts\RepositoryInterface;
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Container\Container as App;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Repositories\Events\RepositoryEntityCreated;
 use App\Repositories\Events\RepositoryEntityDeleted;
 use App\Repositories\Events\RepositoryEntityUpdated;
+use Illuminate\Container\Container as App;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Repository

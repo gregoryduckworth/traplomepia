@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Repositories\Contracts;
 
@@ -8,5 +8,5 @@ namespace App\Repositories\Contracts;
 
 interface UserInterface extends RepositoryInterface
 {
-	//
+    //
 }

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Auth;
 use App\Repositories\Contracts\SiteSettingsInterface as SiteSettings;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
@@ -17,7 +17,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         // If the App is running in the console (usually during a migrate)
         // then we do not need to set the global settings just yet
-        if(!\App::runningInConsole()){
+        if (!\App::runningInConsole()) {
             config()->set('settings', $global_settings->lists('value', 'key'));
         }
 

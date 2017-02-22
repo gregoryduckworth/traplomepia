@@ -106,7 +106,7 @@ class CacheKeys
 
         return call_user_func_array([
             $instance,
-            $method
+            $method,
         ], $parameters);
     }
 
@@ -122,7 +122,7 @@ class CacheKeys
 
         return call_user_func_array([
             $instance,
-            $method
+            $method,
         ], $parameters);
     }
 }

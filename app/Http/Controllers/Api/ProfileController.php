@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ImageFormRequest;
 use App\Http\Requests\PasswordFormRequest;
 use App\Http\Requests\UserFormRequest;
-use App\Http\Requests\ImageFormRequest;
 use App\Repositories\Contracts\UserInterface as User;
-use App\Helpers\Helper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 

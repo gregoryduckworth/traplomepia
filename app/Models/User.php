@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
@@ -57,7 +57,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $dates = ['deleted_at'];
-    
+
     /**
      * Return the first name and last name in an easy way
      *
@@ -87,7 +87,7 @@ class User extends Authenticatable
     public function getPictureAttribute()
     {
         if ($this->profile_picture == null) {
-            return '//placeholdit.imgix.net/~text?txtsize=30&amp;txt='. $this->name .'&amp;w=180&amp;h=180';
+            return '//placeholdit.imgix.net/~text?txtsize=30&amp;txt=' . $this->name . '&amp;w=180&amp;h=180';
         }
         return $this->profile_picture;
     }

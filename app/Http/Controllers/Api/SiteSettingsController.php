@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\SiteSettingsInterface as SiteSettings;
-use App\Http\Requests\SiteSettingsFormRequest;
-use App\Http\Requests\ImageFormRequest;
-use Illuminate\Support\Facades\File;
 use App\Helpers\Helper;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ImageFormRequest;
+use App\Http\Requests\SiteSettingsFormRequest;
+use App\Repositories\Contracts\SiteSettingsInterface as SiteSettings;
 
 class SiteSettingsController extends Controller
 {

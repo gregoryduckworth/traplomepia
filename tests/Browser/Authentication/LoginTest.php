@@ -2,11 +2,9 @@
 
 namespace Tests\Browser;
 
-use Tests\DuskTestCase;
-use Laravel\Dusk\Chrome;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Models\User;
-use Tests\Browser\Pages\Login;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\DuskTestCase;
 
 class LoginTest extends DuskTestCase
 {
@@ -21,7 +19,7 @@ class LoginTest extends DuskTestCase
     public function testUserDoesNotExist()
     {
         $this->browse(function ($browser) {
-            $browser->visit(new Login)
+            $browser->visit('/login')
                 ->type('email', 'doesNotExist@example.com')
                 ->type('password', 'password')
                 ->press('Sign in')
@@ -39,7 +37,7 @@ class LoginTest extends DuskTestCase
     {
         $user = factory(User::class)->create([
             'email' => 'incorrectPassword@example.com',
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $this->browse(function ($browser) use ($user) {
@@ -61,7 +59,7 @@ class LoginTest extends DuskTestCase
     {
         $user = factory(User::class)->create([
             'email' => 'incorrectEmail@example.com',
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $this->browse(function ($browser) use ($user) {
@@ -115,15 +113,15 @@ class LoginTest extends DuskTestCase
     {
         $user = factory(User::class)->create([
             'email' => 'positiveLogin@example.com',
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $this->browse(function ($browser) use ($user) {
             $browser->visit('/login')
-                    ->type('email', $user->email)
-                    ->type('password', 'password')
-                    ->press('Sign in')
-                    ->assertPathIs('/home');
+                ->type('email', $user->email)
+                ->type('password', 'password')
+                ->press('Sign in')
+                ->assertPathIs('/home');
         });
     }
 }

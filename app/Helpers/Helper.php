@@ -12,13 +12,13 @@ class Helper
         File::delete(public_path() . $currentImage);
 
         // Create a new file name for the image to avoid any collisions
-        $fileName = str_random(20) . '.'. $image->extension();
+        $fileName = str_random(20) . '.' . $image->extension();
 
         // Depending on the model that is passed to the function we need
         // to set the location in where we want to save it
         switch (class_basename($model)) {
             case 'User':
-                $file_location = '/users/'.$model->id.'/img/';
+                $file_location = '/users/' . $model->id . '/img/';
                 break;
             case 'SiteSettings':
                 $file_location = '/site/img/';

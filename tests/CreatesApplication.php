@@ -14,10 +14,10 @@ trait CreatesApplication
      */
     public function createApplication()
     {
-        $app = require __DIR__.'/../bootstrap/app.php';
+        $app = require __DIR__ . '/../bootstrap/app.php';
         $app->make(Kernel::class)->bootstrap();
 
-        // Required to seed the database with some 
+        // Required to seed the database with some
         // of the initial config setup
         Artisan::call('migrate');
         Artisan::call('db:seed');

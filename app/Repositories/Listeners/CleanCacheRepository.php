@@ -2,13 +2,12 @@
 
 namespace App\Repositories\Listeners;
 
-use Illuminate\Contracts\Cache\Repository as CacheRepository;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Log;
+use App\Helpers\CacheKeys;
 use App\Repositories\Contracts\RepositoryInterface;
 use App\Repositories\Events\RepositoryEventBase;
-use App\Helpers\CacheKeys;
+use Illuminate\Contracts\Cache\Repository as CacheRepository;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class CleanCacheRepository

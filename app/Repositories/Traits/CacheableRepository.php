@@ -2,10 +2,8 @@
 
 namespace App\Repositories\Traits;
 
-use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use App\Helpers\CacheKeys;
-use ReflectionObject;
-use Exception;
+use Illuminate\Contracts\Cache\Repository as CacheRepository;
 
 /**
  * Class CacheableRepository

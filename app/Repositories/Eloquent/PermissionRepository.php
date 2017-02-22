@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 namespace App\Repositories\Eloquent;
 
-use App\Repositories\Eloquent\Repository;
 use App\Repositories\Contracts\PermissionInterface;
+use App\Repositories\Eloquent\Repository;
 
 class PermissionRepository extends Repository implements PermissionInterface
 {

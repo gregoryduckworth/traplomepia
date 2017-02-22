@@ -1,14 +1,14 @@
-<?php 
+<?php
 
 namespace App\Repositories\Eloquent;
 
-use App\Repositories\Eloquent\Repository;
 use App\Repositories\Contracts\UserInterface;
+use App\Repositories\Eloquent\Repository;
 use App\Repositories\Traits\CacheableRepository;
 
 class UserRepository extends Repository implements UserInterface
 {
-	use CacheableRepository;
+    use CacheableRepository;
 
     public function model()
     {

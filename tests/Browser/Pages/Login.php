@@ -23,7 +23,8 @@ class Login extends Homepage
      */
     public function assert(Browser $browser)
     {
-        $browser->assertTitleContains('Log in')
+        $browser->assertPathIs($this->url())
+            ->assertTitleContains('Log in')
             ->assertSee('Login')
             ->assertSee('Email')
             ->assertInputValue('email', '')

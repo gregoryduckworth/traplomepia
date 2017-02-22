@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Events;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Repositories\Contracts\RepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class RepositoryEventBase

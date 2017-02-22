@@ -80,7 +80,7 @@ class RoleController extends Controller
         if ($this->role->findBy('display_name', $request['name'])) {
             return response()->json(['msg' => trans('json.role_with_name_already_exists'), 'status' => 'error']);
 
-        // We then create the role if the name does not already exist
+            // We then create the role if the name does not already exist
         } elseif ($role = $this->role->create($request->all())) {
 
             // Attach the permissions if any are set
@@ -104,7 +104,7 @@ class RoleController extends Controller
         // Check that the role name does not already exist
         if ($this->role->findBy('display_name', $request->display_name)) {
             return response()->json(['msg' => trans('json.role_with_name_already_exists'), 'status' => 'error']);
-        } 
+        }
 
         // Find the role in order to apply the update
         $role = $this->role->find($request->id);
