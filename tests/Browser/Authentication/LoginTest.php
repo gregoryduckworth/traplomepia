@@ -17,9 +17,11 @@ class LoginTest extends DuskTestCase
      *
      * @return void
      */
-    public function testDoesNotExist()
+    public function testUserDoesNotExist()
     {
         $this->browse(function ($browser) {
+            $browser->assertPathIs($this->url());
+
             $browser->visit('/login')
                 ->type('email', 'doesNotExist@example.com')
                 ->type('password', 'password')

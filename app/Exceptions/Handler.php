@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Exception;
+use Request;
+use Log;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -32,6 +34,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        Log::info($e->getMessage(), [
+            'url' => Request::url(),
+            'input' => Request::all()
+        ]);
         parent::report($exception);
     }
 
