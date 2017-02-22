@@ -23,16 +23,16 @@ class Login extends Homepage
      */
     public function assert(Browser $browser)
     {
-        $browser->assertTitleContains('Laravel')
-            ->assertSee('Laravel')
+        $browser->assertTitleContains('Log in')
             ->assertSee('Login')
-            ->assertSee('E-Mail Address')
+            ->assertSee('Email')
             ->assertInputValue('email', '')
             ->assertSee('Password')
             ->assertInputValue('password', '')
             ->assertNotChecked('remember')
-            ->assertSee('Login')
-            ->assertSee('Forgot Your Password?');
+            ->assertSee('Sign in')
+            ->assertSee('Not Registered');
+            ->assertSee('Forgot Password');
     }
     /**
      * Get the element shortcuts for the page.

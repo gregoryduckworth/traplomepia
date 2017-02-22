@@ -6,6 +6,7 @@ use Tests\DuskTestCase;
 use Laravel\Dusk\Chrome;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Models\User;
+use Tests\Browser\Pages\Login;
 
 class LoginTest extends DuskTestCase
 {
@@ -20,9 +21,7 @@ class LoginTest extends DuskTestCase
     public function testUserDoesNotExist()
     {
         $this->browse(function ($browser) {
-            $browser->assertPathIs($this->url());
-
-            $browser->visit('/login')
+            $browser->visit(new Login)
                 ->type('email', 'doesNotExist@example.com')
                 ->type('password', 'password')
                 ->press('Sign in')
