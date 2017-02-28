@@ -18,7 +18,7 @@ abstract class DuskTestCase extends BaseTestCase
      */
     public static function prepare()
     {
-        if (env('START_CHROMEDRIVER', true)) {
+        if (env('START_CHROMEDRIVER')) {
             static::startChromeDriver();
         }
     }
@@ -30,7 +30,7 @@ abstract class DuskTestCase extends BaseTestCase
      */
     protected function driver()
     {
-        if (env('START_CHROMEDRIVER', true)) {
+        if (env('START_CHROMEDRIVER')) {
             $driver = DesiredCapabilities::chrome();
         } else {
             $driver = DesiredCapabilities::phantomjs();
