@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('htmlheader_title', 'Log in')
+@section('htmlheader_title', trans('message.login'))
 
 @section('main-content')
 
@@ -38,7 +38,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            {!! Form::submit('Sign in', ['class' => 'btn btn-success btn-sm']) !!}
+                            {!! Form::submit(trans('message.sign-in') , ['name' => 'sign-in', 'class' => 'btn btn-success btn-sm']) !!}
                         </div>
                     </div>
                 {!! Form::close() !!}

@@ -16,6 +16,7 @@ class Login extends BasePage
     {
         return '/login';
     }
+
     /**
      * Assert that the browser is on the page.
      *
@@ -25,17 +26,18 @@ class Login extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-            ->assertTitleContains('Log in')
-            ->assertSee('Login')
-            ->assertSee('Email')
+            ->assertTitleContains(trans('message.login'))
+            ->assertSee(trans('message.login'))
+            ->assertSee(trans('message.email'))
             ->assertInputValue('email', '')
-            ->assertSee('Password')
+            ->assertSee(trans('message.password'))
             ->assertInputValue('password', '')
             ->assertNotChecked('remember')
-        //->assertVisible('@sign-in')
-            ->assertSee('Not Registered')
-            ->assertSee('Forgot Password');
+            ->assertInputValue('sign-in', trans('message.sign-in'))
+            ->assertSee(trans('message.registermember'))
+            ->assertSee(trans('message.forgotpassword'));
     }
+
     /**
      * Get the element shortcuts for the page.
      *
@@ -46,7 +48,7 @@ class Login extends BasePage
         return [
             '@email' => 'input[name="email"]',
             '@password' => 'input[name="password"]',
-            '@sign-in' => 'input[value="Sign in"]',
+            '@sign-in' => 'input[name="sign-in"]',
         ];
     }
 }
