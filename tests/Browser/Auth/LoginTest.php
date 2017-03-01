@@ -15,6 +15,8 @@ class LoginTest extends DuskTestCase
      * Check that we cannot login with an email address
      * that does not exist
      *
+     * @group auth
+     * @group login
      * @return void
      */
     public function testUserDoesNotExist()
@@ -32,6 +34,8 @@ class LoginTest extends DuskTestCase
     /**
      * Check that we cannot login with the wrong password
      *
+     * @group auth
+     * @group login
      * @return void
      */
     public function testIncorrectPassword()
@@ -54,6 +58,8 @@ class LoginTest extends DuskTestCase
     /**
      * Check that we cannot login with the wrong email address
      *
+     * @group auth
+     * @group login
      * @return void
      */
     public function testIncorrectEmail()
@@ -76,6 +82,8 @@ class LoginTest extends DuskTestCase
     /**
      * Check that we need to enter an email
      *
+     * @group auth
+     * @group login
      * @return void
      */
     public function testEmailRequired()
@@ -92,6 +100,8 @@ class LoginTest extends DuskTestCase
     /**
      * Check that we need to enter a password
      *
+     * @group auth
+     * @group login
      * @return void
      */
     public function testPasswordRequired()
@@ -108,6 +118,8 @@ class LoginTest extends DuskTestCase
     /**
      * Check that we can login with the correct credentials
      *
+     * @group auth
+     * @group login
      * @return void
      */
     public function testPositiveLogin()
