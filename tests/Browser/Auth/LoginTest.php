@@ -4,6 +4,7 @@ namespace Tests\Browser;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\Browser\Pages\Login;
 use Tests\DuskTestCase;
 
 class LoginTest extends DuskTestCase
@@ -19,10 +20,10 @@ class LoginTest extends DuskTestCase
     public function testUserDoesNotExist()
     {
         $this->browse(function ($browser) {
-            $browser->visit('/login')
-                ->type('email', 'doesNotExist@example.com')
-                ->type('password', 'password')
-                ->press('Sign in')
+            $browser->visit(new Login)
+                ->type('@email', 'doesNotExist@example.com')
+                ->type('@password', 'password')
+                ->press('@sign-in')
                 ->assertPathIs('/login')
                 ->assertSee(trans('auth.failed'));
         });
@@ -41,10 +42,10 @@ class LoginTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->visit('/login')
-                ->type('email', $user->email)
-                ->type('password', 'password1')
-                ->press('Sign in')
+            $browser->visit(new Login)
+                ->type('@email', $user->email)
+                ->type('@password', 'password1')
+                ->press('@sign-in')
                 ->assertPathIs('/login')
                 ->assertSee(trans('auth.failed'));
         });
@@ -63,10 +64,10 @@ class LoginTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->visit('/login')
-                ->type('email', 'wrongEmail@example.com')
-                ->type('password', 'password')
-                ->press('Sign in')
+            $browser->visit(new Login)
+                ->type('@email', 'wrongEmail@example.com')
+                ->type('@password', 'password')
+                ->press('@sign-in')
                 ->assertPathIs('/login')
                 ->assertSee(trans('auth.failed'));
         });
@@ -80,9 +81,9 @@ class LoginTest extends DuskTestCase
     public function testEmailRequired()
     {
         $this->browse(function ($browser) {
-            $browser->visit('/login')
-                ->type('password', 'password')
-                ->press('Sign in')
+            $browser->visit(new Login)
+                ->type('@password', 'password')
+                ->press('@sign-in')
                 ->assertPathIs('/login')
                 ->assertSee(trans('validation.required', ['attribute' => 'email']));
         });
@@ -96,9 +97,9 @@ class LoginTest extends DuskTestCase
     public function testPasswordRequired()
     {
         $this->browse(function ($browser) {
-            $browser->visit('/login')
-                ->type('email', 'passwordRequired@example.com')
-                ->press('Sign in')
+            $browser->visit(new Login)
+                ->type('@email', 'passwordRequired@example.com')
+                ->press('@sign-in')
                 ->assertPathIs('/login')
                 ->assertSee(trans('validation.required', ['attribute' => 'password']));
         });
@@ -117,10 +118,10 @@ class LoginTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->visit('/login')
-                ->type('email', $user->email)
-                ->type('password', 'password')
-                ->press('Sign in')
+            $browser->visit(new Login)
+                ->type('@email', $user->email)
+                ->type('@password', 'password')
+                ->press('@sign-in')
                 ->assertPathIs('/home');
         });
     }

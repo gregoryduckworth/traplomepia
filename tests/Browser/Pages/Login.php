@@ -3,8 +3,9 @@
 namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
+use Laravel\Dusk\Page as BasePage;
 
-class Login extends Homepage
+class Login extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -31,8 +32,8 @@ class Login extends Homepage
             ->assertSee('Password')
             ->assertInputValue('password', '')
             ->assertNotChecked('remember')
-            ->assertSee('Sign in')
-            ->assertSee('Not Registered');
+        //->assertVisible('@sign-in')
+            ->assertSee('Not Registered')
             ->assertSee('Forgot Password');
     }
     /**
@@ -43,7 +44,9 @@ class Login extends Homepage
     public function elements()
     {
         return [
-            //
+            '@email' => 'input[name="email"]',
+            '@password' => 'input[name="password"]',
+            '@sign-in' => 'input[value="Sign in"]',
         ];
     }
 }

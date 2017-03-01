@@ -32,11 +32,8 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">{!! trans('message.remember') !!}
-                                </label>
-                            </div>
+                            {!! Form::checkbox('remember') !!}
+                            {!! Form::label(trans('message.remember')) !!}
                         </div>
                     </div>
                     <div class="form-group">
