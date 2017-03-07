@@ -4,7 +4,7 @@ namespace Tests\Browser;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\Browser\Pages\Login;
+use Tests\Browser\Pages\Auth\Login;
 use Tests\DuskTestCase;
 
 class LoginTest extends DuskTestCase
@@ -86,31 +86,13 @@ class LoginTest extends DuskTestCase
      * @group login
      * @return void
      */
-    public function testEmailRequired()
+    public function testFieldsRequired()
     {
         $this->browse(function ($browser) {
             $browser->visit(new Login)
-                ->type('@password', 'password')
                 ->press('@sign-in')
                 ->assertPathIs('/login')
-                ->assertSee(trans('validation.required', ['attribute' => 'email']));
-        });
-    }
-
-    /**
-     * Check that we need to enter a password
-     *
-     * @group auth
-     * @group login
-     * @return void
-     */
-    public function testPasswordRequired()
-    {
-        $this->browse(function ($browser) {
-            $browser->visit(new Login)
-                ->type('@email', 'passwordRequired@example.com')
-                ->press('@sign-in')
-                ->assertPathIs('/login')
+                ->assertSee(trans('validation.required', ['attribute' => 'email']))
                 ->assertSee(trans('validation.required', ['attribute' => 'password']));
         });
     }

@@ -12,7 +12,7 @@
         "yajra/laravel-datatables-oracle": "~6.0",
         "santigarcor/laratrust": "3.0.*",
         "predis/predis": "^1.1",
-        "laravel/dusk": "1.0.6"
+        "laravel/dusk": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

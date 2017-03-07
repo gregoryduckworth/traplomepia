@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('htmlheader_title', 'Password reset')
+@section('htmlheader_title', trans('message.password-reset'))
 
 @section('main-content')
 
@@ -16,7 +16,7 @@
     <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4 class="text-center">{!! trans('message.passwordreset') !!}</h4>
+                <h4 class="text-center">{!! trans('message.password-reset') !!}</h4>
             </div>
 
             <div class="panel-body">
@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-3 col-md-9">
-                            {!! Form::submit(trans('message.passwordreset'), ['class' => 'btn btn-success']) !!}
+                            {!! Form::submit(trans('message.password-reset'), ['name' => 'reset-password', 'class' => 'btn btn-success']) !!}
                         </div>
                     </div>
                 {!! Form::close() !!}

@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Browser\Pages;
+namespace Tests\Browser\Pages\Auth;
 
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page as BasePage;
 
-class Login extends BasePage
+class ForgotPassword extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -14,7 +14,7 @@ class Login extends BasePage
      */
     public function url()
     {
-        return '/login';
+        return '/password/reset';
     }
 
     /**
@@ -26,16 +26,12 @@ class Login extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-            ->assertTitleContains(trans('message.login'))
-            ->assertSee(trans('message.login'))
+            ->assertTitleContains(trans('message.password-reset'))
             ->assertSee(trans('message.email'))
             ->assertInputValue('email', '')
-            ->assertSee(trans('message.password'))
-            ->assertInputValue('password', '')
-            ->assertNotChecked('remember')
-            ->assertInputValue('sign-in', trans('message.sign-in'))
-            ->assertSee(trans('message.registermember'))
-            ->assertSee(trans('message.forgotpassword'));
+            ->assertInputValue('send-password', trans('message.send-password'))
+            ->assertSee(trans('message.membership'))
+            ->assertSee(trans('message.registermember'));
     }
 
     /**
@@ -47,8 +43,7 @@ class Login extends BasePage
     {
         return [
             '@email' => 'input[name="email"]',
-            '@password' => 'input[name="password"]',
-            '@sign-in' => 'input[name="sign-in"]',
+            '@send-password' => 'input[name="send-password"]',
         ];
     }
 }

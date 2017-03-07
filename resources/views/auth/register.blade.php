@@ -63,7 +63,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-4 col-md-8">
-                                {!! Form::submit(trans('message.register'), ['class' => 'btn btn-success']) !!}
+                                {!! Form::submit(trans('message.register'), ['name' => 'register', 'class' => 'btn btn-success']) !!}
                             </div>
                         </div>
                     {!! Form::close() !!}
