@@ -8,14 +8,15 @@
             data: form.serialize(),
             dataType: 'JSON',
         }).done(function(data) {
-            // Capitalise the first letter and send the user to the redirected page
-    		swal({title: data.status.charAt(0).toUpperCase() + data.status.slice(1), text: data.msg, type: data.status}, function(){
-                // If the form is successfully submitted then 
+    		if(data.status == 'success'){
+                swal({title: "{!! trans('swal.text_success') !!}", text: data.msg, type: data.status}, function(){
+                // If the form is successfully submitted then
                 // redirect to the new page
-                if(data.status == 'success'){
                     window.location.href = form.attr('redirect');
-                }
-            });
+                });
+            }else{
+                swal({title: "{!! trans('swal.text_error') !!}", text: data.msg, type: data.status, html: true});
+            }
     	}).fail(function(data) {
             // Display any errors that have been returned
     		errors = data.responseJSON;

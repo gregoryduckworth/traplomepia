@@ -17,6 +17,7 @@ return [
 
     // Server
     'text_success' => 'Success!',
+    'text_error' => 'Error!',
     'text_oops' => 'Oops!',
     'could_not_connect' => 'We couldn\'t connect to the server!',
 

@@ -13,6 +13,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        \Log::info(\Auth::user());
         return view('users.profile.index');
     }
 

@@ -18,7 +18,7 @@
                 {!! Form::label('password_confirmation', trans('users.password_confirmation')) !!}
                 {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
             </div>
-            {!! Form::submit(trans('common.submit'), ['class' => 'pull-right btn btn-success']) !!}
+            {!! Form::submit(trans('common.submit'), ['name' => 'change-password', 'class' => 'pull-right btn btn-success']) !!}
         {!! Form::close() !!}
     </div>
 </div>

@@ -25,7 +25,8 @@ class PasswordFormRequest extends Request
     {
         return [
             'old_password' => 'required|min:6|max:255',
-            'password' => 'required|confirmed|min:6|max:255',
+            'password' => 'required|confirmed|min:6|max:255|different:old_password',
+            'password_confirmation' => 'required_with:password|min:6|max:255',
         ];
     }
 }

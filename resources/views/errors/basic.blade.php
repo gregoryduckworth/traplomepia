@@ -14,7 +14,7 @@
 	                <span class="icon-bar"></span>
 	                <span class="icon-bar"></span>
 	            </button>
-	            <a class="navbar-brand" href="#">{!! $global_settings['full_name'] !!} </a>
+	            <a class="navbar-brand" href="#">{!! config('full_name') !!} </a>
 	        </div>
 	        <div id="navbar" class="navbar-collapse collapse">
 	            <ul class="nav navbar-nav pull-right">

@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        foreach(Role::all() as $role){
+        foreach (Role::all() as $role) {
             $role_user = User::create([
                 'title' => 'Mr.',
                 'first_name' => $role->display_name,

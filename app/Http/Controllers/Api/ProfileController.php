@@ -50,12 +50,14 @@ class ProfileController extends Controller
     public function updatePassword(PasswordFormRequest $request)
     {
         // Find the current user logged in
-        $user = $this->user->find(\Auth::user()->id);
+        $user = $this->user->find(Auth::user()->id);
 
         // Check the old password typed in matches
         if (Hash::check($request->old_password, $user->password)) {
             // Update the user to have the new password
+            \Log::info($user);
             $user->update(['password' => $request->password_confirmation]);
+            \Log::info($user);
             return response()->json(['msg' => trans('json.password_update', ['type' => trans('users.user')]), 'status' => 'success']);
         } else {
             return response()->json(['msg' => trans('json.password_not_match'), 'status' => 'error']);
