@@ -54,13 +54,13 @@ class Register extends BasePage
     public function elements()
     {
         return [
-            '@first_name' => 'input[name="first_name"]',
-            '@last_name' => 'input[name="last_name"]',
-            '@email' => 'input[name="email"]',
-            '@password' => 'input[name="password"]',
-            '@password_confirmation' => 'input[name="password_confirmation"]',
-            '@terms' => 'input[name="terms"]',
-            '@register' => 'input[name="register"]',
+            '@first_name' => 'input[name=first_name]',
+            '@last_name' => 'input[name=last_name]',
+            '@email' => 'input[name=email]',
+            '@password' => 'input[name=password]',
+            '@password_confirmation' => 'input[name=password_confirmation]',
+            '@terms' => 'input[name=terms]',
+            '@register' => 'input[name=register]',
         ];
     }
 }

@@ -18,11 +18,26 @@
     	</div>
     	<div class="col-md-9">
 	    	<table class="table table-striped">
-                <tr><td><label>{!! trans('users.title') !!}:</label></td><td>{!! $currentUser->title !!}</td></tr>
-	    		<tr><td><label>{!! trans('users.first_name') !!}:</label></td><td>{!! $currentUser->first_name !!}</td></tr>
-	    		<tr><td><label>{!! trans('users.last_name') !!}:</label></td><td>{!! $currentUser->last_name !!}</td></tr>
-	    		<tr><td><label>{!! trans('users.email') !!}:</label></td><td>{!! $currentUser->email !!}</td></tr>
-	    		<tr><td><label>{!! trans('users.dob') !!}:</label></td><td>{!! $currentUser->dob !!}</td></tr>
+                <tr>
+                    <td><label>{!! trans('users.title') !!}:</label></td>
+                    <td>{!! $currentUser->title !!}</td>
+                </tr>
+	    		<tr>
+                    <td><label>{!! trans('users.first_name') !!}:</label></td>
+                    <td>{!! $currentUser->first_name !!}</td>
+                </tr>
+	    		<tr>
+                    <td><label>{!! trans('users.last_name') !!}:</label></td>
+                    <td>{!! $currentUser->last_name !!}</td>
+                </tr>
+	    		<tr>
+                    <td><label>{!! trans('users.email') !!}:</label></td>
+                    <td>{!! $currentUser->email !!}</td>
+                </tr>
+	    		<tr>
+                    <td><label>{!! trans('users.dob') !!}:</label></td>
+                    <td>{!! $currentUser->dob !!}</td>
+                </tr>
 	    	</table>
 	    </div>
     </div>

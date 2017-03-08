@@ -46,9 +46,9 @@ class Login extends BasePage
     public function elements()
     {
         return [
-            '@email' => 'input[name="email"]',
-            '@password' => 'input[name="password"]',
-            '@sign-in' => 'input[name="sign-in"]',
+            '@email' => 'input[name=email]',
+            '@password' => 'input[name=password]',
+            '@sign-in' => 'input[name=sign-in]',
         ];
     }
 }

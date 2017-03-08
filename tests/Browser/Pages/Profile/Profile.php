@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Browser\Pages\Auth;
+namespace Tests\Browser\Pages\Profile;
 
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page as BasePage;
 
-class ForgotPassword extends BasePage
+class Profile extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -14,7 +14,7 @@ class ForgotPassword extends BasePage
      */
     public function url()
     {
-        return '/password/reset';
+        return '/profile';
     }
 
     /**
@@ -26,12 +26,8 @@ class ForgotPassword extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-            ->assertTitleContains(trans('message.password-reset'))
-            ->assertSee(trans('message.email'))
-            ->assertInputValue('email', '')
-            ->assertInputValue('send-password', trans('message.send-password'))
-            ->assertSee(trans('message.membership'))
-            ->assertSee(trans('message.registermember'));
+            ->assertTitleContains(trans('users.profile'))
+            ->assertSee(trans('users.profile'));
     }
 
     /**
@@ -42,8 +38,7 @@ class ForgotPassword extends BasePage
     public function elements()
     {
         return [
-            '@email' => 'input[name=email]',
-            '@send-password' => 'input[name=send-password]',
+            //
         ];
     }
 }

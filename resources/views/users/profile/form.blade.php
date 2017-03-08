@@ -2,7 +2,7 @@
 
 <div class="form-group">
 	{!! Form::label('title', trans('users.title')) !!}
-	{!! Form::select('title', ['Mr.' => 'Mr.', 'Miss.' => 'Miss.', 'Mrs.' => 'Mrs.', 'Ms.' => 'Ms.', 'Dr.' => 'Dr.', 'Prof.' => 'Prof.'], null, ['placeholder' => 'Please select a title', 'class' => 'form-control']) !!}
+	{!! Form::select('title', [trans('users.mr') => trans('users.mr'), trans('users.miss') => trans('users.miss'), trans('users.mrs') => trans('users.mrs'), trans('users.ms') => trans('users.ms'), trans('users.dr') => trans('users.dr'), trans('users.prof') => trans('users.prof')], null, ['placeholder' => trans('users.select_title'), 'class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -28,7 +28,7 @@
 <br />
 
 <a href="{!! URL::previous() !!}" class="pull-left btn btn-danger">{!! trans('common.cancel') !!}</a>
-{!! Form::submit(trans('common.submit'), ['class' => 'pull-right btn btn-success']) !!}
+{!! Form::submit(trans('common.submit'), ['name' => 'submit', 'class' => 'pull-right btn btn-success']) !!}
 
 @push('javascript')
 @include('layouts.partials.swal.form')

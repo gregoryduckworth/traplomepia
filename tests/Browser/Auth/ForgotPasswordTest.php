@@ -16,7 +16,7 @@ class ForgotPasswordTest extends DuskTestCase
      * without an email address
      *
      * @group auth
-     * @group password
+     * @group forgot-password
      * @return void
      */
     public function testAllFieldsRequired()
@@ -34,7 +34,7 @@ class ForgotPasswordTest extends DuskTestCase
      * with an invalid email address
      *
      * @group auth
-     * @group password
+     * @group forgot-password
      * @return void
      */
     public function testInvalidEmail()
@@ -53,7 +53,7 @@ class ForgotPasswordTest extends DuskTestCase
      * with an valid email address
      *
      * @group auth
-     * @group password
+     * @group forgot-password
      * @return void
      */
     public function testValidEmail()

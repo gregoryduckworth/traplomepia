@@ -10,7 +10,7 @@ return [
     'users' => 'Users',
     'user' => 'User',
 
-    // Admin 
+    // Admin
     'admin_section' => 'Admin Only Section',
     'impersonate' => 'Impersonate',
     'impersonating' => 'You are currently impersonating the user :name',
@@ -40,4 +40,13 @@ return [
     'new_password' => 'New Password',
     'password_confirmation' => 'Confirm Password',
     'passwordclickreset' => 'Click here to reset your password:',
+
+    // Profile titles
+    'select_title' => 'Please select a title',
+    'mr' => 'Mr.',
+    'mrs' => 'Mrs.',
+    'miss' => 'Miss',
+    'ms' => 'Ms.',
+    'dr' => 'Dr.',
+    'prof' => 'Prof.',
 ];

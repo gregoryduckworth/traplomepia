@@ -5,7 +5,7 @@ return [
     'email' => 'Email',
     'sign-in' => 'Sign in',
     'password' => 'Password',
-    'remember' => 'Remember',
+    'remember' => 'Remember Me',
     'registermember' => 'Not Registered?',
     'forgotpassword' => 'Forgot Password',
     'problem' => 'There was a problem.',
