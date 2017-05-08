@@ -1,6 +1,5 @@
 /node_modules
 /public
-/tests/Browser/console/
 /vendor
 /.idea
 Homestead.json
