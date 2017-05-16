@@ -1,6 +1,4 @@
-sudo: required
 language: php
-dist: trusty
 
 php:
   - 7.1
@@ -17,7 +15,7 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - cp .env.testing .env
+  - npm install 
+  - php artisan key:generate
+  - php artisan migrate:refresh --seed
   - php artisan serve &
-
-script:
-  - php artisan dusk
