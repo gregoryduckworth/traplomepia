@@ -3,16 +3,17 @@ dist: trusty
 
 php:
   - 7.1
+  
+before_install:
+  - mysql -e 'CREATE DATABASE test;'
 
 install:
   - travis_retry composer install --no-interaction
 
-#services:
-# - mysql
+services:
+ - mysql
   
 before_script:
-#  - mysql -e 'create database test;'
-  - touch database/database.sqlite
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
