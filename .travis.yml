@@ -3,16 +3,16 @@ dist: trusty
 
 php:
   - 7.1
-  
+
+services:
+ - mysql
+ 
 before_install:
   - mysql -e 'CREATE DATABASE test;'
 
 install:
   - travis_retry composer install --no-interaction
 
-services:
- - mysql
-  
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
