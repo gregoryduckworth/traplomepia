@@ -7,7 +7,7 @@ services:
   - mysql
 
 install:
-  - mysql -e 'create database IF NOT EXISTS test;'
+  - mysql -e 'create database IF NOT EXISTS laravel_test;'
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - cp .env.testing .env # Create a new .env file
   - php artisan key:generate # Generate application key
