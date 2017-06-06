@@ -8,11 +8,11 @@ services:
  - mysql
  
 before_install:
+  - cp .env.testing .env
   - mysql -e 'CREATE DATABASE test;'
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
-  - cp .env.testing .env
   - npm install
   - php artisan key:generate
   - php artisan migrate:refresh --seed
