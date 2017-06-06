@@ -12,16 +12,16 @@ before_install:
   - mysql -e 'CREATE DATABASE test;'
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - ./vendor/laravel/dusk/bin/chromedriver-linux &
-  - npm install
-  - php artisan key:generate
-  - php artisan migrate:refresh --seed
+  - ./vendor/laravel/dusk/bin/chromedriver-linux 
 
 install:
   - travis_retry composer install --no-interaction
 
 before_script:
-  - php artisan serve &
+  - npm install
+  - php artisan key:generate
+  - php artisan migrate:refresh --seed
+  - php artisan serve
  
 script:
   - php artisan dusk
